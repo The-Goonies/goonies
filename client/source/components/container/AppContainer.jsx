@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 
 class AppContainer extends React.Component {
   constructor(props) {
-    super (props)
+    super(props);
   }
 
-  render () {
+  render() {
     return (
       <div>
-      <h1>Hello World</h1>
+        <h1>Hello World</h1>
       </div>
-    )
+    );
   }
 }
 
-ReactDOM.render(<AppContainer />, document.getElementById('app'))
+ReactDOM.render(<AppContainer />, document.getElementById('app'));
