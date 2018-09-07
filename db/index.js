@@ -29,11 +29,8 @@ const createUser = ({ username, password, experience }) => {
 };
 
 const verifyUser = ({ username, password }, callback) => {
-  User.findOne({ where: {username: username, password: password} })
-    .then((userData) => callback(userData))
-    .catch((err) => console.log('Could not find user in database.', err))
+  return User.findOne({ where: {username: username, password: password} });
 };
-
 
 exports.createUser = createUser;
 exports.verifyUser = verifyUser;
