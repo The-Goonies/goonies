@@ -6,7 +6,7 @@ const db = require('./../db/index.js');
 require('dotenv').config();
 // const path = require('path')
 
-let port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 
 app.use(express.static(`${__dirname}/../client/dist`));
