@@ -123,6 +123,8 @@ you get here again and nothing is broken and all the tests pass.
 
 ### Make a pull request
 
+BEFORE MAKING A PULL REQUEST: Team workflow is to ensure no existing pull request is waiting your approval. If so, work to approve that request first, then rebase again, and then submit yours.
+
 Make a clear pull request from your fork and branch to the upstream master
 branch, detailing exactly what changes you made and what feature this
 should add. The clearer your pull request is the faster you can get
@@ -138,6 +140,13 @@ someone will look at your code again. If they like it, it will get merged,
 else, just repeat again.
 
 Thanks for contributing!
+
+### Upon merging
+
+Be sure and check to make sure the deployed version is still working!
+https://goonies-backpacker.herokuapp.com/maps
+
+Drop an @here in the slack so everyone knows you've submitted a request!
 
 ### Guidelines
 
