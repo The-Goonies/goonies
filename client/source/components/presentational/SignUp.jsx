@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import axios from 'axios';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -7,8 +8,10 @@ class SignUp extends React.Component {
     this.state = {
       username: '',
       password: '',
-      experience: ''
+      experience: 'Novice'
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -18,22 +21,40 @@ class SignUp extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(this.state.username);
+    var userInfo = {
+      username: this.state.username,
+      password: this.state.password,
+      experience: this.state.experience
+    };
+    axios.post('/api/users/create', userInfo)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} >
+        <form>
           <label>Username:
             <input type="text" name="username" onChange={this.handleChange}/>
           </label>
           <label>Password:
             <input type="password" name="password" onChange={this.handleChange}/>
           </label>
+          <label> Experience Level:
+            <select name="experience" value={this.state.experience} onChange={this.handleChange}>
+              <option value="Novice">Novice</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </label>
 
-          <input type="submit" value="Submit" />
+          <input type="button" value="Submit" onClick={this.handleSubmit}/>
         </form>
       </div>
       )

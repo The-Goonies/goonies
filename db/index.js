@@ -19,7 +19,7 @@ const User = sequelize.define('user', {
 });
 
 const createUser = ({ username, password, experience }, callback) => {
-  User.sync({ alter: true })
+  User.sync({ alter: false })
     .then((data) => {
 
       User.create({ username, password, experience })
