@@ -7,7 +7,7 @@
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon --inspect server/index.js --watch",
     "start": "node server/index.js",
-    "lint": "./node_modules/eslint/bin/eslint.js --fix server/index.js db/index.js client/source/index.html client/source/components/container/AppContainer.jsx"
+    "lint": "./node_modules/eslint/bin/eslint.js --fix server db client/source/index.html client/source/components/container/AppContainer.jsx"
   },
   "engines": {
     "node": "8.11.4"
