@@ -6,4 +6,4 @@
 npm-debug.log
 .DS_Store
 /*.env
-.myapikey.js
+myapikey.js
