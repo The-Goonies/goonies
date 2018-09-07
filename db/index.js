@@ -13,14 +13,14 @@ sequelize
   });
 
 const User = sequelize.define('user', {
-  username: {type: Sequelize.STRING},
-  password: {type: Sequelize.STRING},
-  experience: {type: Sequelize.STRING}
+  username: { type: Sequelize.STRING },
+  password: { type: Sequelize.STRING },
+  experience: { type: Sequelize.STRING },
 });
 
-const createUser = ({username, password, experience}) => {
+const createUser = ({ username, password, experience }) => {
   User.sync({ alter: false })
-  .then(() => User.create({ username, password, experience }))
+    .then(() => User.create({ username, password, experience }));
 };
 
 

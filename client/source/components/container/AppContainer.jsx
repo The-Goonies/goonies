@@ -11,7 +11,7 @@ class AppContainer extends React.Component {
     super(props);
   }
 
-  render () {
+  render() {
     return (
       <div>
         <h1>Hello World</h1>
