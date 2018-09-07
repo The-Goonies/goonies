@@ -18,13 +18,10 @@ const User = sequelize.define('user', {
   experience: { type: Sequelize.STRING }
 });
 
-const createUser = ({ username, password, experience }, callback) => {
-  User.sync({ alter: false })
+const createUser = ({ username, password, experience }) => {
+  return User.sync({ alter: false })
     .then((data) => {
-
-      User.create({ username, password, experience })
-      .then((data) => callback(data))
-
+      return User.create({ username, password, experience })
     })
     .catch((err) => {
       console.log('Could not add user to database.', err)
