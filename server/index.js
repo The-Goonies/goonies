@@ -5,7 +5,9 @@ const bodyparser = require('body-parser');
 const db = require('./../db/index.js');
 require('dotenv').config();
 // const path = require('path')
-const port = process.env.PORT || $PORT || 5000;
+
+let port = process.env.PORT || 5000;
+
 
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use(bodyparser.json());
