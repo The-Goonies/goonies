@@ -5,9 +5,8 @@ import MapYourRoute from '../presentational/MapYourRoute.jsx';
 
 class AppContainer extends React.Component {
   constructor(props) {
-    super (props)
+    super(props);
   }
-
 
   render () {
     return (
@@ -22,8 +21,8 @@ class AppContainer extends React.Component {
           <MapYourRoute path='/maps' />
         </Router>
       </div>
-    )
+    );
   }
 }
 
-ReactDOM.render(<AppContainer />, document.getElementById('app'))
+ReactDOM.render(<AppContainer />, document.getElementById('app'));
