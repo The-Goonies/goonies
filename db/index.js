@@ -13,12 +13,24 @@ sequelize
   });
 
 const User = sequelize.define('user', {
-  username: {
-    type: Sequelize.STRING,
-  },
+  username: { type: Sequelize.STRING },
+  password: { type: Sequelize.STRING },
+  experience: { type: Sequelize.STRING }
 });
 
-const createUser = username => User.sync({ alter: true }).then(() => User.create({ username }));
+const createUser = ({ username, password, experience }) => {
+  return User.sync({ alter: false })
+    .then((data) => {
+      return User.create({ username, password, experience })
+    })
+    .catch((err) => {
+      console.log('Could not add user to database.', err)
+    })
+};
 
+const verifyUser = ({ username, password }, callback) => {
+  return User.findOne({ where: {username: username, password: password} });
+};
 
 exports.createUser = createUser;
+exports.verifyUser = verifyUser;
