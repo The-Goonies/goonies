@@ -1,3 +1,4 @@
+
 # Goonies - What you need to know to use our repo ##
 
 ## Over-arching file structure ##
@@ -37,4 +38,3 @@ PostgreSQL hosted on an ElephantSQL server (DB_URL is an environmental variable)
 ## Notes ##
 
 The package.json file includes an elsint script which lists out the documents to be checked by the linter. YOU MUST ENTER any new files into this script for them to be checked.
-
