@@ -1,3 +1,4 @@
+<<<<<<< eaf6bfc0d72541e20c22c0234e9de4575d67647a
 
 # Goonies - What you need to know to use our repo ##
 
