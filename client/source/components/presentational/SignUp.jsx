@@ -42,9 +42,11 @@ class SignUp extends React.Component {
         <form>
           <label>Username:
             <input type="text" name="username" onChange={this.handleChange}/>
+            <br></br>
           </label>
           <label>Password:
             <input type="password" name="password" onChange={this.handleChange}/>
+            <br></br>
           </label>
           <label> Experience Level:
             <select name="experience" value={this.state.experience} onChange={this.handleChange}>
@@ -52,6 +54,7 @@ class SignUp extends React.Component {
               <option value="Intermediate">Intermediate</option>
               <option value="Advanced">Advanced</option>
             </select>
+            <br></br>
           </label>
 
           <input type="button" value="Submit" onClick={this.handleSubmit}/>
