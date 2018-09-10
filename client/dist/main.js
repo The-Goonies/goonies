@@ -189,7 +189,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or directory, open '/Users/sarahwilson/Desktop/HRbootcamp/goonies/backpacking-app/goonies/myapikey.js'\");\n\n//# sourceURL=webpack:///./myapikey.js?");
+eval("module.exports = {\n    key: 'AIzaSyAToT2RtBdNMo5S5O_jTJnKL9Byq_CZJoA'\n  };\n\n//# sourceURL=webpack:///./myapikey.js?");
 
 /***/ }),
 
