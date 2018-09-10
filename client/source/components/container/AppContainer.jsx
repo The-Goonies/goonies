@@ -4,6 +4,7 @@ import { Link, Router } from '@reach/router';
 import MapYourRoute from '../presentational/MapYourRoute.jsx';
 import GoogleMapsContainer from './renderMap.jsx';
 import SignUp from '../presentational/SignUp.jsx';
+import Login from '../presentational/Login.jsx';
 
 
 class AppContainer extends React.Component {
@@ -27,6 +28,7 @@ class AppContainer extends React.Component {
         <Router>
           <MapYourRoute path='/maps' />
           <SignUp path='/signUp' />
+          <Login exact path='/' />
         </Router>
       </div>
     );

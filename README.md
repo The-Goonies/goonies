@@ -1,4 +1,3 @@
-
 # Goonies - What you need to know to use our repo ##
 
 ## Over-arching file structure ##
