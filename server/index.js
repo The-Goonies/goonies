@@ -6,7 +6,7 @@ const db = require('./../db/index.js');
 require('dotenv').config();
 // const path = require('path')
 
-let port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use(bodyparser.json());
@@ -35,6 +35,10 @@ app.get('/api/users/login', (req, res) => {
     .catch((err) => {
         console.log('Could not login user.', err);
     })
+});
+
+app.get('*', (req, res) => {
+  res.redirect('/');
 });
 
 app.listen(port, () => console.log(`the goonies are listening on ${port}`));

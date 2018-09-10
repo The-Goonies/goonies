@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Link, Router} from '@reach/router';
+import { Link, Router } from '@reach/router';
 import MapYourRoute from '../presentational/MapYourRoute.jsx';
 import GoogleMapsContainer from './renderMap.jsx';
 import SignUp from '../presentational/SignUp.jsx';

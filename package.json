@@ -7,7 +7,7 @@
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon --inspect server/index.js --watch",
     "start": "node server/index.js",
-    "lint": "./node_modules/eslint/bin/eslint.js --fix server db client/source/index.html client/source/components/container/AppContainer.jsx"
+    "lint": "./node_modules/eslint/bin/eslint.js --fix server db client/source/index.html client/source/components/container/AppContainer.jsx client/source/components/presentational/MapYourRoute.jsx"
   },
   "engines": {
     "node": "8.11.4"
@@ -28,8 +28,6 @@
     "eslint-plugin-react": "^7.11.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0"
   },
@@ -43,6 +41,8 @@
     "google-maps-react": "^2.0.2",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "sequelize": "^4.38.0"
   }
 }
