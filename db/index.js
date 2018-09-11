@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
-const salt = 11;
+const salt = bcrypt.genSaltSync(10);
 
 const sequelize = new Sequelize(`${process.env.DB_URL}`);
 
