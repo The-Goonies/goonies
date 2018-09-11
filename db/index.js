@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
-var bcrypt = require('bcrypt');
-var salt = 11;
+const bcrypt = require('bcrypt');
+const salt = 11;
 
 const sequelize = new Sequelize(`${process.env.DB_URL}`);
 
@@ -51,29 +51,6 @@ const createUser = ({ username, password, experience }) => {
         })
     });
 };
-
-// const verifyUser = ({ username, password }) => {
-//   //hash password
-//   console.log('PASS:', password);
-//   return bcrypt.hash(password, salt)
-//     .then((hash) => {
-//       console.log('HASH:', hash);
-//       //check for username and password combination
-//       User.findOne({
-//         where: {
-//           username: username,
-//           password: hash
-//         }
-//       }).then( data => {
-//         console.log('DATAAAA', data);
-//         if (data === null) {
-//           throw 'Invalid Password';
-//         } else {
-//           return data.username;
-//         }
-//       })
-//     });
-// };
 
 const verifyUser = ({ username, password }) => {
   //check for username and get saved password hash
