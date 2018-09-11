@@ -15,39 +15,28 @@ app.use(bodyparser.json());
 app.post('/api/users/create', (req, res) => {
   // pass username, password, and experience level
   // from front-end signup to DB
-  db.createUser(req.body)
+  db.isUsernameUnique(req.body)
     .then((data) => {
       console.log('Created new user. User data:', data.dataValues);
       res.send(data.dataValues);
     })
     .catch((err) => {
-      console.log('Could not create user in server.', err);
+      if (typeof err === 'string') {
+        res.send('username taken');
+      } else {
+        console.log(err);
+      }
     })
 });
-
-app.post('/api/users/create', (req, res) => {
-  // pass username, password, and experience level
-  // from front-end signup to DB
-  db.createUser(req.body)
-    .then((data) => {
-      console.log('Created new user. User data:', data.dataValues);
-      res.send(data.dataValues);
-    })
-    .catch((err) => {
-      console.log('Could not create user in server.', err);
-    })
-});
-
 
 app.get('/api/users/login', (req, res) => {
   //pass username and password to database to verify user
   db.verifyUser(req.query)
     .then((data) => {
-      console.log('User verified. User data:', data.dataValues);
-      res.send(data.dataValues);
+      res.send('verified');
     })
     .catch((err) => {
-        console.log('Could not login user.', err);
+      res.send('invalid');
     })
 });
 

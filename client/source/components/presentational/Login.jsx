@@ -29,7 +29,11 @@ class Login extends React.Component {
       params: LoginInfo
     })
       .then((res) => {
-        console.log('login response', res);
+        if (res.data === 'invalid') {
+          alert('Invalid username and password. Please try again.')
+        } else {
+          //success! redirect
+        }
       })
       .catch((err) => {
         console.log('login error', err);
