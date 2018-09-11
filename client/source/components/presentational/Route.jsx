@@ -21,14 +21,29 @@ class Route extends React.Component {
     };
     return (
       <div className="route" style={divStyle}>
-        <div></div>
-        <div>Name: {this.state.routeName}</div>
-        <div>Date: {this.state.date}</div>
-        <div>Distance: {this.state.distanceInMiles}</div>
-        <div>Duration: {this.state.timeToCompleteInHours}</div>
-        <div>Average Speed: {this.state.averageSpeedMPH}</div>
+        <div />
+        <div>
+Name:
+          {this.state.routeName}
+        </div>
+        <div>
+Date:
+          {this.state.date}
+        </div>
+        <div>
+Distance:
+          {this.state.distanceInMiles}
+        </div>
+        <div>
+Duration:
+          {this.state.timeToCompleteInHours}
+        </div>
+        <div>
+Average Speed:
+          {this.state.averageSpeedMPH}
+        </div>
       </div>
     );
   }
 }
-export default Route
+export default Route;

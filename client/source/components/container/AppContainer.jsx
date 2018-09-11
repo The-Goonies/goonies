@@ -13,7 +13,7 @@ class AppContainer extends React.Component {
     super(props);
     this.state = {
 
-    }
+    };
   }
 
   render() {
@@ -21,11 +21,15 @@ class AppContainer extends React.Component {
       <div>
         <h1>Hello World</h1>
         <nav>
-          <Link to='/'>Login</Link>{' | '}
-          <Link to='/signUp'>Sign Up</Link>{' | '}
-          <Link to='/maps'>Map Your Route</Link>{' | '}
-          <Link to='/user'>User Profile</Link>{' | '}
-          <Link to='/routes'>Route History</Link>
+          <Link to="/">Login</Link>
+          {' | '}
+          <Link to="/signUp">Sign Up</Link>
+          {' | '}
+          <Link to="/maps">Map Your Route</Link>
+          {' | '}
+          <Link to="/user">User Profile</Link>
+          {' | '}
+          <Link to="/routes">Route History</Link>
         </nav>
         <Router>
           <MapYourRoute path="/maps" />

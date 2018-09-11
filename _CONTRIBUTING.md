@@ -70,7 +70,7 @@ changes.
 
 #### Commit Message Guidelines
 
-- BEFORE COMMITTING RUN ESLINT on appropriate files by following two steps. (1) ENTER any new files into the list of in the lint script command in the package.json. You MUST MANUALLY ENTER THESE FILES. (2) Then run 'npm run lint' from the command line.
+- BEFORE COMMITTING RUN ESLINT on appropriate files by running 'npm run lint' from the command line. It is expected all contributors are using an eslint plug-in with their code editors set to airbnb style guide.
 - Commit messages should be written in the present tense; e.g. "Fix continuous
   integration script".
 - The first line of your commit message should be a brief summary of what the
