@@ -28,11 +28,7 @@ class SignUp extends React.Component {
     };
     axios.post('/api/users/create', userInfo)
       .then(function (response) {
-        if (response.data === 'username taken') {
-          alert('That username is already taken. Please choose another username.')
-        } else {
-          //success! redirect
-        }
+        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
