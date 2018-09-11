@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
-const bcrypt = require('bcrypt');
-const salt = 11;
 
 const sequelize = new Sequelize(`${process.env.DB_URL}`);
 
@@ -20,55 +18,19 @@ const User = sequelize.define('user', {
   experience: { type: Sequelize.STRING }
 });
 
-const isUsernameUnique = ({ username, password, experience }) => {
-  //check for username in database
-  return User.find({where: {username: username}})
-    .then((data) => {
-      if (data === null) {
-        //if username is unique, create new user
-        return createUser({ username, password, experience });
-      } else {
-        throw 'That username is already taken.';
-      }
-    })
-};
-
 const createUser = ({ username, password, experience }) => {
-  //hash password
-  return bcrypt.hash(password, salt)
-    .then((hash) => {
-      //add new user
-      User.sync({ alter: false })
-        .then((data) => {
-          return User.create({
-            username: username,
-            password: hash,
-            experience: experience
-          })
-        })
-        .catch((err) => {
-          console.log('Could not add user to database.', err)
-        })
-    });
-};
-
-const verifyUser = ({ username, password }) => {
-  //check for username and get saved password hash
-  return User.findOne({where: {username: username}})
+  return User.sync({ alter: false })
     .then((data) => {
-      //compare input password to saved password
-      return bcrypt.compare(password, data.password)
-        .then((res) => {
-          if (res) {
-            return data.username;
-          } else {
-            throw 'Invalid Password';
-          }
-        })
+      return User.create({ username, password, experience })
     })
-    .catch((err) => {throw err});
+    .catch((err) => {
+      console.log('Could not add user to database.', err)
+    })
 };
 
-exports.isUsernameUnique =isUsernameUnique;
+const verifyUser = ({ username, password }, callback) => {
+  return User.findOne({ where: {username: username, password: password} });
+};
+
 exports.createUser = createUser;
 exports.verifyUser = verifyUser;
