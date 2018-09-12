@@ -7,6 +7,8 @@ import SignUp from '../presentational/SignUp.jsx';
 import Login from '../presentational/Login.jsx';
 import RouteHistory from '../presentational/RouteHistory.jsx';
 import routes from '../../SampleData.js';
+import Menu from '../presentational/Menu.jsx';
+import menuIcon from '../../images/menu-icon.png';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -19,7 +21,8 @@ class AppContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello World</h1>
+        <h1>Backpacker</h1>
+        <Link to='/Menu'>MENU></Link>
         <nav>
           <Link to='/'>Login</Link>{' | '}
           <Link to='/signUp'>Sign Up</Link>{' | '}
@@ -28,6 +31,7 @@ class AppContainer extends React.Component {
           <Link to='/routes'>Route History</Link>
         </nav>
         <Router>
+          <Menu path="/menu" />
           <MapYourRoute path="/maps" />
           <SignUp path="/signUp" />
           <Login exact path="/" />
