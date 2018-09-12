@@ -13,6 +13,7 @@ const User = sequelize.define('user', {
   experience: { type: Sequelize.STRING },
 });
 
+<<<<<<< HEAD
 const createUser = ({ username, password, experience }) => {
 <<<<<<< HEAD
   //  hash password
@@ -21,6 +22,9 @@ const createUser = ({ username, password, experience }) => {
       //  add new user
       return User.sync({ alter: false })
 =======
+=======
+const createUser = function ({ username, password, experience }) {
+>>>>>>> add menu, CSS for menu, and fix some eslint syntax
   // hash password
   return bcrypt.hash(password, salt)
     .then((hash) => {
@@ -40,6 +44,7 @@ const createUser = ({ username, password, experience }) => {
     });
 };
 
+<<<<<<< HEAD
 const isUsernameUnique = ({ username, password, experience }) => {
 <<<<<<< HEAD
   //  check for username in database
@@ -48,6 +53,9 @@ const isUsernameUnique = ({ username, password, experience }) => {
       if (data === null) {
         //  if username is unique, create new user
 =======
+=======
+const isUsernameUnique = function ({ username, password, experience }) {
+>>>>>>> add menu, CSS for menu, and fix some eslint syntax
   // check for username in database
   return User.find({ where: { username } })
     .then((data) => {
@@ -60,6 +68,7 @@ const isUsernameUnique = ({ username, password, experience }) => {
     });
 };
 
+<<<<<<< HEAD
 
 const verifyUser = ({ username, password }) => {
 <<<<<<< HEAD
@@ -72,6 +81,9 @@ const verifyUser = ({ username, password }) => {
           if (res) {
             return data.username;
 =======
+=======
+const verifyUser = function ({ username, password }) {
+>>>>>>> add menu, CSS for menu, and fix some eslint syntax
   // check for username and get saved password hash
   return User.findOne({ where: { username } })
     .then((data) => {

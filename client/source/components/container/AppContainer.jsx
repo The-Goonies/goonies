@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, Router } from '@reach/router';
-<<<<<<< HEAD
 import MapYourRoute from '../presentational/MapYourRoute';
 import SignUp from '../presentational/SignUp';
 import Login from '../presentational/Login';
@@ -9,21 +8,12 @@ import RouteHistory from '../presentational/RouteHistory';
 import routes from '../../SampleData';
 import Weather from '../presentational/Weather';
 import UserProfile from '../presentational/UserProfile';
-=======
-import MapYourRoute from '../presentational/MapYourRoute.jsx';
-import SignUp from '../presentational/SignUp.jsx';
-import Login from '../presentational/Login.jsx';
-import RouteHistory from '../presentational/RouteHistory.jsx';
-import routes from '../../SampleData.js';
-// import GoogleMapsContainer from '../presentational/renderMap.jsx';
-// import menuIcon from '../../../images/menu-icon.png';
->>>>>>> add toggle for menu button, fix some eslint syntax
 
 class AppContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showingMenu: true,
+      showingMenu: false,
     };
   }
 
@@ -35,26 +25,32 @@ class AppContainer extends React.Component {
   render() {
     const { showingMenu } = this.state;
     return (
-      <div>
+      <div className="header">
         <h1>Backpacker</h1>
-        <button type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>
-        { showingMenu
+        <nav>
+          <button className="menu" type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>        { showingMenu
           ? (
-            <nav>
-              <Link to="/">Login</Link>
-              <br />
-              <Link to="/signUp">Sign Up</Link>
-              <br />
-              <Link to="/maps">Map Your Route</Link>
-              <br />
-              <Link to="/user">User Profile</Link>
-              <br />
-              <Link to="/routes">Route History</Link>
-            </nav>
+            <div className="dropdown">
+            <div className="close">
+              <button className="close" type="button" onClick={this.handleMenuClick.bind(this)}>X</button>
+            </div>
+            <div role="presentation" onClick={this.handleMenuClick.bind(this)} onKeyPress={this.handleMenuClick.bind(this)}>
+              <ul className="dropdown">
+                {/* <li><Link to="/" className="menu-link">Login</Link></li>
+                <li><Link to="/signUp" className="menu-link">Sign Up</Link></li> */}
+                <li><Link to="/maps" className="menu-link">Map</Link></li>
+                <li><Link to="/stopwatch" className="menu-link">Stopwatch</Link></li>
+                <li><Link to="/info" className="menu-link">Park Info</Link></li>
+                <li><Link to="/routes" className="menu-link">My History</Link></li>
+                <li><Link to="/user" className="menu-link">My Profile</Link></li>
+                <li><Link to="/login" className="menu-link">Sign Out</Link></li>
+              </ul>
+            </div>
+          </div>
           )
           : (null)
         }
-
+        </nav>
         <Router>
           <MapYourRoute path="/maps" />
           <Login exact path="/" />
