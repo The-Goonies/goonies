@@ -8,7 +8,7 @@ class SignUp extends React.Component {
     this.state = {
       username: '',
       password: '',
-      experience: 'Novice',
+      experience: 'Novice'
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

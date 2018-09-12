@@ -26,22 +26,32 @@ class GoogleMapsContainer extends React.Component {
     });
   }
 
+  clickedPos(event) {
+    console.log(mapProps)
+    // console.log('mapProps', mapProps)
+    // console.log(event)
+    var lat = event.google.maps.LatLng() 
+    var lng = event.google.maps.LatLng()
+    console.log('lat',lat,'long', lng)
+
+  }
+
   render() {
     const style = {
       width: '50vw',
       height: '75vh',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-
-    };
+      'marginLeft': 'auto',
+      'marginRight': 'auto',
+        
+    }
     return (
       <Map
-        style={style}
-        google={this.props.google}
-        zoom={9}
-        placeholder={this.state.placeholder}
-        initialCenter={{ lat: 37.749669, lng: -119.555108 }}
-
+      onClick = {(e) => this.clickedPos(e)}
+        style = { style }
+        google = { this.props.google }
+        zoom = { 9 }
+        initialCenter = {{ lat: 37.749669, lng: -119.555108 }}
+        
       >
         <Marker
           onClick={this.onMarkerClick}
