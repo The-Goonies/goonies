@@ -1,15 +1,23 @@
 import React from 'react';
 
 class Route extends React.Component {
-  constructor(props) {
+  constructor({ props, route }) {
     super(props);
 
+    const {
+      routeName,
+      date,
+      distanceInMiles,
+      timeToCompleteInHours,
+      averageSpeedMPH,
+    } = route;
+
     this.state = {
-      routeName: this.props.route.routeName,
-      date: this.props.route.date.toString(),
-      distanceInMiles: this.props.route.distanceInMiles,
-      timeToCompleteInHours: this.props.route.timeToCompleteInHours,
-      averageSpeedMPH: this.props.route.averageSpeedMPH,
+      routeName,
+      date: date.toString(),
+      distanceInMiles,
+      timeToCompleteInHours,
+      averageSpeedMPH,
     };
   }
 
@@ -19,28 +27,35 @@ class Route extends React.Component {
       margin: '20px',
       padding: '50px',
     };
+    const {
+      routeName,
+      date,
+      distanceInMiles,
+      timeToCompleteInHours,
+      averageSpeedMPH,
+    } = this.state;
     return (
       <div className="route" style={divStyle}>
         <div />
         <div>
-Name:
-          {this.state.routeName}
+          Name:
+          {routeName}
         </div>
         <div>
-Date:
-          {this.state.date}
+          Date:
+          {date}
         </div>
         <div>
-Distance:
-          {this.state.distanceInMiles}
+          Distance:
+          {distanceInMiles}
         </div>
         <div>
-Duration:
-          {this.state.timeToCompleteInHours}
+          Duration:
+          {timeToCompleteInHours}
         </div>
         <div>
-Average Speed:
-          {this.state.averageSpeedMPH}
+          Average Speed:
+          {averageSpeedMPH}
         </div>
       </div>
     );

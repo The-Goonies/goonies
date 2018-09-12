@@ -1,9 +1,7 @@
 import React from 'react';
-import {
-  GoogleApiWrapper, InfoWindow, Map, Marker,
-} from 'google-maps-react';
+import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 
-import key from '../../../../myapikey.js';
+import key from '../../../../myapikey';
 
 const apiKey = key.key;
 // const apiKey = `${process.env.REACT_APP_GOOGLE_MAPS_KEY}`;

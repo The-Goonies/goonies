@@ -1,5 +1,6 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
+
 const SRC_DIR = path.join(__dirname, './client/source');
 const DIST_DIR = path.join(__dirname, './client/dist');
 
@@ -7,32 +8,35 @@ module.exports = {
   entry: `${SRC_DIR}/components/container/AppContainer.jsx`,
   output: {
     path: DIST_DIR,
-    filename: 'main.js'
+    filename: 'main.js',
   },
   module: {
     rules: [
       {
-        test: /\.jsx$/, //the $ matches the preceding item zero or one time, so this regex also searches for js files too!
+        test: /\.jsx$/, // the $ matches the preceding item zero or one time, so this regex also searches for js files too
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader"
-          }
-        ]
-      }
-    ]
+            loader: 'html-loader',
+          },
+        ],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: `${SRC_DIR}/index.html`,
-      filename: `${DIST_DIR}/index.html`
+      filename: `${DIST_DIR}/index.html`,
     }),
-   
-  ]
+
+  ],
 };

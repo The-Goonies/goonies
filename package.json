@@ -51,6 +51,7 @@
     "node-pre-gyp": "^0.11.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
+    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "sequelize": "^4.38.0"

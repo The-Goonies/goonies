@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 import axios from 'axios';
 
 class Login extends React.Component {
@@ -19,7 +18,7 @@ class Login extends React.Component {
     });
   }
 
-  handleLogin(e) {
+  handleLogin() {
     const LoginInfo = {
       username: this.state.username,
       password: this.state.password,
