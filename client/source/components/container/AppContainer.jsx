@@ -28,28 +28,27 @@ class AppContainer extends React.Component {
       <div className="header">
         <h1>Backpacker</h1>
         <nav>
-          <button className="menu" type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>        { showingMenu
-          ? (
-            <div className="dropdown">
-            <div className="close">
-              <button className="close" type="button" onClick={this.handleMenuClick.bind(this)}>X</button>
-            </div>
-            <div role="presentation" onClick={this.handleMenuClick.bind(this)} onKeyPress={this.handleMenuClick.bind(this)}>
-              <ul className="dropdown">
-                {/* <li><Link to="/" className="menu-link">Login</Link></li>
-                <li><Link to="/signUp" className="menu-link">Sign Up</Link></li> */}
-                <li><Link to="/maps" className="menu-link">Map</Link></li>
-                <li><Link to="/stopwatch" className="menu-link">Stopwatch</Link></li>
-                <li><Link to="/info" className="menu-link">Park Info</Link></li>
-                <li><Link to="/routes" className="menu-link">My History</Link></li>
-                <li><Link to="/user" className="menu-link">My Profile</Link></li>
-                <li><Link to="/login" className="menu-link">Sign Out</Link></li>
-              </ul>
-            </div>
-          </div>
-          )
-          : (null)
-        }
+          <button className="menu" type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>
+          { showingMenu
+            ? (
+              <div className="dropdown">
+                <div className="close">
+                  <button className="close" type="button" onClick={this.handleMenuClick.bind(this)}>X</button>
+                </div>
+                <div role="presentation" onClick={this.handleMenuClick.bind(this)} onKeyPress={this.handleMenuClick.bind(this)}>
+                  <ul className="dropdown">
+                    <li><Link to="/maps" className="menu-link">Map</Link></li>
+                    <li><Link to="/stopwatch" className="menu-link">Stopwatch</Link></li>
+                    <li><Link to="/info" className="menu-link">Park Info</Link></li>
+                    <li><Link to="/routes" className="menu-link">My History</Link></li>
+                    <li><Link to="/user" className="menu-link">My Profile</Link></li>
+                    <li><Link to="/login" className="menu-link">Sign Out</Link></li>
+                  </ul>
+                </div>
+              </div>
+            )
+            : (null)
+          }
         </nav>
         <Router>
           <MapYourRoute path="/maps" />
@@ -64,6 +63,5 @@ class AppContainer extends React.Component {
     );
   }
 }
-
-const document = window.document;
+const { document } = global;
 ReactDOM.render(<AppContainer />, document.getElementById('app'));
