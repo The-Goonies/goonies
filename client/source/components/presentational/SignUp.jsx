@@ -26,9 +26,15 @@ class SignUp extends React.Component {
     const { username, password, experience } = this.state;
     const userInfo = { username, password, experience };
     axios.post('/api/users/create', userInfo)
+<<<<<<< HEAD
       .then((response) => {
         if (response.data === 'username taken') {
           alert('That username is already taken. Please choose another username.');
+=======
+      .then(function (response) {
+        if (response.data === 'Username Taken') {
+          alert('That username is already taken. Please choose another username.')
+>>>>>>> add toggle for menu button, fix some eslint syntax
         } else {
           //  success! redirect
           this.setState({

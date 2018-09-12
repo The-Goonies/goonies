@@ -31,6 +31,7 @@ class Login extends React.Component {
       params: LoginInfo,
     })
       .then((res) => {
+<<<<<<< HEAD
         if (res.data === 'invalid') {
           alert('Invalid username and password. Please try again.');
         } else {
@@ -38,11 +39,18 @@ class Login extends React.Component {
           this.setState({
             loggedIn: true,
           });
+=======
+        if (res.data === 'Invalid Password') {
+          alert('Invalid username and password. Please try again.')
+        } else {
+          // success! redirect
+>>>>>>> add toggle for menu button, fix some eslint syntax
         }
       })
       .catch((err) => {
         console.log('login error', err);
       });
+<<<<<<< HEAD
   }
 
   redirToSignUP() {
@@ -50,6 +58,8 @@ class Login extends React.Component {
     this.setState({
       signedUp: !signedUp,
     });
+=======
+>>>>>>> add toggle for menu button, fix some eslint syntax
   }
 
 

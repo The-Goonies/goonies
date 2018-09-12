@@ -16,9 +16,15 @@ app.post('/api/users/create', (req, res) => {
   // pass username, password, and experience level
   // from front-end signup to DB
   db.isUsernameUnique(req.body)
+<<<<<<< HEAD
     .then((data) => {
       console.log('Created new user. User data:', data);
       res.send(data.dataValues);
+=======
+    .then(() => {
+      console.log('Created new user.');
+      res.end();
+>>>>>>> add toggle for menu button, fix some eslint syntax
     })
     .catch((err) => {
       if (err.message === 'Username Taken') {
@@ -48,4 +54,4 @@ app.get('*', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(port, () => console.log(`the goonies are listening on ${port}`));
+app.listen(port, () => console.log(`The Goonies are listening on ${port}`));
