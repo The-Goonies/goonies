@@ -8,7 +8,11 @@ class SignUp extends React.Component {
     this.state = {
       username: '',
       password: '',
+<<<<<<< HEAD
       experience: 'Novice',
+=======
+      experience: 'Novice'
+>>>>>>> commit to rebase to master
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
