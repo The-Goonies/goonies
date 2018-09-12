@@ -20,7 +20,8 @@ class AppContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello World</h1>
+        <h1>Backpacker</h1>
+        <Link to='/Menu'>MENU></Link>
         <nav>
           <Link to="/">Login</Link>
           {' | '}
@@ -35,6 +36,7 @@ class AppContainer extends React.Component {
           <Link to="/weather">Weather</Link>
         </nav>
         <Router>
+          <MapYourRoute path="/maps" />
           <Login exact path="/" />
           <SignUp path="/signUp" />
           <MapYourRoute path="/maps" />
