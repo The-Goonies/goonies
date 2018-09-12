@@ -41,7 +41,7 @@ const Route = ({ route, handleEdit }) => {
       </div>
     </div>
   );
-}
+};
 
 Route.propTypes = {
   route: PropTypes.shape({

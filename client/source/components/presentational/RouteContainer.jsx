@@ -18,10 +18,11 @@ class RouteContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { route: routeName } = this.props;
-    console.log(routeName);
+    const { route, route: { routeName } } = this.props;
     if (routeName === 'trigger update') {
+      route.routeName = '';
       this.setState({
+        route,
         update: true,
       });
     }
@@ -40,18 +41,15 @@ class RouteContainer extends React.Component {
     });
   }
 
-  handleDelete() {
-    console.log('delete clicked');
-  }
-
   renderView() {
     const { update, route } = this.state;
+    const { handleDelete } = this.props;
     if (update) {
       return (
         <RouteForm
           route={route}
           handleEditSubmit={this.handleEditSubmit}
-          handleDelete={this.handleDelete}
+          handleDelete={handleDelete}
         />
       );
     }
@@ -64,7 +62,6 @@ class RouteContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         {this.renderView()}
@@ -81,6 +78,7 @@ RouteContainer.propTypes = {
     timeToCompleteInHours: PropTypes.number,
     averageSpeedMPH: PropTypes.number,
   }).isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default RouteContainer;

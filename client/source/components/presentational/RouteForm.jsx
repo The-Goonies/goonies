@@ -10,11 +10,13 @@ class RouteForm extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
   componentDidMount() {
     const {
       route: {
+        _id,
         routeName,
         date,
         distanceInMiles,
@@ -24,6 +26,7 @@ class RouteForm extends React.Component {
     } = this.props;
     if (!this.state.routeName) {
       this.setState({
+        _id,
         routeName,
         date,
         distanceInMiles,
@@ -43,7 +46,12 @@ class RouteForm extends React.Component {
     e.preventDefault();
     const { handleEditSubmit } = this.props;
     handleEditSubmit(this.state);
-  };
+  }
+
+  onDelete() {
+    const { handleDelete } = this.props;
+    handleDelete(this.state);
+  }
 
   render() {
     const divStyle = {
@@ -52,16 +60,15 @@ class RouteForm extends React.Component {
       padding: '50px',
     };
     const {
+      _id,
       routeName,
       date,
       distanceInMiles,
       timeToCompleteInHours,
       averageSpeedMPH,
     } = this.state;
-    const {
-      handleDelete,
-    } = this.props;
     return (
+      // TODO: will want to implement validation on this form
       <div className="routeForm" style={divStyle}>
         <form onSubmit={this.onSubmit}>
           <label>Route Name: </label>
@@ -79,9 +86,9 @@ class RouteForm extends React.Component {
           <label>Speed (MPH): </label>
           <input type="text" name="averageSpeedMPH" value={averageSpeedMPH} onChange={this.onChange} />
           <br />
-          {/* <input type="hidden" name="_id" value={this.state._id} onChange={this.onChange} /> */}
+          <input type="hidden" name="_id" value={_id} onChange={this.onChange} />
           <button type="submit">Save</button>
-          <button type="button" onClick={handleDelete}>Delete</button>
+          <button type="button" onClick={this.onDelete}>Delete</button>
         </form>
       </div>
     );
