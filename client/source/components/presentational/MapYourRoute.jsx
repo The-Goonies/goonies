@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import GoogleMapsContainer from '../container/renderMap.jsx';
+import GoogleMapsContainer from '../presentational/renderMap.jsx';
 
 class MapYourRoute extends React.Component {
   constructor(props) {
@@ -15,13 +15,7 @@ class MapYourRoute extends React.Component {
     };
     return (
       <div>
-        <div>
-          <GoogleMapsContainer />
-        </div>
-        <div style={divStyle}>
-          {' '}
---Map information will go here --
-        </div>
+        <GoogleMapsContainer />
       </div>
     );
   }
