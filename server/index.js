@@ -26,18 +26,18 @@ app.post('/api/users/create', (req, res) => {
       } else {
         console.log(err);
       }
-    })
+    });
 });
 
 app.get('/api/users/login', (req, res) => {
-  //pass username and password to database to verify user
+  // pass username and password to database to verify user
   db.verifyUser(req.query)
     .then((data) => {
       res.send('verified');
     })
     .catch((err) => {
       res.send('invalid');
-    })
+    });
 });
 
 app.get('*', (req, res) => {

@@ -4,10 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "jest": "npm run jest",
+    "lint": "eslint './client/source/components/**/*.jsx' db server",
+    "lintFix": "eslint --fix './client/source/components/**/*.jsx' db server",
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon --inspect server/index.js --watch",
     "start": "node server/index.js",
-    "lint": "./node_modules/eslint/bin/eslint.js --fix server db client/source/index.html client/source/components/container/AppContainer.jsx client/source/components/presentational/MapYourRoute.jsx"
+    "test": "npm run lint"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "forceExit": true
   },
   "engines": {
     "node": "8.11.4"
@@ -24,6 +32,7 @@
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "html-loader": "^0.5.5",
@@ -43,6 +52,7 @@
     "node-pre-gyp": "^0.11.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
+    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "sequelize": "^4.38.0"
