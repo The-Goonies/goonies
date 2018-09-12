@@ -17,12 +17,12 @@ app.post('/api/users/create', (req, res) => {
   // from front-end signup to DB
   db.isUsernameUnique(req.body)
     .then((data) => {
-      console.log('Created new user. User data:', data.dataValues);
+      console.log('Created new user. User data:', data);
       res.send(data.dataValues);
     })
     .catch((err) => {
-      if (typeof err === 'string') {
-        res.send('username taken');
+      if (err.message === 'Username Taken') {
+        res.send('Username Taken');
       } else {
         console.log(err);
       }
@@ -32,11 +32,15 @@ app.post('/api/users/create', (req, res) => {
 app.get('/api/users/login', (req, res) => {
   // pass username and password to database to verify user
   db.verifyUser(req.query)
-    .then((data) => {
-      res.send('verified');
+    .then(() => {
+      res.send('Verified User');
     })
     .catch((err) => {
-      res.send('invalid');
+      if (err.message === 'Invalid Password') {
+        res.send('Invalid Password');
+      } else {
+        console.log(err);
+      }
     });
 });
 

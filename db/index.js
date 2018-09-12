@@ -20,36 +20,56 @@ const User = sequelize.define('user', {
   experience: { type: Sequelize.STRING },
 });
 
-const isUsernameUnique = ({ username, password, experience }) => User.find({ where: { username } })
-  .then((data) => {
-    if (data === null) {
-      // if username is unique, create new user
-      return createUser({ username, password, experience });
-    }
-    throw 'That username is already taken.';
-  });
-const createUser = ({ username, password, experience }) => bcrypt.hash(password, salt)
-  .then((hash) => {
-    // add new user
-    User.sync({ alter: false })
-      .then(data => User.create({
-        username,
-        password: hash,
-        experience,
-      }))
-      .catch((err) => {
-        console.log('Could not add user to database.', err);
-      });
-  });
-const verifyUser = ({ username, password }) => User.findOne({ where: { username } })
-  .then(data => bcrypt.compare(password, data.password)
-    .then((res) => {
-      if (res) {
-        return data.username;
+const createUser = ({ username, password, experience }) => {
+  //  hash password
+  return bcrypt.hash(password, salt)
+    .then((hash) => {
+      //  add new user
+      return User.sync({ alter: false })
+        .then(() => {
+          return User.create({
+            username,
+            password: hash,
+            experience,
+          });
+        })
+        .catch((err) => {
+          console.log('Could not add user to database.', err);
+        });
+    });
+};
+
+const isUsernameUnique = ({ username, password, experience }) => {
+  //  check for username in database
+  return User.find({ where: { username } })
+    .then((data) => {
+      if (data === null) {
+        //  if username is unique, create new user
+        return createUser({ username, password, experience });
       }
-      throw 'Invalid Password';
-    }))
-  .catch((err) => { throw err; });
+      throw new Error('Username Taken');
+    });
+};
+
+
+const verifyUser = ({ username, password }) => {
+  //  check for username and get saved password hash
+  return User.findOne({ where: { username } })
+    .then((data) => {
+      //  compare input password to saved password
+      return bcrypt.compare(password, data.password)
+        .then((res) => {
+          if (res) {
+            return data.username;
+          }
+          throw new Error('Invalid Password');
+        });
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+
 exports.isUsernameUnique = isUsernameUnique;
 exports.createUser = createUser;
 exports.verifyUser = verifyUser;

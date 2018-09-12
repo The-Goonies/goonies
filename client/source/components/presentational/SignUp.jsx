@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 import axios from 'axios';
+import { Redirect } from '@reach/router';
+
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class SignUp extends React.Component {
     this.state = {
       username: '',
       password: '',
-      experience: 'Novice'
+      experience: 'Novice',
+      loggedIn: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,18 +22,18 @@ class SignUp extends React.Component {
     });
   }
 
-  handleSubmit(e) {
-    const userInfo = {
-      username: this.state.username,
-      password: this.state.password,
-      experience: this.state.experience,
-    };
+  handleSubmit() {
+    const { username, password, experience } = this.state;
+    const userInfo = { username, password, experience };
     axios.post('/api/users/create', userInfo)
       .then((response) => {
         if (response.data === 'username taken') {
           alert('That username is already taken. Please choose another username.');
         } else {
-          // success! redirect
+          //  success! redirect
+          this.setState({
+            loggedIn: true,
+          });
         }
       })
       .catch((error) => {
@@ -41,30 +43,28 @@ class SignUp extends React.Component {
 
 
   render() {
+    //  destructuring state object per airbnb syntax guide
+    const { loggedIn, experience } = this.state;
+    //  if user successfully signs up, redirect to maps page
+    if (loggedIn) {
+      return <Redirect noThrow to="/maps" />;
+    }
     return (
       <div>
         <form>
-          <label>
-Username:
-            <input type="text" name="username" onChange={this.handleChange} />
-            <br />
-          </label>
-          <label>
-Password:
-            <input type="password" name="password" onChange={this.handleChange} />
-            <br />
-          </label>
-          <label>
-            {' '}
-Experience Level:
-            <select name="experience" value={this.state.experience} onChange={this.handleChange}>
-              <option value="Novice">Novice</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Advanced">Advanced</option>
-            </select>
-            <br />
-          </label>
-
+          Username:
+          <input type="text" name="username" onChange={this.handleChange} />
+          <br />
+          Password:
+          <input type="password" name="password" onChange={this.handleChange} />
+          <br />
+            Experience Level:
+          <select name="experience" value={experience} onChange={this.handleChange}>
+            <option value="Novice">Novice</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+          <br />
           <input type="button" value="Submit" onClick={this.handleSubmit} />
         </form>
       </div>
