@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Route from './Route';
+import Route from './RouteContainer';
 
 const RouteHistory = ({ routes }) => {
   const avgSpeed = 'placeholder';

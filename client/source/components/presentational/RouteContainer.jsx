@@ -18,6 +18,7 @@ class Route extends React.Component {
       distanceInMiles,
       timeToCompleteInHours,
       averageSpeedMPH,
+      update: false,
     };
   }
 
@@ -34,12 +35,16 @@ class Route extends React.Component {
       timeToCompleteInHours,
       averageSpeedMPH,
     } = this.state;
+    if (this.state.update) {
+
+    }
     return (
       <div className="route" style={divStyle}>
         <div />
         <div>
           Name:
-          {routeName}
+          {' ' + routeName + ' '}
+          <a href='#'>edit</a>
         </div>
         <div>
           Date:
