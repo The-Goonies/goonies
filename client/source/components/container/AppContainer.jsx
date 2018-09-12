@@ -34,9 +34,9 @@ class AppContainer extends React.Component {
           <Link to="/weather">Weather</Link>
         </nav>
         <Router>
-          <MapYourRoute path="/maps" />
-          <SignUp path="/signUp" />
           <Login exact path="/" />
+          <SignUp path="/signUp" />
+          <MapYourRoute path="/maps" />
           <RouteHistory path="/routes" routes={routes} />
           <Weather path="/weather" />
         </Router>

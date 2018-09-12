@@ -32,10 +32,10 @@ app.post('/api/users/create', (req, res) => {
 app.get('/api/users/login', (req, res) => {
   // pass username and password to database to verify user
   db.verifyUser(req.query)
-    .then((data) => {
+    .then(() => {
       res.send('verified');
     })
-    .catch((err) => {
+    .catch(() => {
       res.send('invalid');
     });
 });
