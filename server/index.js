@@ -21,8 +21,8 @@ app.post('/api/users/create', (req, res) => {
       res.send(data.dataValues);
     })
     .catch((err) => {
-      if (err) {
-        res.send('username taken');
+      if (err.message === 'Username Taken') {
+        res.send('Username Taken');
       } else {
         console.log(err);
       }
@@ -33,10 +33,14 @@ app.get('/api/users/login', (req, res) => {
   // pass username and password to database to verify user
   db.verifyUser(req.query)
     .then(() => {
-      res.send('verified');
+      res.send('Verified User');
     })
-    .catch(() => {
-      res.send('invalid');
+    .catch((err) => {
+      if (err.message === 'Invalid Password') {
+        res.send('Invalid Password');
+      } else {
+        console.log(err);
+      }
     });
 });
 

@@ -47,7 +47,6 @@ class SignUp extends React.Component {
     const { loggedIn, experience } = this.state;
     //  if user successfully signs up, redirect to maps page
     if (loggedIn) {
-      console.log('is user logged in?', loggedIn);
       return <Redirect noThrow to="/maps" />;
     }
     return (

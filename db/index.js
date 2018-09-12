@@ -47,7 +47,7 @@ const isUsernameUnique = ({ username, password, experience }) => {
         //  if username is unique, create new user
         return createUser({ username, password, experience });
       }
-      throw Error('username taken');
+      throw new Error('Username Taken');
     });
 };
 
@@ -62,7 +62,7 @@ const verifyUser = ({ username, password }) => {
           if (res) {
             return data.username;
           }
-          throw Error('Invalid Password');
+          throw new Error('Invalid Password');
         });
     })
     .catch((err) => {
