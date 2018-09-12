@@ -1,29 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Route from './RouteContainer';
+import RouteContainer from './RouteContainer';
 
-const RouteHistory = ({ routes }) => {
-  const avgSpeed = 'placeholder';
-  // const { routes } = props.routes;
+class RouteHistory extends React.Component {
+  constructor(props) {
+    super(props);
+    const { routes } = this.props;
 
-  return (
-    <div className="routeHistory">
-      <div className="routesHeader">
-        <h1>My Route History</h1>
-        <p>
-          Average Speed:
-          {avgSpeed}
-          {' '}
-          MPH
-        </p>
+    this.state = {
+      routes,
+    };
+
+    this.addRoute = this.addRoute.bind(this);
+  }
+
+  addRoute() {
+    const emptyRoute = {
+      routeName: '',
+      date: new Date(),
+      distanceInMiles: 0,
+      timeToCompleteInHours: 0,
+      averageSpeedMPH: 0,
+    };
+    const { routes } = this.state;
+    routes.unshift(emptyRoute);
+    this.setState({
+      routes,
+    });
+  }
+
+  render() {
+    const avgSpeed = 'placeholder';
+    const { routes } = this.state;
+    return (
+      <div className="routeHistory">
+        <div className="routesHeader">
+          <h1>My Route History</h1>
+          <p>
+            Average Speed:
+            {avgSpeed}
+            {' '}
+            MPH
+          </p>
+        </div>
+        <button className="addRouteButton" type="button" onClick={this.addRoute}>Add New Route</button>
+        <div className="routesContainer">
+          { routes.map(route => <RouteContainer key={Math.random()} route={route} />) }
+        </div>
       </div>
-      <button className="addRouteButton" type="button">Add New Route</button>
-      <div className="routesContainer">
-        { routes.map(route => <Route key={Math.random()} route={route} />) }
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 RouteHistory.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,

@@ -1,5 +1,5 @@
 import React from 'react';
-import GoogleMapsContainer from '../presentational/renderMap';
+import GoogleMapsContainer from './renderMap';
 
 const MapYourRoute = () => {
   const divStyle = {
