@@ -6,6 +6,7 @@ import SignUp from '../presentational/SignUp';
 import Login from '../presentational/Login';
 import RouteHistory from '../presentational/RouteHistory';
 import routes from '../../SampleData';
+import Weather from '../presentational/Weather';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -29,12 +30,15 @@ class AppContainer extends React.Component {
           <Link to="/user">User Profile</Link>
           {' | '}
           <Link to="/routes">Route History</Link>
+          {' | '}
+          <Link to="/weather">Weather</Link>
         </nav>
         <Router>
           <MapYourRoute path="/maps" />
           <SignUp path="/signUp" />
           <Login exact path="/" />
           <RouteHistory path="/routes" routes={routes} />
+          <Weather path="/weather" />
         </Router>
       </div>
     );
