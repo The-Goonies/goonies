@@ -38,11 +38,10 @@ class AppContainer extends React.Component {
                 <div role="presentation" onClick={this.handleMenuClick.bind(this)} onKeyPress={this.handleMenuClick.bind(this)}>
                   <ul className="dropdown">
                     <li><Link to="/maps" className="menu-link">Map</Link></li>
-                    <li><Link to="/stopwatch" className="menu-link">Stopwatch</Link></li>
-                    <li><Link to="/info" className="menu-link">Park Info</Link></li>
+                    <li><Link to="/weather" className="menu-link">Weather</Link></li>
                     <li><Link to="/routes" className="menu-link">My History</Link></li>
                     <li><Link to="/user" className="menu-link">My Profile</Link></li>
-                    <li><Link to="/login" className="menu-link">Sign Out</Link></li>
+                    <li><Link to="/" className="menu-link">Sign Out</Link></li>
                   </ul>
                 </div>
               </div>
@@ -51,7 +50,6 @@ class AppContainer extends React.Component {
           }
         </nav>
         <Router>
-          <MapYourRoute path="/maps" />
           <Login exact path="/" />
           <SignUp path="/signUp" />
           <MapYourRoute path="/maps" />

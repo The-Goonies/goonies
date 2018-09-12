@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect } from '@reach/router';
 
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +13,7 @@ class Login extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
-    this.redirToSignUP = this.redirToSignUP.bind(this);
+    this.redirToSignUp = this.redirToSignUp.bind(this);
   }
 
   handleChange(e) {
@@ -31,7 +30,6 @@ class Login extends React.Component {
       params: LoginInfo,
     })
       .then((res) => {
-<<<<<<< HEAD
         if (res.data === 'invalid') {
           alert('Invalid username and password. Please try again.');
         } else {
@@ -39,27 +37,18 @@ class Login extends React.Component {
           this.setState({
             loggedIn: true,
           });
-=======
-        if (res.data === 'Invalid Password') {
-          alert('Invalid username and password. Please try again.')
-        } else {
-          // success! redirect
->>>>>>> add toggle for menu button, fix some eslint syntax
         }
       })
       .catch((err) => {
         console.log('login error', err);
       });
-<<<<<<< HEAD
   }
 
-  redirToSignUP() {
+  redirToSignUp() {
     const { signedUp } = this.state;
     this.setState({
       signedUp: !signedUp,
     });
-=======
->>>>>>> add toggle for menu button, fix some eslint syntax
   }
 
 
@@ -84,7 +73,7 @@ class Login extends React.Component {
           <br />
           <input type="button" value="Login" onClick={this.handleLogin} />
           <br />
-          <input type="button" value="New User? Register" onClick={this.redirToSignUP} />
+          <input type="button" value="New User? Register" onClick={this.redirToSignUp} />
         </form>
       </div>
     );

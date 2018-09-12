@@ -1,10 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import GoogleMapsContainer from '../container/renderMap';
-=======
-import ReactDom from 'react-dom';
-import GoogleMapsContainer from '../presentational/renderMap.jsx';
->>>>>>> fix render Map, start implementing menu
+import GoogleMapsContainer from '../presentational/renderMap';
 
 const MapYourRoute = () => {
   const divStyle = {
@@ -16,13 +11,6 @@ const MapYourRoute = () => {
     <div>
       <div>
         <GoogleMapsContainer />
-<<<<<<< HEAD
-      </div>
-      <div style={divStyle}>
-        {' '}
-        --Map information will go here --
-=======
->>>>>>> fix render Map, start implementing menu
       </div>
     </div>
   );
