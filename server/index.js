@@ -17,11 +17,11 @@ app.post('/api/users/create', (req, res) => {
   // from front-end signup to DB
   db.isUsernameUnique(req.body)
     .then((data) => {
-      console.log('Created new user. User data:', data.dataValues);
+      console.log('Created new user. User data:', data);
       res.send(data.dataValues);
     })
     .catch((err) => {
-      if (typeof err === 'string') {
+      if (err) {
         res.send('username taken');
       } else {
         console.log(err);
