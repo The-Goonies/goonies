@@ -10,6 +10,8 @@ nav {
     text-align: right;
 }
 button.menu {
+    z-index: 100; 
+    position: relative;
     background-color: none;
     border: none;
     color: black;
@@ -31,6 +33,7 @@ button.close {
     cursor: pointer;
 }
 div.dropdown {
+    z-index: 100;
     position: relative;
     float: right;
     background-color: white;

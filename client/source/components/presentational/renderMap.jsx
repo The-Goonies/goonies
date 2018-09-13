@@ -33,21 +33,23 @@ class GoogleMapsContainer extends React.Component {
 
     };
     return (
-      <Map
-        style={style}
-        google={this.props.google}
-        zoom={9}
-        initialCenter={{ lat: 37.749669, lng: -119.555108 }}
+      <div id="map">
+        <Map
+          style={style}
+          google={this.props.google}
+          zoom={9}
+          initialCenter={{ lat: 37.749669, lng: -119.555108 }}
 
-      >
-        <Marker
-          onClick={this.onMarkerClick}
-          title="Changing Colors Garage"
-          position={{ lat: 37.749669, lng: -119.555108 }}
-          name="Changing Colors Garage"
-        />
+        >
+          <Marker
+            onClick={this.onMarkerClick}
+            title="Changing Colors Garage"
+            position={{ lat: 37.749669, lng: -119.555108 }}
+            name="Changing Colors Garage"
+          />
 
-      </Map>
+        </Map>
+      </div>
     );
   }
 }
