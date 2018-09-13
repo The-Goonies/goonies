@@ -5,7 +5,11 @@ class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // currentWeather: {},
+      currentTemp: '',
+      currentClouds: '',
+      currentHumidity: '',
+      currentWind: '',
+      currentLocation: '',
       // fiveDayForecast: [],
     };
   }
@@ -20,7 +24,11 @@ class Weather extends React.Component {
       .then((response) => {
         console.log('responsed Current', response.data);
         this.setState({
-          // currentWeather: response.data,
+          currentTemp: response.data.main.temp,
+          currentClouds: response.data.clouds.all,
+          currentHumidity: response.data.main.humidity,
+          currentWind: response.data.wind.speed,
+          currentLocation: response.data.name,
         });
       })
       .catch((error) => {
@@ -28,6 +36,7 @@ class Weather extends React.Component {
       });
   }
   // HAS 8 FORCATS PER DAY EVERY 3 HOURS
+
   getFiveDayForcast() {
     axios.get('/api/weatherfive')
       .then((response) => {
@@ -42,10 +51,47 @@ class Weather extends React.Component {
   }
 
   render() {
+    const {
+      currentTemp,
+      currentClouds,
+      currentHumidity,
+      currentWind,
+      currentLocation,
+    } = this.state;
     return (
       <div>
-        <div>current weather</div>
-        <div>5-Day Forcast</div>
+        <div>
+          <h2>currentWeather</h2>
+          <h4>{currentLocation}</h4>
+          <p>
+            Temp:
+            {' '}
+            {currentTemp}
+            {' '}
+            F°
+          </p>
+          <p>
+            Clouds:
+            {' '}
+            {currentClouds}
+            %
+          </p>
+          <p>
+            Humidity:
+            {' '}
+            {currentHumidity}
+            %
+          </p>
+          <p>
+            Wind:
+            {' '}
+            {currentWind}
+            {' '}
+            mph
+          </p>
+        </div>
+
+        <h2>5-Day Forcast</h2>
       </div>
     );
   }

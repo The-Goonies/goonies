@@ -42,7 +42,7 @@ app.get('/api/users/login', (req, res) => {
 });
 
 app.get('/api/weathercurrent', (req, res) => {
-  return weather.getCurrentWeather()
+  weather.getCurrentWeather()
     .then((data) => {
       res.send(data);
     })
@@ -52,7 +52,7 @@ app.get('/api/weathercurrent', (req, res) => {
 });
 
 app.get('/api/weatherfive', (req, res) => {
-  return weather.getFiveDayWeather()
+  weather.getFiveDayWeather()
     .then((data) => {
       res.send(data.list);
     })
