@@ -76,6 +76,23 @@ app.patch('/api/routes', (req, res) => {
     });
 });
 
+app.delete('/api/routes', (req, res) => {
+  console.log('delete request received', req.query);
+  db.deleteRoute(req.query)
+    .then((rowsDestroyed) => {
+      console.log('rosDestroyed is', rowsDestroyed);
+      if (rowsDestroyed === 1) {
+        res.status(204);
+        console.log('Successfully stored');
+        res.send('Successfully deleted');
+      } else if (rowsDestroyed === 0) {
+        res.status(404);
+        res.send('That record was not found');
+      }
+    })
+    .catch(err => console.log(err));
+});
+
 // ///// WEATHER ///// //
 app.get('/api/weathercurrent', (req, res) => {
   weather.getCurrentWeather()
@@ -119,27 +136,6 @@ app.get('/api/weatherfive', (req, res) => {
 
 // ///// PARK INFO ///// //
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-app.delete('/api/routes', (req, res) => {
-  console.log('delete request received', req.query);
-  db.deleteRoute(req.query)
-    .then((rowsDestroyed) => {
-      console.log('rosDestroyed is', rowsDestroyed);
-      if (rowsDestroyed === 1) {
-        res.status(204);
-        console.log('Successfully stored');
-        res.send('Successfully deleted');
-      } else if (rowsDestroyed === 0) {
-        res.status(404);
-        res.send('That record was not found');
-      }
-    })
-    .catch(err => console.log(err));
-});
-=======
->>>>>>> render parkInfo with weather component embeded
-=======
 app.get('/api/park/alerts', (req, res) => {
   axios.get(`https://api.nps.gov/api/v1/alerts?parkCode=yose%2C&stateCode=ca&limit=10&api_key=${process.env.PARK_API}`)
     .then((data) => {
@@ -149,7 +145,6 @@ app.get('/api/park/alerts', (req, res) => {
       throw Error(err);
     });
 });
->>>>>>> add API server requests and render results for Park Alerts & Info
 
 app.get('/api/park/info', (req, res) => {
   axios.get(`https://api.nps.gov/api/v1/parks?parkCode=yose&stateCode=ca&api_key=${process.env.PARK_API}`)
@@ -160,6 +155,7 @@ app.get('/api/park/info', (req, res) => {
       throw Error(err);
     });
 });
+
 
 // Redirects to login page when page refreshes
 app.get('*', (req, res) => {
