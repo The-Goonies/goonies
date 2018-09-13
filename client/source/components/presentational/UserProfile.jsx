@@ -10,24 +10,42 @@ class UserProfile extends React.Component {
       username,
       experience,
       password,
+      fakePassword: '*****',
     };
   }
 
+  changeUserProfile(e) {
+  }
+
   render() {
-    const { username, password, experience } = this.state;
+    const { username, experience } = this.state;
     return (
       <div>
         <h1>User Profile</h1>
-        <p>
+        <form>
           Username:
           { username }
-          <br />
-          Password:
-          { password }
+          <input type="button" value="Change Username" name="newName" onClick={this.changeUserProfile}/>
           <br />
           Experience Level:
           { experience }
-        </p>
+          <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
+          <br />
+          <h4>Change Password</h4>
+          Old Password:
+          <br />
+          <input type="text" name="oldPassword" />
+          <br />
+          New Password:
+          <br />
+          <input type="text" name="newPassword" />
+          <br />
+          Confirm New Password:
+          <br />
+          <input type="text" name="confirmNewPassword" />
+          <br />
+          <input type="button" value="Update Password" />
+        </form>
       </div>
     );
   }
