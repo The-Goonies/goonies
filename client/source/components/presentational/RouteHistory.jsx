@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import RouteContainer from './RouteContainer';
 
 class RouteHistory extends React.Component {
@@ -33,6 +34,11 @@ class RouteHistory extends React.Component {
 
   handleDelete(route) {
     console.log('gonna send to server with this route', route);
+    axios.delete('/api/routes', {params: route.id})
+      .then(() => console.log('delete successful'))
+      .then(() => axios.get('/api/routes'))
+      .then(() => console.log('routes received and will update state'))
+      .then(routes => this.setState({ routes }));
     // send request to server
     // upon response, delete from state
   }

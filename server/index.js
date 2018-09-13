@@ -43,6 +43,10 @@ app.get('/api/users/login', (req, res) => {
     });
 });
 
+app.get('/api/routes', (req, res) => {
+  console.log('/routes get request received')
+})
+
 app.get('*', (req, res) => {
   res.redirect('/');
 });
