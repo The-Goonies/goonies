@@ -36,6 +36,10 @@ class Timer extends React.Component {
     });
   }
 
+  // awesome
+  saveTime() {
+    const { savePoints, elapsedTime } = this.state;
+
   saveTimer() {
     // let { savePoints, elapsedTime } = this.state;
     this.setState({
@@ -54,36 +58,16 @@ class Timer extends React.Component {
           <h1 className="timer-format">
             {timeFormat(elapsedTime)}
           </h1>
-<<<<<<< HEAD
           <Button className="timer-btns start-btn" onClick={this.startTimer}>Start</Button>
           <Button className="timer-btns stop-btn" onClick={this.stopTimer}>Stop</Button>
           <Button className="timer-btns stop-btn" onClick={this.resetTimer}>Reset</Button>
           <Button className="timer-btns start-btn" onClick={this.saveTimer}>Save</Button>
-||||||| merged common ancestors
-          <Button onClick={this.startTimer}>Start</Button>
-          <Button onClick={this.stopTimer}>Stop</Button>
-          <Button onClick={this.resetTimer}>Reset</Button>
-=======
-          <Button onClick={this.startTimer}>Start</Button>
-          <Button onClick={this.stopTimer}>Stop</Button>
-          <Button onClick={this.resetTimer}>Reset</Button>
-          <Button onClick={this.saveTimer}>Save Time</Button>
->>>>>>> Building timer save function
         </div>
-<<<<<<< HEAD
         <ul className="stopwatch-laps">
           {this.state.savePoints.map((point, i) => {
             <li className="stopwatch-lap"><bold>{i + 1}</bold>{timeFormat(point)}</li>
           })}
         </ul>
-||||||| merged common ancestors
-=======
-        <ul>
-          {this.state.savePoints.map((point, i) => {
-            <li><bold>{i + 1}</bold>{timeFormat(point)}</li>
-          })}
-        </ul>
->>>>>>> Building timer save function
       </div>
     );
   }
