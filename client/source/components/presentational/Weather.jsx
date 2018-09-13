@@ -29,6 +29,7 @@ class Weather extends React.Component {
           currentHumidity: response.data.main.humidity,
           currentWind: response.data.wind.speed,
           currentLocation: response.data.name,
+          // fiveDayForecast: [],
         });
       })
       .catch((error) => {
