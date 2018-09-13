@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 
 import key from '../../../../myapikey';
@@ -10,17 +11,17 @@ class GoogleMapsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeMarker: {},
-      selectedPlace: {},
+      // activeMarker: {},
+      // selectedPlace: {},
     };
     // binding this to event-handler functions
     this.onMarkerClick = this.onMarkerClick.bind(this);
   }
 
-  onMarkerClick(props, marker, e) {
+  onMarkerClick() {
     this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
+      // selectedPlace: props,
+      // activeMarker: marker,
     });
   }
 
@@ -32,26 +33,32 @@ class GoogleMapsContainer extends React.Component {
       marginRight: 'auto',
 
     };
+    const { google } = this.props;
+    console.log(google);
     return (
-      <div id="map">
-        <Map
-          style={style}
-          google={this.props.google}
-          zoom={9}
-          initialCenter={{ lat: 37.749669, lng: -119.555108 }}
+      <Map
+        style={style}
+        google={google}
+        zoom={9}
+        initialCenter={{ lat: 37.749669, lng: -119.555108 }}
 
-        >
-          <Marker
-            onClick={this.onMarkerClick}
-            title="Changing Colors Garage"
-            position={{ lat: 37.749669, lng: -119.555108 }}
-            name="Changing Colors Garage"
-          />
+      >
+        <Marker
+          onClick={this.onMarkerClick}
+          title="Changing Colors Garage"
+          position={{ lat: 37.749669, lng: -119.555108 }}
+          name="Changing Colors Garage"
+        />
 
-        </Map>
-      </div>
+      </Map>
     );
   }
 }
+
+GoogleMapsContainer.propTypes = {
+  google: PropTypes.shape({
+    maps: PropTypes.object,
+  }).isRequired,
+};
 
 export default GoogleApiWrapper({ apiKey })(GoogleMapsContainer);
