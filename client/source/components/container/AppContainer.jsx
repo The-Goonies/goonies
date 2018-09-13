@@ -14,6 +14,7 @@ class AppContainer extends React.Component {
     super(props);
     this.state = {
       showingMenu: false,
+      // will need to update with real data, likely populated by a get request to server
     };
   }
 
