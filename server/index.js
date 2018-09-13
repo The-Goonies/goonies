@@ -4,6 +4,8 @@ const app = express();
 const bodyparser = require('body-parser');
 const db = require('./../db/index.js');
 require('dotenv').config();
+const weather = require('./weatherApiCall.js');
+// const path = require('path')
 
 const port = process.env.PORT || 5000;
 
@@ -45,6 +47,46 @@ app.get('/api/users/login', (req, res) => {
 
 app.get('/api/routes', (req, res) => {
   console.log('/routes get request received', req, res);
+});
+
+app.get('/api/weathercurrent', (req, res) => {
+  weather.getCurrentWeather()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
+});
+
+app.get('/api/weatherfive', (req, res) => {
+  weather.getFiveDayWeather()
+    .then((data) => {
+      res.send(data.list);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
+});
+
+app.get('/api/weathercurrent', (req, res) => {
+  weather.getCurrentWeather()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
+});
+
+app.get('/api/weatherfive', (req, res) => {
+  weather.getFiveDayWeather()
+    .then((data) => {
+      res.send(data.list);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
 });
 
 app.get('*', (req, res) => {

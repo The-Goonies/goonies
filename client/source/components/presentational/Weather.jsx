@@ -1,33 +1,98 @@
 import React from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 
 class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // weatherInfo: [],
+      currentTemp: '',
+      currentClouds: '',
+      currentHumidity: '',
+      currentWind: '',
+      currentLocation: '',
+      // fiveDayForecast: [],
     };
   }
 
-  // componentDidMount() {
-  //   getWeatherData();
-  // }
+  componentDidMount() {
+    this.getCurrentWeatherData();
+    this.getFiveDayForcast();
+  }
 
-  // getWeatherData() {
-  //   axios.get('/api/weather')
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
+  getCurrentWeatherData() {
+    axios.get('/api/weathercurrent')
+      .then((response) => {
+        console.log('responsed Current', response.data);
+        this.setState({
+          currentTemp: response.data.main.temp,
+          currentClouds: response.data.clouds.all,
+          currentHumidity: response.data.main.humidity,
+          currentWind: response.data.wind.speed,
+          currentLocation: response.data.name,
+          // fiveDayForecast: [],
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  // HAS 8 FORCATS PER DAY EVERY 3 HOURS
+
+  getFiveDayForcast() {
+    axios.get('/api/weatherfive')
+      .then((response) => {
+        console.log('responded with 5 day', response.data);
+        this.setState({
+          // fiveDayForecast: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   render() {
+    const {
+      currentTemp,
+      currentClouds,
+      currentHumidity,
+      currentWind,
+      currentLocation,
+    } = this.state;
     return (
       <div>
-        <div>current weather</div>
-        <div>5-Day Forcast</div>
+        <div>
+          <h2>currentWeather</h2>
+          <h4>{currentLocation}</h4>
+          <p>
+            Temp:
+            {' '}
+            {currentTemp}
+            {' '}
+            F°
+          </p>
+          <p>
+            Clouds:
+            {' '}
+            {currentClouds}
+            %
+          </p>
+          <p>
+            Humidity:
+            {' '}
+            {currentHumidity}
+            %
+          </p>
+          <p>
+            Wind:
+            {' '}
+            {currentWind}
+            {' '}
+            mph
+          </p>
+        </div>
+
+        <h2>5-Day Forcast</h2>
       </div>
     );
   }
