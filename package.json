@@ -9,7 +9,7 @@
     "lintFix": "eslint --fix './client/source/components/**/*.jsx' db server",
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon --inspect server/index.js --watch",
-    "start": "node server/index.js",
+    "start": "node server/index.js"
   },
   "jest": {
     "verbose": true,
