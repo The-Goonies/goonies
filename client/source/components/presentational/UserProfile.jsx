@@ -1,18 +1,34 @@
 import React from 'react';
 
 class UserProfile extends React.Component {
-  constructor(props, userInfo) {
+  constructor({ props, userInfo }) {
     super(props);
 
-    const { username } = userInfo;
-    console.log('what is userInfo', userInfo)
+    const { username, experience, password } = userInfo;
+
     this.state = {
+      username,
+      experience,
+      password,
     };
   }
 
   render() {
+    const { username, password, experience } = this.state;
     return (
-      <h1>User Profile</h1>
+      <div>
+        <h1>User Profile</h1>
+        <p>
+          Username:
+          { username }
+          <br />
+          Password:
+          { password }
+          <br />
+          Experience Level:
+          { experience }
+        </p>
+      </div>
     );
   }
 }
