@@ -16,14 +16,24 @@ class RouteHistory extends React.Component {
     this.handleUpsert = this.handleUpsert.bind(this);
   }
 
-  // I would really like to keep this work
+  // TODO: get routes sorted by date, or do we want as is by most recently created?
+
+  componentDidMount() {
+    axios.get('/api/routes')
+      .then((newRoutes) => {
+        this.setState({
+          routes: newRoutes.data,
+        });
+      });
+  }
+
+
   addRoute() {
     const { routes } = this.state;
-    /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
-    const maxId = routes.reduce((acc, route) => Math.max(acc, route._id), 0);
     const emptyRoute = {
-      _id: maxId + 1,
-      routeName: 'trigger update',
+      tempId: Math.random(),
+      id: null,
+      routeName: '',
       date: '',
       distanceInMiles: 0,
       timeToCompleteInHours: 0,
@@ -35,25 +45,38 @@ class RouteHistory extends React.Component {
     });
   }
 
-  handleDelete(route) {
-    console.log('gonna send to server with this route', route);
-    axios.delete('/api/routes', { params: route._id })
-      .then(() => console.log('delete successful'))
-      .then(() => axios.get('/api/routes'))
-      .then(() => console.log('routes received and will update state'))
-      .then(routes => this.setState({ routes }));
-    // send request to server
-    // upon response, delete from state
+  handleDelete(targetRoute) {
+    console.log('targetRoute is', targetRoute);
+    /* if targetRoute has tempId, it has not yet been saved to the database
+    and we can delete locally without communicating to the database */
+    if (!targetRoute.id) {
+      const { routes } = this.state;
+      let targetIndex;
+      for (let i = 0; i < routes.length; i += 1) {
+        if (routes[i].tempId === targetRoute.tempId) {
+          targetIndex = i;
+        }
+      }
+      routes.splice(targetIndex, 1);
+      this.setState({
+        routes,
+      });
+      /* otherwise deletion requires communicating with the database */
+    } else {
+      axios.delete('/api/routes', { params: targetRoute })
+        .then(res => console.log('delete successful', res))
+        .then(() => axios.get('/api/routes'))
+        .then(routes => this.setState({ routes: routes.data }))
+        .catch(error => console.log(error));
+    }
   }
 
   handleUpsert(route) {
+  // TODO: is upsert adding extra items to database?
     axios.patch('/api/routes', { data: route })
       .then(() => console.log('upsert successful'))
       .then(() => axios.get('/api/routes'))
-      .then(() => console.log('routes received and will update state'))
-      .then(routes => this.setState({ routes }));
-    // send request to server
-    // upon response, update to state
+      .then(routes => this.setState({ routes: routes.data }));
   }
 
   render() {

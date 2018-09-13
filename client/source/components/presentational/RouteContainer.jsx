@@ -18,9 +18,9 @@ class RouteContainer extends React.Component {
   }
 
   componentDidMount() {
-    const { route, route: { routeName } } = this.props;
-    if (routeName === 'trigger update') {
-      route.routeName = '';
+    // think can take out logic here
+    const { route, route: { id } } = this.props;
+    if (!id) {
       this.setState({
         route,
         update: true,

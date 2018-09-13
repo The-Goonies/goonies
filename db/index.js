@@ -20,7 +20,6 @@ const User = sequelize.define('user', {
 });
 
 const Routes = sequelize.define('route', {
-  clientSideId: { type: Sequelize.STRING },
   routeName: { type: Sequelize.STRING },
   date: { type: Sequelize.STRING },
   distanceInMiles: { type: Sequelize.INTEGER },
@@ -30,7 +29,7 @@ const Routes = sequelize.define('route', {
 
 User.hasMany(Routes);
 Routes.belongsTo(User);
-// sequelize.sync();
+sequelize.sync();
 
 const createUser = function ({ username, password, experience }) {
   // hash password
@@ -75,17 +74,19 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
+const getRoutes = () => Routes.findAll();
+
 const createRoute = (route) => {
   const {
+    id,
     routeName,
     date,
     distanceInMiles,
     timeToCompleteInHours,
     averageSpeedMPH,
   } = route;
-  const clientSideId = route._id;
   return Routes.upsert({
-    clientSideId,
+    id,
     routeName,
     date,
     distanceInMiles,
@@ -94,6 +95,14 @@ const createRoute = (route) => {
   });
 };
 
+const deleteRoute = route => Routes.destroy({
+  where: {
+    id: route.id,
+  },
+});
+
+exports.getRoutes = getRoutes;
+exports.deleteRoute = deleteRoute;
 exports.isUsernameUnique = isUsernameUnique;
 exports.createUser = createUser;
 exports.verifyUser = verifyUser;

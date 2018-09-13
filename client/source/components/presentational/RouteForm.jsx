@@ -2,10 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class RouteForm extends React.Component {
-  constructor({ props }) {
+  constructor({ props, route }) {
     super(props);
 
+    const {
+      tempId,
+      id,
+      routeName,
+      date,
+      distanceInMiles,
+      timeToCompleteInHours,
+      averageSpeedMPH,
+    } = route;
+
     this.state = {
+      tempId,
+      id,
+      routeName,
+      date,
+      distanceInMiles,
+      timeToCompleteInHours,
+      averageSpeedMPH,
     };
 
     this.onChange = this.onChange.bind(this);
@@ -13,29 +30,29 @@ class RouteForm extends React.Component {
     this.onDelete = this.onDelete.bind(this);
   }
 
-  componentDidMount() {
-    const {
-      route: {
-        _id,
-        routeName,
-        date,
-        distanceInMiles,
-        timeToCompleteInHours,
-        averageSpeedMPH,
-      },
-    } = this.props;
-    // const { routeName } = this.state;
-    if (!Array.from(this.state).length) {
-      this.setState({
-        _id,
-        routeName,
-        date,
-        distanceInMiles,
-        timeToCompleteInHours,
-        averageSpeedMPH,
-      });
-    }
-  }
+  // componentDidMount() {
+  //   const {
+  //     route: {
+  //       id,
+  //       routeName,
+  //       date,
+  //       distanceInMiles,
+  //       timeToCompleteInHours,
+  //       averageSpeedMPH,
+  //     },
+  //   } = this.props;
+  //   // const { routeName } = this.state;
+  //   if (!Array.from(this.state).length) {
+  //     this.setState({
+  //       id,
+  //       routeName,
+  //       date,
+  //       distanceInMiles,
+  //       timeToCompleteInHours,
+  //       averageSpeedMPH,
+  //     });
+  //   }
+  // }
 
   onChange(e) {
     this.setState({
@@ -62,7 +79,7 @@ class RouteForm extends React.Component {
       padding: '50px',
     };
     const {
-      _id,
+      id,
       routeName,
       date,
       distanceInMiles,
@@ -98,7 +115,7 @@ class RouteForm extends React.Component {
             <input type="text" name="averageSpeedMPH" value={averageSpeedMPH} onChange={this.onChange} />
           </label>
           <br />
-          <input type="hidden" name="_id" value={_id} onChange={this.onChange} />
+          <input type="hidden" name="id" value={id} onChange={this.onChange} />
           <button type="submit">Save</button>
           <button type="button" onClick={this.onDelete}>Delete</button>
         </form>
