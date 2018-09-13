@@ -12,5 +12,8 @@ module.exports = {
             "jsx": true
         }
     },
+    rules: {
+        "no-underscore-dangle": "off",
+    },
     plugins: [ "jest" ],
 }

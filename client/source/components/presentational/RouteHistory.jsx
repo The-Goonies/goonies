@@ -18,6 +18,7 @@ class RouteHistory extends React.Component {
   // I would really like to keep this work
   addRoute() {
     const { routes } = this.state;
+    /* eslint no-underscore-dangle: ["error", { "allow": ["foo_", "_bar"] }] */
     const maxId = routes.reduce((acc, route) => Math.max(acc, route._id), 0);
     const emptyRoute = {
       _id: maxId + 1,

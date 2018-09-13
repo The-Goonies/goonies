@@ -20,7 +20,7 @@ const Route = ({ route, handleEdit }) => {
       <div />
       <div>
         Name:
-        {' ' + routeName + ' '}
+        {routeName}
         <button type="button" onClick={() => handleEdit()}>edit</button>
       </div>
       <div>
