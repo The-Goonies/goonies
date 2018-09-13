@@ -9,6 +9,7 @@ import routes from '../../SampleData';
 import ParkInfo from '../presentational/ParkInfo';
 import UserProfile from '../presentational/UserProfile';
 import Timer from '../presentational/Timer';
+import Weather from '../presentational/Weather';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -53,7 +54,8 @@ class AppContainer extends React.Component {
                 <div role="presentation" onClick={this.handleMenuClick.bind(this)} onKeyPress={this.handleMenuClick.bind(this)}>
                   <ul className="dropdown">
                     <li><Link to="/maps" className="menu-link">Map</Link></li>
-                    <li><Link to="/info" className="menu-link">Info</Link></li>
+                    <li><Link to="/weather" className="menu-link">Weather</Link></li>
+                    <li><Link to="/info" className="menu-link">Park Info</Link></li>
                     <li><Link to="/timer" className="menu-link">Stop Watch</Link></li>
                     <li><Link to="/routes" className="menu-link">My History</Link></li>
                     <li><Link to="/user" className="menu-link">My Profile</Link></li>
@@ -72,6 +74,7 @@ class AppContainer extends React.Component {
           <UserProfile path="/user" userInfo={{ username, password, experience }} />
           <RouteHistory path="/routes" routes={routes} />
           <ParkInfo path="/info" />
+          <Weather path="/weather" />
           <Timer path="/timer" />
         </Router>
       </div>

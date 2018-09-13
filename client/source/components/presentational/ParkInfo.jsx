@@ -47,14 +47,12 @@ class ParkInfo extends React.Component {
     const { info } = this.state;
     return (
       <div>
-        <h1>
+        <h2>
           { parkName }
           <span> </span>
           {info.designation}
-        </h1>
-        <h2>Weather</h2>
-        <Weather />
-        <h2>Alerts</h2>
+        </h2>
+        <h3>Alerts</h3>
         {alerts.map((alert) => {
           return (
             <div key={alert.id}>
@@ -69,7 +67,7 @@ class ParkInfo extends React.Component {
             </div>
           );
         })}
-        <h2>Park Info</h2>
+        <h3>Park Info</h3>
         <div>
           <p>
             {info.description}
