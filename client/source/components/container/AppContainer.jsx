@@ -54,6 +54,7 @@ class AppContainer extends React.Component {
                   <ul className="dropdown">
                     <li><Link to="/maps" className="menu-link">Map</Link></li>
                     <li><Link to="/weather" className="menu-link">Weather</Link></li>
+                    <li><Link to="/timer" className="menu-link">Stop Watch</Link></li>
                     <li><Link to="/routes" className="menu-link">My History</Link></li>
                     <li><Link to="/user" className="menu-link">My Profile</Link></li>
                     <li><Link to="/" className="menu-link">Sign Out</Link></li>
@@ -63,19 +64,6 @@ class AppContainer extends React.Component {
             )
             : (null)
           }
-          <Link to="/">Login</Link>
-          {' | '}
-          <Link to="/signUp">Sign Up</Link>
-          {' | '}
-          <Link to="/maps">Map Your Route</Link>
-          {' | '}
-          <Link to="/user">User Profile</Link>
-          {' | '}
-          <Link to="/routes">Route History</Link>
-          {' | '}
-          <Link to="/weather">Weather</Link>
-          {' | '}
-          <Link to="/timer">Stop Watch</Link>
         </nav>
         <Router>
           <Login exact path="/" transferUserInfo={this.transferUserInfo} />
