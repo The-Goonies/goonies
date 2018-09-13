@@ -51,4 +51,23 @@ app.get('*', (req, res) => {
   res.redirect('/');
 });
 
+app.delete('/api/routes', (req, res) => {
+  console.log('hello', req)
+});
+
+app.patch('/api/routes', (req, res) => {
+  db.createRoute(req.body.data)
+    .then((created) => {
+      if (created) {
+        res.status(200);
+        console.log('Successfully stored');
+        res.send("Successfully stored");
+      } else {
+        res.status(200);
+        console.log('Successfully inserted');
+        res.send("Successfully inserted");
+      }
+    })
+});
+
 app.listen(port, () => console.log(`The Goonies are listening on ${port}`));
