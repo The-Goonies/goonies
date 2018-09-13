@@ -74,6 +74,7 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
+// TODO: refactor to make use of getUserIdForRoutes
 const getRoutes = (username) => {
   console.log('db received routes request');
   if (!username) {
@@ -93,7 +94,13 @@ const getRoutes = (username) => {
   });
 };
 
-const createRoute = (route) => {
+const getUserIdForRoutes = username => User.findOne({
+  where: {
+    username,
+  },
+}).then(user => user.dataValues.id);
+
+const createRoute = (route, username) => {
   const {
     id,
     routeName,
@@ -102,14 +109,16 @@ const createRoute = (route) => {
     timeToCompleteInHours,
     averageSpeedMPH,
   } = route;
-  return Routes.upsert({
-    id,
-    routeName,
-    date,
-    distanceInMiles,
-    timeToCompleteInHours,
-    averageSpeedMPH,
-  });
+  return getUserIdForRoutes(username)
+    .then(userId => Routes.upsert({
+      id,
+      routeName,
+      date,
+      distanceInMiles,
+      timeToCompleteInHours,
+      averageSpeedMPH,
+      userId,
+    }));
 };
 
 const deleteRoute = route => Routes.destroy({

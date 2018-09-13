@@ -63,16 +63,16 @@ app.delete('/api/routes', (req, res) => {
 });
 
 app.patch('/api/routes', (req, res) => {
-  // TODO: Link to user, and send data back to client
-  db.createRoute(req.body.data)
+  const { route, username } = req.body.data;
+  db.createRoute(route, username)
     .then((created) => {
       if (created) {
         res.status(200);
-        console.log('Successfully stored');
+        // console.log('Successfully stored');
         res.send('Successfully stored');
       } else {
         res.status(200);
-        console.log('Successfully inserted');
+        // console.log('Successfully inserted');
         res.send('Successfully inserted');
       }
     });
