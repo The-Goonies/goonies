@@ -35,13 +35,9 @@ class AppContainer extends React.Component {
   }
 
   render() {
-<<<<<<< 226ae4510ebb452646e7bd294a2f8a4299176a7d
     const {
       showingMenu, username, password, experience,
     } = this.state;
-=======
-    const { showingMenu, username, password, experience } = this.state;
->>>>>>> allow information passed from appcontainer to userprofile
     return (
       <div className="header">
         <h1>Backpacker</h1>
