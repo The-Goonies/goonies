@@ -154,7 +154,7 @@ app.get('/api/park/alerts', (req, res) => {
 app.get('/api/park/info', (req, res) => {
   axios.get(`https://api.nps.gov/api/v1/parks?parkCode=yose&stateCode=ca&api_key=${process.env.PARK_API}`)
     .then((data) => {
-      res.send(data.data);
+      res.send(data.data.data);
     })
     .catch((err) => {
       throw Error(err);

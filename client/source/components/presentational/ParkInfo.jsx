@@ -1,7 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Weather from './Weather';
-
 
 class ParkInfo extends React.Component {
   constructor(props) {
@@ -31,9 +29,10 @@ class ParkInfo extends React.Component {
   getInfo() {
     axios.get('/api/park/info')
       .then((response) => {
+        console.log(response);
         this.setState({
-          info: response.data.data[0],
-          parkName: response.data.data[0].name,
+          info: response.data[0],
+          parkName: (response.data[0].fullName),
         }, () => this.render());
       })
       .catch((error) => {
@@ -47,26 +46,20 @@ class ParkInfo extends React.Component {
     const { info } = this.state;
     return (
       <div>
-        <h2>
-          { parkName }
-          <span> </span>
-          {info.designation}
-        </h2>
+        <h2>{ parkName }</h2>
         <h3>Alerts</h3>
-        {alerts.map((alert) => {
-          return (
-            <div key={alert.id}>
-              <p>
-                <strong>{alert.title}</strong>
-                <br />
-                <span>Category: </span>
-                {alert.category}
-                <br />
-                {alert.description}
-              </p>
-            </div>
-          );
-        })}
+        {alerts.map(alert => (
+          <div key={alert.id}>
+            <p>
+              <strong>{alert.title}</strong>
+              <br />
+              <span>Category: </span>
+              {alert.category}
+              <br />
+              {alert.description}
+            </p>
+          </div>
+        ))}
         <h3>Park Info</h3>
         <div>
           <p>
