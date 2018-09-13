@@ -6,9 +6,10 @@ import SignUp from '../presentational/SignUp';
 import Login from '../presentational/Login';
 import RouteHistory from '../presentational/RouteHistory';
 import routes from '../../SampleData';
-import Weather from '../presentational/Weather';
+import ParkInfo from '../presentational/ParkInfo';
 import UserProfile from '../presentational/UserProfile';
 import Timer from '../presentational/Timer';
+import Weather from '../presentational/Weather';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class AppContainer extends React.Component {
                   <ul className="dropdown">
                     <li><Link to="/maps" className="menu-link">Map</Link></li>
                     <li><Link to="/weather" className="menu-link">Weather</Link></li>
+                    <li><Link to="/info" className="menu-link">Park Info</Link></li>
                     <li><Link to="/timer" className="menu-link">Stop Watch</Link></li>
                     <li><Link to="/routes" className="menu-link">My History</Link></li>
                     <li><Link to="/user" className="menu-link">My Profile</Link></li>
@@ -71,6 +73,7 @@ class AppContainer extends React.Component {
           <MapYourRoute path="/maps" />
           <UserProfile path="/user" userInfo={{ username, password, experience }} />
           <RouteHistory path="/routes" routes={routes} />
+          <ParkInfo path="/info" />
           <Weather path="/weather" />
           <Timer path="/timer" />
         </Router>

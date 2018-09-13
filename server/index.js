@@ -1,8 +1,9 @@
 const express = require('express');
-
-const app = express();
+const axios = require('axios');
 const bodyparser = require('body-parser');
 const db = require('./../db/index.js');
+
+const app = express();
 require('dotenv').config();
 const weather = require('./weatherApiCall.js');
 // const path = require('path')
@@ -12,6 +13,8 @@ const port = process.env.PORT || 5000;
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use(bodyparser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
+
+// ///// USERS ///// //
 
 app.post('/api/users/create', (req, res) => {
   // pass username, password, and experience level
@@ -45,54 +48,32 @@ app.get('/api/users/login', (req, res) => {
     });
 });
 
+// ///// ROUTES ///// //
+
 app.get('/api/routes', (req, res) => {
   db.getRoutes()
     .then(routes => res.status(200).send(routes))
     .catch(err => console.log(err));
 });
 
-app.get('/api/weathercurrent', (req, res) => {
-  weather.getCurrentWeather()
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(err, 'Error getting weather data');
-    });
+app.delete('/api/routes', (req, res) => {
+  console.log('hello', req, res);
 });
 
-app.get('/api/weatherfive', (req, res) => {
-  weather.getFiveDayWeather()
-    .then((data) => {
-      res.send(data.list);
-    })
-    .catch((err) => {
-      res.status(err, 'Error getting weather data');
+app.patch('/api/routes', (req, res) => {
+  // TODO: Link to user, and send data back to client
+  db.createRoute(req.body.data)
+    .then((created) => {
+      if (created) {
+        res.status(200);
+        console.log('Successfully stored');
+        res.send('Successfully stored');
+      } else {
+        res.status(200);
+        console.log('Successfully inserted');
+        res.send('Successfully inserted');
+      }
     });
-});
-
-app.get('/api/weathercurrent', (req, res) => {
-  weather.getCurrentWeather()
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(err, 'Error getting weather data');
-    });
-});
-
-app.get('/api/weatherfive', (req, res) => {
-  weather.getFiveDayWeather()
-    .then((data) => {
-      res.send(data.list);
-    })
-    .catch((err) => {
-      res.status(err, 'Error getting weather data');
-    });
-});
-
-app.get('*', (req, res) => {
-  res.redirect('/');
 });
 
 app.delete('/api/routes', (req, res) => {
@@ -112,20 +93,73 @@ app.delete('/api/routes', (req, res) => {
     .catch(err => console.log(err));
 });
 
-app.patch('/api/routes', (req, res) => {
-  // TODO: Link to user, and send data back to client
-  db.createRoute(req.body.data)
-    .then((created) => {
-      if (created) {
-        res.status(200);
-        console.log('Successfully stored');
-        res.send('Successfully stored');
-      } else {
-        res.status(200);
-        console.log('Successfully inserted');
-        res.send('Successfully inserted');
-      }
+// ///// WEATHER ///// //
+app.get('/api/weathercurrent', (req, res) => {
+  weather.getCurrentWeather()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
     });
+});
+
+app.get('/api/weatherfive', (req, res) => {
+  weather.getFiveDayWeather()
+    .then((data) => {
+      res.send(data.list);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
+});
+
+app.get('/api/weathercurrent', (req, res) => {
+  weather.getCurrentWeather()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
+});
+
+app.get('/api/weatherfive', (req, res) => {
+  weather.getFiveDayWeather()
+    .then((data) => {
+      res.send(data.list);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
+});
+
+// ///// PARK INFO ///// //
+
+app.get('/api/park/alerts', (req, res) => {
+  axios.get(`https://api.nps.gov/api/v1/alerts?parkCode=yose%2C&stateCode=ca&limit=10&api_key=${process.env.PARK_API}`)
+    .then((data) => {
+      res.send(data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get('/api/park/info', (req, res) => {
+  axios.get(`https://api.nps.gov/api/v1/parks?parkCode=yose&stateCode=ca&api_key=${process.env.PARK_API}`)
+    .then((data) => {
+      res.send(data.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+
+// Redirects to login page when page refreshes
+app.get('*', (req, res) => {
+  res.redirect('/');
 });
 
 app.listen(port, () => console.log(`The Goonies are listening on ${port}`));
