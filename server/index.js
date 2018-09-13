@@ -94,7 +94,20 @@ app.get('*', (req, res) => {
 });
 
 app.delete('/api/routes', (req, res) => {
-  console.log('hello', req, res);
+  // console.log('hello', req, res);
+  db.deleteRoute(req.query)
+    .then((rowsDestroyed) => {
+      console.log('rosDestroyed is', rowsDestroyed);
+      if (rowsDestroyed === 1) {
+        res.status(204);
+        console.log('Successfully stored');
+        res.send('Successfully deleted');
+      } else if (rowsDestroyed === 0) {
+        res.status(404);
+        res.send('That record was not found');
+      }
+    })
+    .catch(err => console.log(err));
 });
 
 app.patch('/api/routes', (req, res) => {

@@ -16,7 +16,6 @@ class RouteHistory extends React.Component {
     this.handleUpsert = this.handleUpsert.bind(this);
   }
 
-  // I would really like to keep this work
   addRoute() {
     const { routes } = this.state;
     /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
@@ -37,11 +36,23 @@ class RouteHistory extends React.Component {
 
   handleDelete(route) {
     console.log('gonna send to server with this route', route);
-    axios.delete('/api/routes', { params: route._id })
-      .then(() => console.log('delete successful'))
+    axios.delete('/api/routes', { params: route })
+      .then(res => console.log('delete successful', res))
       .then(() => axios.get('/api/routes'))
       .then(() => console.log('routes received and will update state'))
-      .then(routes => this.setState({ routes }));
+      .then(routes => this.setState({ routes }))
+      .catch((error) => {
+        if (error.response) {
+          let stateRoutes = this.state.routes;
+          stateRoutes.shift();
+          console.log('state routes shifted');
+          this.setState({
+            routes: stateRoutes,
+          });
+        } else {
+          console.log(error);
+        }
+      })
     // send request to server
     // upon response, delete from state
   }

@@ -30,7 +30,7 @@ const Routes = sequelize.define('route', {
 
 User.hasMany(Routes);
 Routes.belongsTo(User);
-// sequelize.sync();
+sequelize.sync();
 
 const createUser = function ({ username, password, experience }) {
   // hash password
@@ -94,6 +94,13 @@ const createRoute = (route) => {
   });
 };
 
+const deleteRoute = route => Routes.destroy({
+  where: {
+    clientSideId: route._id,
+  },
+});
+
+exports.deleteRoute = deleteRoute;
 exports.isUsernameUnique = isUsernameUnique;
 exports.createUser = createUser;
 exports.verifyUser = verifyUser;
