@@ -75,8 +75,11 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
+const getRoutes = () => Routes.findAll();
+
 const createRoute = (route) => {
   const {
+    id,
     routeName,
     date,
     distanceInMiles,
@@ -85,6 +88,7 @@ const createRoute = (route) => {
   } = route;
   const clientSideId = route._id;
   return Routes.upsert({
+    id,
     clientSideId,
     routeName,
     date,
@@ -96,10 +100,11 @@ const createRoute = (route) => {
 
 const deleteRoute = route => Routes.destroy({
   where: {
-    clientSideId: route._id,
+    id: route.id,
   },
 });
 
+exports.getRoutes = getRoutes;
 exports.deleteRoute = deleteRoute;
 exports.isUsernameUnique = isUsernameUnique;
 exports.createUser = createUser;

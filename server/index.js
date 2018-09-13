@@ -46,7 +46,9 @@ app.get('/api/users/login', (req, res) => {
 });
 
 app.get('/api/routes', (req, res) => {
-  console.log('/routes get request received', req, res);
+  db.getRoutes()
+    .then(routes => res.status(200).send(routes))
+    .catch(err => console.log(err));
 });
 
 app.get('/api/weathercurrent', (req, res) => {
@@ -94,7 +96,7 @@ app.get('*', (req, res) => {
 });
 
 app.delete('/api/routes', (req, res) => {
-  // console.log('hello', req, res);
+  console.log('delete request received', req.query);
   db.deleteRoute(req.query)
     .then((rowsDestroyed) => {
       console.log('rosDestroyed is', rowsDestroyed);
