@@ -1,36 +1,36 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-			weatherInfo: [],
-		};
-	}
+      // weatherInfo: [],
+    };
+  }
 
-	// componentDidMount() {
-	// 	getWeatherData();
-	// }
+  // componentDidMount() {
+  //   getWeatherData();
+  // }
 
-	getWeatherData() {
-		axios.get('/api/weather', weatherInfo)
-			.then((response) => {
-				console.log(response);
-			})
-			.catch(function(error) {
-				console.log(error);
-			});
-	}
+  // getWeatherData() {
+  //   axios.get('/api/weather')
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   render() {
     return (
-  	  <div>
-				<div>current weather</div>
-				<div>5-Day Forcast</div>
-			</div>	
-		);
-	}
+      <div>
+        <div>current weather</div>
+        <div>5-Day Forcast</div>
+      </div>
+    );
+  }
 }
 
 export default Weather;

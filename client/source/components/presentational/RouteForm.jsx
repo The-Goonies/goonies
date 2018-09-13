@@ -45,8 +45,9 @@ class RouteForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const { handleEditSubmit } = this.props;
+    const { handleEditSubmit, handleUpsert } = this.props;
     handleEditSubmit(this.state);
+    handleUpsert(this.state);
   }
 
   onDelete() {
@@ -116,6 +117,7 @@ RouteForm.propTypes = {
   }).isRequired,
   handleEditSubmit: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
+  handleUpsert: PropTypes.func.isRequired,
 };
 
 export default RouteForm;

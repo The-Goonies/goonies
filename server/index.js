@@ -44,11 +44,31 @@ app.get('/api/users/login', (req, res) => {
 });
 
 app.get('/api/routes', (req, res) => {
-  console.log('/routes get request received')
-})
+  console.log('/routes get request received', req, res);
+});
 
 app.get('*', (req, res) => {
   res.redirect('/');
+});
+
+app.delete('/api/routes', (req, res) => {
+  console.log('hello', req, res);
+});
+
+app.patch('/api/routes', (req, res) => {
+  // TODO: Link to user, and send data back to client
+  db.createRoute(req.body.data)
+    .then((created) => {
+      if (created) {
+        res.status(200);
+        console.log('Successfully stored');
+        res.send('Successfully stored');
+      } else {
+        res.status(200);
+        console.log('Successfully inserted');
+        res.send('Successfully inserted');
+      }
+    });
 });
 
 app.listen(port, () => console.log(`The Goonies are listening on ${port}`));

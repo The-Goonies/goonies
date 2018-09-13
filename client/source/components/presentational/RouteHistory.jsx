@@ -13,6 +13,7 @@ class RouteHistory extends React.Component {
 
     this.addRoute = this.addRoute.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpsert = this.handleUpsert.bind(this);
   }
 
   // I would really like to keep this work
@@ -45,6 +46,16 @@ class RouteHistory extends React.Component {
     // upon response, delete from state
   }
 
+  handleUpsert(route) {
+    axios.patch('/api/routes', { data: route })
+      .then(() => console.log('upsert successful'))
+      .then(() => axios.get('/api/routes'))
+      .then(() => console.log('routes received and will update state'))
+      .then(routes => this.setState({ routes }));
+    // send request to server
+    // upon response, update to state
+  }
+
   render() {
     const avgSpeed = 'placeholder';
     const { routes } = this.state;
@@ -66,6 +77,7 @@ class RouteHistory extends React.Component {
               key={Math.random()}
               route={route}
               handleDelete={this.handleDelete}
+              handleUpsert={this.handleUpsert}
             />)) }
         </div>
       </div>

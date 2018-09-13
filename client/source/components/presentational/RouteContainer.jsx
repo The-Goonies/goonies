@@ -43,13 +43,14 @@ class RouteContainer extends React.Component {
 
   renderView() {
     const { update, route } = this.state;
-    const { handleDelete } = this.props;
+    const { handleDelete, handleUpsert } = this.props;
     if (update) {
       return (
         <RouteForm
           route={route}
           handleEditSubmit={this.handleEditSubmit}
           handleDelete={handleDelete}
+          handleUpsert={handleUpsert}
         />
       );
     }
@@ -79,6 +80,7 @@ RouteContainer.propTypes = {
     averageSpeedMPH: PropTypes.number,
   }).isRequired,
   handleDelete: PropTypes.func.isRequired,
+  handleUpsert: PropTypes.func.isRequired,
 };
 
 export default RouteContainer;

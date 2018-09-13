@@ -5,7 +5,7 @@ class Timer extends React.Component {
     super(props);
     this.state = {
       elapsedTime: 0,
-      stop: null,
+      // stop: null,
       time: null,
       savePoints: [],
     };
@@ -16,7 +16,7 @@ class Timer extends React.Component {
 
   startTimer() {
     this.time = setInterval(() => this.setState({
-      elapsedTime: this.state.elapsedTime + 1,
+      // elapsedTime: this.state.elapsedTime + 1,
     }),
     1000);
   }
@@ -24,7 +24,7 @@ class Timer extends React.Component {
   stopTimer() {
     clearInterval(this.time);
     this.setState({
-      stop: this.time
+      // stop: this.time
     });
   }
 
@@ -35,9 +35,10 @@ class Timer extends React.Component {
       elapsedTime: 0,
     });
   }
+
   // awesome
   saveTime() {
-    let { savePoints, elapsedTime } = this.state;
+    const { savePoints, elapsedTime } = this.state;
     this.setState({
       savePoints: savePoints.concat([elapsedTime]),
     });
