@@ -41,12 +41,20 @@ app.get('/api/users/login', (req, res) => {
     });
 });
 
-app.get('/api/weather', (req, res) => {
-  console.log('in the server')
+app.get('/api/weathercurrent', (req, res) => {
   return weather.getCurrentWeather()
     .then((data) => {
-      console.log('in then after get weather', data)
       res.send(data);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
+});
+
+app.get('/api/weatherfive', (req, res) => {
+  return weather.getFiveDayWeather()
+    .then((data) => {
+      res.send(data.list);
     })
     .catch((err) => {
       res.status(err, 'Error getting weather data');
