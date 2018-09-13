@@ -45,15 +45,28 @@ app.get('/api/users/login', (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 app.get('/api/routes', (req, res) => {
   console.log('/routes get request received', req, res);
 
 app.get('/api/weather', (req, res) => {
   console.log('in the server')
+=======
+app.get('/api/weathercurrent', (req, res) => {
+>>>>>>> added requests for forcast and current weather added state for weather
   return weather.getCurrentWeather()
     .then((data) => {
-      console.log('in then after get weather', data)
       res.send(data);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
+});
+
+app.get('/api/weatherfive', (req, res) => {
+  return weather.getFiveDayWeather()
+    .then((data) => {
+      res.send(data.list);
     })
     .catch((err) => {
       res.status(err, 'Error getting weather data');

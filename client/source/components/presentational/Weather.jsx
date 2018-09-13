@@ -5,23 +5,41 @@ class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // weatherInfo: [],
+      // currentWeather: {},
+      // fiveDayForecast: [],
     };
   }
 
-  // componentDidMount() {
-  //   getWeatherData();
-  // }
+  componentDidMount() {
+    this.getCurrentWeatherData();
+    this.getFiveDayForcast();
+  }
 
-  // getWeatherData() {
-  //   axios.get('/api/weather')
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
+  getCurrentWeatherData() {
+    axios.get('/api/weathercurrent')
+      .then((response) => {
+        console.log('responsed Current', response.data);
+        this.setState({
+          // currentWeather: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  // HAS 8 FORCATS PER DAY EVERY 3 HOURS
+  getFiveDayForcast() {
+    axios.get('/api/weatherfive')
+      .then((response) => {
+        console.log('responded with 5 day', response.data);
+        this.setState({
+          // fiveDayForecast: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   render() {
     return (
