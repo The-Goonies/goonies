@@ -6,7 +6,7 @@ import SignUp from '../presentational/SignUp';
 import Login from '../presentational/Login';
 import RouteHistory from '../presentational/RouteHistory';
 import routes from '../../SampleData';
-import Weather from '../presentational/Weather';
+import ParkInfo from '../presentational/ParkInfo';
 import UserProfile from '../presentational/UserProfile';
 import Timer from '../presentational/Timer';
 
@@ -53,7 +53,7 @@ class AppContainer extends React.Component {
                 <div role="presentation" onClick={this.handleMenuClick.bind(this)} onKeyPress={this.handleMenuClick.bind(this)}>
                   <ul className="dropdown">
                     <li><Link to="/maps" className="menu-link">Map</Link></li>
-                    <li><Link to="/weather" className="menu-link">Weather</Link></li>
+                    <li><Link to="/info" className="menu-link">Info</Link></li>
                     <li><Link to="/timer" className="menu-link">Stop Watch</Link></li>
                     <li><Link to="/routes" className="menu-link">My History</Link></li>
                     <li><Link to="/user" className="menu-link">My Profile</Link></li>
@@ -71,7 +71,7 @@ class AppContainer extends React.Component {
           <MapYourRoute path="/maps" />
           <UserProfile path="/user" userInfo={{ username, password, experience }} />
           <RouteHistory path="/routes" routes={routes} />
-          <Weather path="/weather" />
+          <ParkInfo path="/info" />
           <Timer path="/timer" />
         </Router>
       </div>
