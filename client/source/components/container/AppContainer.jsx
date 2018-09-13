@@ -14,8 +14,11 @@ class AppContainer extends React.Component {
     super(props);
     this.state = {
       showingMenu: false,
-      // will need to update with real data, likely populated by a get request to server
+      username: '',
+      password: '',
+      experience: '',
     };
+    this.transferUserInfo = this.transferUserInfo.bind(this);
   }
 
   handleMenuClick() {
@@ -23,8 +26,18 @@ class AppContainer extends React.Component {
     this.setState({ showingMenu: !showingMenu });
   }
 
+  transferUserInfo(userData) {
+    this.setState({
+      username: userData.username,
+      password: userData.password,
+      experience: userData.experience,
+    });
+  }
+
   render() {
-    const { showingMenu } = this.state;
+    const {
+      showingMenu, username, password, experience,
+    } = this.state;
     return (
       <div className="header">
         <h1>Backpacker</h1>
@@ -51,10 +64,10 @@ class AppContainer extends React.Component {
           }
         </nav>
         <Router>
-          <Login exact path="/" />
+          <Login exact path="/" transferUserInfo={this.transferUserInfo} />
           <SignUp path="/signUp" />
           <MapYourRoute path="/maps" />
-          <UserProfile path="/user" />
+          <UserProfile path="/user" userInfo={{ username, password, experience }} />
           <RouteHistory path="/routes" routes={routes} />
           <Weather path="/weather" />
         </Router>

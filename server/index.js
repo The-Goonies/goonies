@@ -31,8 +31,8 @@ app.post('/api/users/create', (req, res) => {
 app.get('/api/users/login', (req, res) => {
   // pass username and password to database to verify user
   db.verifyUser(req.query)
-    .then(() => {
-      res.send('Verified User');
+    .then((data) => {
+      res.send(data);
     })
     .catch((err) => {
       if (err.message === 'Invalid Password') {
