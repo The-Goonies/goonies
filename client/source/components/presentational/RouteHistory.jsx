@@ -15,6 +15,7 @@ class RouteHistory extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
+  // I would really like to keep this work
   addRoute() {
     const { routes } = this.state;
     const maxId = routes.reduce((acc, route) => Math.max(acc, route._id), 0);
