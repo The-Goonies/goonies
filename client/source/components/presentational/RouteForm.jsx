@@ -24,7 +24,8 @@ class RouteForm extends React.Component {
         averageSpeedMPH,
       },
     } = this.props;
-    if (!this.state.routeName) {
+    // const { routeName } = this.state;
+    if (!Array.from(this.state).length) {
       this.setState({
         _id,
         routeName,
@@ -71,20 +72,30 @@ class RouteForm extends React.Component {
       // TODO: will want to implement validation on this form
       <div className="routeForm" style={divStyle}>
         <form onSubmit={this.onSubmit}>
-          <label>Route Name: </label>
-          <input type="text" name="routeName" value={routeName} onChange={this.onChange} />
+          <label htmlFor="routeName">
+            Route Name:
+            <input type="text" name="routeName" value={routeName} onChange={this.onChange} />
+          </label>
           <br />
-          <label>Date: </label>
-          <input type="date" name="date" value={date} onChange={this.onChange} />
+          <label htmlFor="date">
+            Date:
+            <input type="date" name="date" value={date} onChange={this.onChange} />
+          </label>
           <br />
-          <label>Distance: </label>
-          <input type="textarea" name="distanceInMiles" value={distanceInMiles} onChange={this.onChange} />
+          <label htmlFor="distance">
+          Distance:
+            <input type="textarea" name="distanceInMiles" value={distanceInMiles} onChange={this.onChange} />
+          </label>
           <br />
-          <label>Duration: </label>
-          <input type="text" name="timeToCompleteInHours" value={timeToCompleteInHours} onChange={this.onChange} />
+          <label htmlFor="duration">
+            Duration:
+            <input type="text" name="timeToCompleteInHours" value={timeToCompleteInHours} onChange={this.onChange} />
+          </label>
           <br />
-          <label>Speed (MPH): </label>
-          <input type="text" name="averageSpeedMPH" value={averageSpeedMPH} onChange={this.onChange} />
+          <label htmlFor="speed">
+          Speed (MPH):
+            <input type="text" name="averageSpeedMPH" value={averageSpeedMPH} onChange={this.onChange} />
+          </label>
           <br />
           <input type="hidden" name="_id" value={_id} onChange={this.onChange} />
           <button type="submit">Save</button>

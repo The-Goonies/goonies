@@ -18,7 +18,7 @@ class RouteHistory extends React.Component {
   // I would really like to keep this work
   addRoute() {
     const { routes } = this.state;
-    /* eslint no-underscore-dangle: ["error", { "allow": ["foo_", "_bar"] }] */
+    /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
     const maxId = routes.reduce((acc, route) => Math.max(acc, route._id), 0);
     const emptyRoute = {
       _id: maxId + 1,
@@ -36,7 +36,7 @@ class RouteHistory extends React.Component {
 
   handleDelete(route) {
     console.log('gonna send to server with this route', route);
-    axios.delete('/api/routes', {params: route.id})
+    axios.delete('/api/routes', { params: route._id })
       .then(() => console.log('delete successful'))
       .then(() => axios.get('/api/routes'))
       .then(() => console.log('routes received and will update state'))

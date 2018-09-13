@@ -13,7 +13,7 @@ module.exports = {
         }
     },
     rules: {
-        "no-underscore-dangle": "off",
+        "no-underscore-dangle": "off"
     },
     plugins: [ "jest" ],
 }
