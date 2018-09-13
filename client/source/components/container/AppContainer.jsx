@@ -72,8 +72,8 @@ class AppContainer extends React.Component {
           <SignUp path="/signUp" />
           <MapYourRoute path="/maps" />
           <UserProfile path="/user" userInfo={{ username, password, experience }} />
-          <RouteHistory path="/routes" routes={routes} />
           <ParkInfo path="/info" />
+          <RouteHistory path="/routes" routes={routes} username={username} />
           <Weather path="/weather" />
           <Timer path="/timer" />
         </Router>

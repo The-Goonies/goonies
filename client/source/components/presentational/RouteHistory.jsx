@@ -19,7 +19,12 @@ class RouteHistory extends React.Component {
   // TODO: get routes sorted by date, or do we want as is by most recently created?
 
   componentDidMount() {
-    axios.get('/api/routes')
+    this.getRoutes();
+  }
+
+  getRoutes() {
+    const { username } = this.props;
+    return axios.get(`/api/routes?username=${username}`)
       .then((newRoutes) => {
         this.setState({
           routes: newRoutes.data,
@@ -64,19 +69,17 @@ class RouteHistory extends React.Component {
       /* otherwise deletion requires communicating with the database */
     } else {
       axios.delete('/api/routes', { params: targetRoute })
-        .then(res => console.log('delete successful', res))
-        .then(() => axios.get('/api/routes'))
-        .then(routes => this.setState({ routes: routes.data }))
+        // .then(res => console.log('delete successful', res))
+        .then(() => this.getRoutes())
         .catch(error => console.log(error));
     }
   }
 
   handleUpsert(route) {
-  // TODO: is upsert adding extra items to database?
-    axios.patch('/api/routes', { data: route })
+    const { username } = this.props;
+    axios.patch('/api/routes', { data: { route, username } })
       .then(() => console.log('upsert successful'))
-      .then(() => axios.get('/api/routes'))
-      .then(routes => this.setState({ routes: routes.data }));
+      .then(() => this.getRoutes());
   }
 
   render() {
@@ -110,6 +113,7 @@ class RouteHistory extends React.Component {
 
 RouteHistory.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default RouteHistory;
