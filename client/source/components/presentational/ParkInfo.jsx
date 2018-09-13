@@ -7,38 +7,39 @@ class ParkInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      parkName: 'Yosemite National Park',
+      parkName: '',
       alerts: [],
-      info: [],
+      info: {},
     };
   }
 
-  // componentDidMount() {
-  //   this.getAlerts();
-  //   this.getInfo();
-  // }
+  componentDidMount() {
+    this.getAlerts();
+    this.getInfo();
+  }
 
-  // getAlerts() {
-  //   axios.get('/api/park/alerts', alert)
-  //     .then((response) => {
-  //       this.setstate({ alerts: response.alert });
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
+  getAlerts() {
+    axios.get('/api/park/alerts')
+      .then((response) => {
+        this.setState({ alerts: response.data.data }, () => this.render());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-  // getInfo() {
-  //   axios.get('/api/park/alerts', alert)
-  //     .then((response) => {
-  //       this.setstate({ info: response.info });
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
+  getInfo() {
+    axios.get('/api/park/info')
+      .then((response) => {
+        this.setState({
+          info: response.data.data[0],
+          parkName: response.data.data[0].name,
+        }, () => this.render());
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   render() {
     const { parkName } = this.state;
@@ -46,13 +47,43 @@ class ParkInfo extends React.Component {
     const { info } = this.state;
     return (
       <div>
-        <h2>{ parkName }</h2>
-        <h3>Weather</h3>
+        <h1>
+          { parkName }
+          <span> </span>
+          {info.designation}
+        </h1>
+        <h2>Weather</h2>
         <Weather />
-        <h3>Alerts</h3>
-        <div>{ alerts }</div>
-        <h3>Park Info</h3>
-        <div>{ info }</div>
+        <h2>Alerts</h2>
+        {alerts.map((alert) => {
+          return (
+            <div key={alert.id}>
+              <p>
+                <strong>{alert.title}</strong>
+                <br />
+                <span>Category: </span>
+                {alert.category}
+                <br />
+                {alert.description}
+              </p>
+            </div>
+          );
+        })}
+        <h2>Park Info</h2>
+        <div>
+          <p>
+            {info.description}
+            <br />
+            <a href={info.url}>Learn More</a>
+          </p>
+          <p>
+            <strong>Directions</strong>
+            <br />
+            {info.directionsInfo}
+            <br />
+            <a href={info.directionsUrl}>Driving Directions</a>
+          </p>
+        </div>
       </div>
     );
   }

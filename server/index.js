@@ -120,6 +120,7 @@ app.get('/api/weatherfive', (req, res) => {
 // ///// PARK INFO ///// //
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.delete('/api/routes', (req, res) => {
   console.log('delete request received', req.query);
   db.deleteRoute(req.query)
@@ -138,7 +139,27 @@ app.delete('/api/routes', (req, res) => {
 });
 =======
 >>>>>>> render parkInfo with weather component embeded
+=======
+app.get('/api/park/alerts', (req, res) => {
+  axios.get(`https://api.nps.gov/api/v1/alerts?parkCode=yose%2C&stateCode=ca&limit=10&api_key=${process.env.PARK_API}`)
+    .then((data) => {
+      res.send(data.data);
+    })
+    .catch((err) => {
+      throw Error(err);
+    });
+});
+>>>>>>> add API server requests and render results for Park Alerts & Info
 
+app.get('/api/park/info', (req, res) => {
+  axios.get(`https://api.nps.gov/api/v1/parks?parkCode=yose&stateCode=ca&api_key=${process.env.PARK_API}`)
+    .then((data) => {
+      res.send(data.data);
+    })
+    .catch((err) => {
+      throw Error(err);
+    });
+});
 
 // Redirects to login page when page refreshes
 app.get('*', (req, res) => {
