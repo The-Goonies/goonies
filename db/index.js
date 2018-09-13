@@ -38,13 +38,11 @@ const createUser = function ({ username, password, experience }) {
     .then((hash) => {
       // add new user
       User.sync({ alter: false })
-        .then(() => {
-          return User.create({
-            username,
-            password: hash,
-            experience,
-          });
-        })
+        .then(() => User.create({
+          username,
+          password: hash,
+          experience,
+        }))
         .catch((err) => {
           console.log('Could not add user to database.', err);
         });
@@ -66,16 +64,14 @@ const isUsernameUnique = function ({ username, password, experience }) {
 const verifyUser = function ({ username, password }) {
   // check for username and get saved password hash
   return User.findOne({ where: { username } })
-    .then((data) => {
-      // compare input password to saved password
-      return bcrypt.compare(password, data.password)
-        .then((res) => {
-          if (res) {
-            return data;
-          }
-          throw new Error('Invalid Password');
-        });
-    })
+  // compare input password to saved password
+    .then(data => bcrypt.compare(password, data.password)
+      .then((res) => {
+        if (res) {
+          return data;
+        }
+        throw new Error('Invalid Password');
+      }))
     .catch((err) => { throw err; });
 };
 
