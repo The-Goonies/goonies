@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Redirect } from '@reach/router';
+import PropTypes from 'prop-types';
+
 
 class Login extends React.Component {
   constructor(props) {
@@ -25,6 +27,7 @@ class Login extends React.Component {
   handleLogin() {
     const { username, password } = this.state;
     const LoginInfo = { username, password };
+    const { transferUserInfo } = this.props;
 
     axios.get('/api/users/login', {
       params: LoginInfo,
@@ -34,6 +37,7 @@ class Login extends React.Component {
           alert('Invalid username and password. Please try again.');
         } else {
           //  success! redirect
+          transferUserInfo(res.data);
           this.setState({
             loggedIn: true,
           });
@@ -57,7 +61,7 @@ class Login extends React.Component {
     const { loggedIn, signedUp } = this.state;
     //  if loggedIn is true, then redirect to /maps page without throwing error
     if (loggedIn) {
-      return <Redirect noThrow to="/maps" />;
+      return <Redirect noThrow to="/user" />;
     }
     if (signedUp) {
       return <Redirect noThrow to="/signUp" />;
@@ -79,5 +83,9 @@ class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  transferUserInfo: PropTypes.func.isRequired,
+};
 
 export default Login;
