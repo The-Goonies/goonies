@@ -4,7 +4,6 @@ const app = express();
 const bodyparser = require('body-parser');
 const db = require('./../db/index.js');
 require('dotenv').config();
-// const path = require('path')
 
 const port = process.env.PORT || 5000;
 
@@ -16,9 +15,9 @@ app.post('/api/users/create', (req, res) => {
   // pass username, password, and experience level
   // from front-end signup to DB
   db.isUsernameUnique(req.body)
-    .then((data) => {
-      console.log('Created new user. User data:', data);
-      res.send(data.dataValues);
+    .then(() => {
+      console.log('Created new user.');
+      res.end();
     })
     .catch((err) => {
       if (err.message === 'Username Taken') {
@@ -48,4 +47,4 @@ app.get('*', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(port, () => console.log(`the goonies are listening on ${port}`));
+app.listen(port, () => console.log(`The Goonies are listening on ${port}`));

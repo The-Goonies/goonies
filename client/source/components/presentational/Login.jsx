@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect } from '@reach/router';
 
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +13,7 @@ class Login extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
-    this.redirToSignUP = this.redirToSignUP.bind(this);
+    this.redirToSignUp = this.redirToSignUp.bind(this);
   }
 
   handleChange(e) {
@@ -45,7 +44,7 @@ class Login extends React.Component {
       });
   }
 
-  redirToSignUP() {
+  redirToSignUp() {
     const { signedUp } = this.state;
     this.setState({
       signedUp: !signedUp,
@@ -74,7 +73,7 @@ class Login extends React.Component {
           <br />
           <input type="button" value="Login" onClick={this.handleLogin} />
           <br />
-          <input type="button" value="New User? Register" onClick={this.redirToSignUP} />
+          <input type="button" value="New User? Register" onClick={this.redirToSignUp} />
         </form>
       </div>
     );

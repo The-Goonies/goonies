@@ -1,0 +1,52 @@
+/********* GENERAL *********/
+
+button:focus {
+    outline: none;
+}
+
+/********* MENU *********/
+
+nav {
+    text-align: right;
+}
+button.menu {
+    background-color: none;
+    border: none;
+    color: black;
+    padding: 15px 15px;
+    float: right;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+button.close {
+    background-color: none;
+    border: none;
+    color: black;
+    padding: 5px 5px;
+    text-align: inherit;
+    text-decoration: none;
+    float: right;
+    font-size: 16px;
+    cursor: pointer;
+}
+div.dropdown {
+    position: relative;
+    float: right;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+ul.dropdown {
+    list-style: none;
+    float: right;
+}
+ul.dropdown li {
+    color: black;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+}
+.menu-link {
+    text-decoration: none;
+    color: inherit;
+}

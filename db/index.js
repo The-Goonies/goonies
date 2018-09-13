@@ -2,17 +2,9 @@ const Sequelize = require('sequelize');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 
-const salt = 11;
-const sequelize = new Sequelize(`${process.env.DB_URL}`);
+const salt = bcrypt.genSaltSync(10);
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  });
+const sequelize = new Sequelize(`${process.env.DB_URL}`);
 
 const User = sequelize.define('user', {
   username: { type: Sequelize.STRING },
@@ -20,12 +12,12 @@ const User = sequelize.define('user', {
   experience: { type: Sequelize.STRING },
 });
 
-const createUser = ({ username, password, experience }) => {
-  //  hash password
+const createUser = function ({ username, password, experience }) {
+  // hash password
   return bcrypt.hash(password, salt)
     .then((hash) => {
-      //  add new user
-      return User.sync({ alter: false })
+      // add new user
+      User.sync({ alter: false })
         .then(() => {
           return User.create({
             username,
@@ -39,35 +31,32 @@ const createUser = ({ username, password, experience }) => {
     });
 };
 
-const isUsernameUnique = ({ username, password, experience }) => {
-  //  check for username in database
+const isUsernameUnique = function ({ username, password, experience }) {
+  // check for username in database
   return User.find({ where: { username } })
     .then((data) => {
       if (data === null) {
-        //  if username is unique, create new user
+        // if username is unique, create new user
         return createUser({ username, password, experience });
       }
       throw new Error('Username Taken');
     });
 };
 
-
-const verifyUser = ({ username, password }) => {
-  //  check for username and get saved password hash
+const verifyUser = function ({ username, password }) {
+  // check for username and get saved password hash
   return User.findOne({ where: { username } })
     .then((data) => {
-      //  compare input password to saved password
+      // compare input password to saved password
       return bcrypt.compare(password, data.password)
         .then((res) => {
           if (res) {
-            return data.username;
+            return data;
           }
           throw new Error('Invalid Password');
         });
     })
-    .catch((err) => {
-      throw err;
-    });
+    .catch((err) => { throw err; });
 };
 
 exports.isUsernameUnique = isUsernameUnique;
