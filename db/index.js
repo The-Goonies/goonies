@@ -20,7 +20,6 @@ const User = sequelize.define('user', {
 });
 
 const Routes = sequelize.define('route', {
-  clientSideId: { type: Sequelize.STRING },
   routeName: { type: Sequelize.STRING },
   date: { type: Sequelize.STRING },
   distanceInMiles: { type: Sequelize.INTEGER },
@@ -86,10 +85,8 @@ const createRoute = (route) => {
     timeToCompleteInHours,
     averageSpeedMPH,
   } = route;
-  const clientSideId = route._id;
   return Routes.upsert({
     id,
-    clientSideId,
     routeName,
     date,
     distanceInMiles,

@@ -67,7 +67,7 @@ class RouteHistory extends React.Component {
         .then(res => console.log('delete successful', res))
         .then(() => axios.get('/api/routes'))
         .then(routes => this.setState({ routes: routes.data }))
-        .catch(error => console.log(error))
+        .catch(error => console.log(error));
     }
   }
 
