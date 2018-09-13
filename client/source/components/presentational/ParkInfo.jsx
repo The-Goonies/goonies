@@ -29,7 +29,6 @@ class ParkInfo extends React.Component {
   getInfo() {
     axios.get('/api/park/info')
       .then((response) => {
-        console.log(response);
         this.setState({
           info: response.data[0],
           parkName: (response.data[0].fullName),

@@ -142,7 +142,7 @@ app.get('/api/park/alerts', (req, res) => {
       res.send(data.data);
     })
     .catch((err) => {
-      throw Error(err);
+      console.log(err);
     });
 });
 
@@ -152,7 +152,7 @@ app.get('/api/park/info', (req, res) => {
       res.send(data.data.data);
     })
     .catch((err) => {
-      throw Error(err);
+      console.log(err);
     });
 });
 
