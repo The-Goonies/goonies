@@ -1,8 +1,11 @@
 import React from 'react';
 
 class UserProfile extends React.Component {
-  constructor(props) {
+  constructor(props, userInfo) {
     super(props);
+
+    const { username } = userInfo;
+    console.log('what is userInfo', userInfo)
     this.state = {
     };
   }
