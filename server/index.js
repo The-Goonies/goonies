@@ -51,7 +51,9 @@ app.get('/api/users/login', (req, res) => {
 // ///// ROUTES ///// //
 
 app.get('/api/routes', (req, res) => {
-  db.getRoutes()
+  console.log('routes request is:', req, 'username is', req.query.username);
+  const { username } = req.query;
+  db.getRoutes(username)
     .then(routes => res.status(200).send(routes))
     .catch(err => console.log(err));
 });

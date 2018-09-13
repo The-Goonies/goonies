@@ -4,11 +4,12 @@ import axios from 'axios';
 import RouteContainer from './RouteContainer';
 
 class RouteHistory extends React.Component {
-  constructor({ props, routes }) {
+  constructor({ props, routes, username }) {
     super(props);
 
     this.state = {
       routes,
+      username,
     };
 
     this.addRoute = this.addRoute.bind(this);
@@ -19,7 +20,8 @@ class RouteHistory extends React.Component {
   // TODO: get routes sorted by date, or do we want as is by most recently created?
 
   componentDidMount() {
-    axios.get('/api/routes')
+    const { username } = this.props;
+    axios.get(`/api/routes?username=${username}`)
       .then((newRoutes) => {
         this.setState({
           routes: newRoutes.data,
@@ -110,6 +112,7 @@ class RouteHistory extends React.Component {
 
 RouteHistory.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default RouteHistory;

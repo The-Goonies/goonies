@@ -74,7 +74,24 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
-const getRoutes = () => Routes.findAll();
+const getRoutes = (username) => {
+  console.log('db received routes request');
+  if (!username) {
+    return Routes.findAll();
+  }
+  return User.findOne({
+    where: {
+      username,
+    },
+  }).then((user) => {
+    const userId = user.dataValues.id;
+    return Routes.findAll({
+      where: {
+        userId,
+      },
+    });
+  });
+};
 
 const createRoute = (route) => {
   const {
