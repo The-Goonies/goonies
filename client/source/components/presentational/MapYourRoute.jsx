@@ -1,12 +1,15 @@
 import React from 'react';
 import GoogleMapsContainer from './renderMap';
 
-const MapYourRoute = () => (
-  <div>
+const MapYourRoute = () => {
+  return (
     <div>
-      <GoogleMapsContainer />
+      <h3>Your Map</h3>
+      <div>
+        <GoogleMapsContainer />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default MapYourRoute;
