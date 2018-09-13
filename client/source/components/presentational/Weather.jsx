@@ -4,19 +4,17 @@ import axios from 'axios';
 class Weather extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-			weatherInfo: [],
-		};
+    this.state = {};
 	}
 
-	// componentDidMount() {
-	// 	getWeatherData();
-	// }
+	componentDidMount() {
+		this.getCurrentWeatherData();
+	}
 
-	getWeatherData() {
-		axios.get('/api/weather', weatherInfo)
+	getCurrentWeatherData() {
+		axios.get('/api/weather')
 			.then((response) => {
-				console.log(response);
+				console.log('responsed finish',response.data);
 			})
 			.catch(function(error) {
 				console.log(error);

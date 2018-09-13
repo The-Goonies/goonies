@@ -4,6 +4,7 @@ const app = express();
 const bodyparser = require('body-parser');
 const db = require('./../db/index.js');
 require('dotenv').config();
+const weather = require('./weatherApiCall.js');
 // const path = require('path')
 
 const port = process.env.PORT || 5000;
@@ -37,6 +38,18 @@ app.get('/api/users/login', (req, res) => {
     })
     .catch((err) => {
       res.send('invalid');
+    });
+});
+
+app.get('/api/weather', (req, res) => {
+  console.log('in the server')
+  return weather.getCurrentWeather()
+    .then((data) => {
+      console.log('in then after get weather', data)
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
     });
 });
 
