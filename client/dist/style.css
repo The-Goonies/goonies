@@ -111,7 +111,10 @@ input.login {
 
 /********* MAP *********/
 .map {
-  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: bottom;
+  padding: 20px;
 }
 
 /********* STOP WATCH *********/
