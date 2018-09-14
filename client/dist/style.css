@@ -53,3 +53,34 @@ ul.dropdown li {
     text-decoration: none;
     color: inherit;
 }
+
+/********* STOP WATCH *********/
+
+.timer-btns {
+    font-family: inherit;
+    font-size: 20px;
+    display: inline-block;
+    width: 72px;
+    height: 72px;
+    margin: 24px;
+    padding: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+    border: 0;
+    border-radius: 12px;
+    outline: none;
+    background: rgba(177, 177, 177, 0.774);
+  }
+.start-btn { color: #0a970a }
+.stop-btn { color: #df1d0f }
+.timer-center { text-align: center }
+.timer-format {
+  font-size: 76px;
+  font-weight: 100;
+  line-height: 160px;
+  margin: 0;
+  border: solid #cecfd0;
+  border-width: 2px 0;
+  background-color: white;
+}
+
