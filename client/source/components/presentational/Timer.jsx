@@ -36,10 +36,6 @@ class Timer extends React.Component {
     });
   }
 
-  // awesome
-  saveTime() {
-    const { savePoints, elapsedTime } = this.state;
-
   saveTimer() {
     // let { savePoints, elapsedTime } = this.state;
     this.setState({
