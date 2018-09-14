@@ -28,7 +28,10 @@ class UserProfile extends React.Component {
   }
 
   handlePasswordChange() {
-    const { username, oldPassword, newPassword, confirmNewPassword } = this.state;
+    const {
+      username, oldPassword, newPassword, confirmNewPassword,
+    } = this.state;
+    
     if (newPassword !== confirmNewPassword) {
       alert('Your new password does not match your password confirmation. Please try again');
     }

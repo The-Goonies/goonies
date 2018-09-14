@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect } from '@reach/router';
 import PropTypes from 'prop-types';
+// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 class Login extends React.Component {
