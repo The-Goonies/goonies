@@ -44,7 +44,9 @@ class AppContainer extends React.Component {
       <div className="header">
         <h1>Backpacker</h1>
         <nav>
-          <button className="menu" type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>
+          { username
+            ? <button className="menu" type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>
+            : (false) }
           { showingMenu
             ? (
               <div className="dropdown">
