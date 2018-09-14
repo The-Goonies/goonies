@@ -41,7 +41,7 @@ class AppContainer extends React.Component {
       showingMenu, username, password, experience,
     } = this.state;
     return (
-      <div className="container header">
+      <div className="header">
         <h1>Backpacker</h1>
         <nav>
           <button className="menu" type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>
