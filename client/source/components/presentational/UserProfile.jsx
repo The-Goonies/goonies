@@ -69,7 +69,7 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    const { username, experience } = this.state;
+    const { username, experience, passwordMatch } = this.state;
     return (
       <div>
         <h1>User Profile</h1>
@@ -80,6 +80,7 @@ class UserProfile extends React.Component {
           <br />
           Experience Level:
           { experience }
+          { passwordMatch }
           <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
           <br />
           <h4>Change Password</h4>
