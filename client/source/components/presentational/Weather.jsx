@@ -35,7 +35,11 @@ class Weather extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+<<<<<<< HEAD
         alert(error, 'Could not get weather data');
+=======
+        alert(error, 'Unable to get weather data');
+>>>>>>> 98ba4dac79af308734e415003d839ef9b833c61f
       });
   }
   // HAS 8 FORECAST PER DAY
@@ -49,7 +53,11 @@ class Weather extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+<<<<<<< HEAD
         alert(error, 'Could not get weather data');
+=======
+        alert(error, 'Unable to get weather data');
+>>>>>>> 98ba4dac79af308734e415003d839ef9b833c61f
       });
   }
 
