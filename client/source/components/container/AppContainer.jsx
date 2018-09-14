@@ -10,6 +10,9 @@ import ParkInfo from '../presentational/ParkInfo';
 import UserProfile from '../presentational/UserProfile';
 import Timer from '../presentational/Timer';
 import Weather from '../presentational/Weather';
+// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class AppContainer extends React.Component {
   constructor(props) {
