@@ -41,8 +41,8 @@ class ForecastForm extends React.Component {
       }
     }
     this.setState({
-      tomorrowHigh: high,
-      tomorrowLow: low,
+      tomorrowHigh: Math.round(high),
+      tomorrowLow: Math.round(low),
       tomorrowWeather: tomo[3].weather[0].description,
     });
   }
@@ -60,8 +60,8 @@ class ForecastForm extends React.Component {
       }
     }
     this.setState({
-      day2High: high,
-      day2Low: low,
+      day2High: Math.round(high),
+      day2Low: Math.round(low),
       day2Weather: day2[3].weather[0].description,
     });
   }
@@ -79,8 +79,8 @@ class ForecastForm extends React.Component {
       }
     }
     this.setState({
-      day3High: high,
-      day3Low: low,
+      day3High: Math.round(high),
+      day3Low: Math.round(low),
       day3Weather: day3[3].weather[0].description,
 
     });
