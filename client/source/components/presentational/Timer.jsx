@@ -6,12 +6,21 @@ class Timer extends React.Component {
     this.state = {
       elapsedTime: 0,
       savePoints: [],
+      distanceInMiles: 0,
     };
     this.time = null;
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
     this.saveTimer = this.saveTimer.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+  }
+
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   }
 
   startTimer() {
@@ -43,10 +52,15 @@ class Timer extends React.Component {
     });
   }
 
+  handleSave() {
+    const { distanceInMiles } = this.state;
+    this.setState({ distanceInMiles }, () => this.render());
+  }
+
   render() {
     const timeFormat = sec => (`${Math.floor(sec / 60)}:${(`0${sec % 60}`).slice(-2)}`);
     const Button = props => (<button type="button" {...props} />);
-    const { elapsedTime, savePoints } = this.state;
+    const { elapsedTime, savePoints, distanceInMiles } = this.state;
     return (
       <div>
         <div className="timer-center">
@@ -57,9 +71,25 @@ class Timer extends React.Component {
           <Button className="timer-btns start-btn" onClick={this.startTimer}>Start</Button>
           <Button className="timer-btns stop-btn" onClick={this.resetTimer}>Reset</Button>
           <Button className="timer-btns start-btn" onClick={this.saveTimer}>Save</Button>
+          <br />
+          Distance:
+          <div className="fieldwrapper">
+            <input type="text" name="distanceInMiles" value={distanceInMiles} onChange={this.onChange} />
+            <button type="submit" onClick={this.handleSave}>Save</button>
+          </div>
         </div>
         <ul className="timer-save">
-          {savePoints.map(point => <li className="timer-point" key={point + 1}>{timeFormat(point)}</li>)}
+          {savePoints.map(point => (
+            <li className="timer-point" key={point + 1}>
+              Time :
+              {' '}
+              {timeFormat(point)}
+              <span className="timer-distance">
+                {distanceInMiles}
+                {' '}
+                Miles
+              </span>
+            </li>))}
         </ul>
       </div>
     );
