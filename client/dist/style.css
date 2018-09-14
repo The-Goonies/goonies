@@ -2,7 +2,10 @@
 body {
   width: 320px; /* iphone 4 width*/
   margin: 0 auto;
-  background-color: #34495E; /* or light? #AEB6BF */
+  background-image: url('https://303magazine.com/wp-content/uploads/2016/05/ThinkstockPhotos-177541650-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 2em;
@@ -14,14 +17,14 @@ h2 {
   color:  #A9DFBF;
 }
 h3 {
-  color:  #27AE60;
+  color:  #051886;
 }
 h4 {
   color:  #27AE60;
 }
 
 input {
-  font-size: 1em;
+  font-size: 1.7em;
   color: #212F3C;
 }
 
@@ -50,7 +53,7 @@ button:focus {
 
 /********* MENU *********/
 button.menu {
-    z-index: 100; 
+    z-index: 100;
     position: relative;
     background-color: #27AE60;
     border: none;
