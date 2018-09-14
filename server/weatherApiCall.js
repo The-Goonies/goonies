@@ -24,6 +24,7 @@ const getFiveDayWeather = function () {
       APPID: process.env.WEATHER_API,
       lat: 37.749669,
       lon: -119.555107,
+      units: 'imperial',
     },
   })
     .then(response => response.data)
