@@ -14,6 +14,7 @@ class UserProfile extends React.Component {
       oldPassword: '',
       newPassword: '',
       confirmNewPassword: '',
+      passwordMatch: false,
     };
     this.changePassword = this.changePassword.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -26,7 +27,12 @@ class UserProfile extends React.Component {
   }
 
   passwordMatch(userData) {
-    console.log(userData);
+    if (userData.data === 'Invalid Password') {
+      alert('Your old password is incorrect. Please try again.');
+    }
+    this.setState({
+      passwordMatch: true,
+    });
   }
 
   handlePasswordChange() {
