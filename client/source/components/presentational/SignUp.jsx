@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Redirect } from '@reach/router';
-
+import PropTypes from 'prop-types';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -25,12 +25,14 @@ class SignUp extends React.Component {
   handleSubmit() {
     const { username, password, experience } = this.state;
     const userInfo = { username, password, experience };
+    const { transferUserInfo } = this.props;
     axios.post('/api/users/create', userInfo)
-      .then((response) => {
-        if (response.data === 'Username Taken') {
+      .then((res) => {
+        if (res.data === 'Username Taken') {
           alert('That username is already taken. Please choose another username.');
         } else {
           //  success! redirect
+          transferUserInfo(JSON.parse(res.config.data));
           this.setState({
             loggedIn: true,
           });
@@ -70,5 +72,10 @@ class SignUp extends React.Component {
     );
   }
 }
+
+SignUp.propTypes = {
+  transferUserInfo: PropTypes.func.isRequired,
+};
+
 
 export default SignUp;

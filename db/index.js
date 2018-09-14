@@ -74,25 +74,26 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
-const getUserIdForRoutes = username => User.findOne({
-  where: {
-    username,
-  },
-}).then(user => user.dataValues.id);
-
-const getRoutes = (username) => {
-  if (!username) {
-    return Routes.findAll();
-  }
-  return getUserIdForRoutes(username)
-    .then(userId => Routes.findAll({
-      where: {
-        userId,
-      },
-    }));
+const updatePassword = function ({ username, newPassword }) {
+  return bcrypt.hash(newPassword, salt)
+    .then((hash) => {
+      User.update(
+        { password: hash },
+        { returning: true, where: { username } },
+      )
+        .then((data) => {
+          if (data[0]) {
+            return data;
+          }
+          throw new Error('Cannot update password');
+        });
+    })
+    .catch((err) => { throw err; });
 };
 
-const createRoute = (route, username) => {
+const getRoutes = () => Routes.findAll();
+
+const createRoute = (route) => {
   const {
     id,
     routeName,
@@ -101,16 +102,14 @@ const createRoute = (route, username) => {
     timeToCompleteInHours,
     averageSpeedMPH,
   } = route;
-  return getUserIdForRoutes(username)
-    .then(userId => Routes.upsert({
-      id,
-      routeName,
-      date,
-      distanceInMiles,
-      timeToCompleteInHours,
-      averageSpeedMPH,
-      userId,
-    }));
+  return Routes.upsert({
+    id,
+    routeName,
+    date,
+    distanceInMiles,
+    timeToCompleteInHours,
+    averageSpeedMPH,
+  });
 };
 
 const deleteRoute = route => Routes.destroy({
@@ -124,4 +123,5 @@ exports.deleteRoute = deleteRoute;
 exports.isUsernameUnique = isUsernameUnique;
 exports.createUser = createUser;
 exports.verifyUser = verifyUser;
+exports.updatePassword = updatePassword;
 exports.createRoute = createRoute;

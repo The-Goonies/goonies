@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect } from '@reach/router';
 import PropTypes from 'prop-types';
-// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 class Login extends React.Component {
@@ -34,7 +33,7 @@ class Login extends React.Component {
       params: LoginInfo,
     })
       .then((res) => {
-        if (res.data === 'invalid') {
+        if (res.data === 'Invalid Password') {
           alert('Invalid username and password. Please try again.');
         } else {
           //  success! redirect
@@ -62,7 +61,7 @@ class Login extends React.Component {
     const { loggedIn, signedUp } = this.state;
     //  if loggedIn is true, then redirect to /maps page without throwing error
     if (loggedIn) {
-      return <Redirect noThrow to="/routes" />;
+      return <Redirect noThrow to="/maps" />;
     }
     if (signedUp) {
       return <Redirect noThrow to="/signUp" />;
