@@ -153,6 +153,15 @@ input.login {
     text-align: left;
     border-bottom: 3px solid #d9dae0;
   }
+.timer-distance {
+    padding-left: 80px;
+}
+.fieldwrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
  
   
 
