@@ -25,7 +25,7 @@ class Weather extends React.Component {
     axios.get('/api/weathercurrent')
       .then((response) => {
         this.setState({
-          currentTemp: response.data.main.temp,
+          currentTemp: Math.round(response.data.main.temp),
           currentClouds: response.data.clouds.all,
           currentHumidity: response.data.main.humidity,
           currentWind: response.data.wind.speed,
@@ -35,6 +35,7 @@ class Weather extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+        alert(error, 'Unable to get weather data');
       });
   }
   // HAS 8 FORCATS PER DAY EVERY 3 HOURS
@@ -48,6 +49,7 @@ class Weather extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+        alert(error, 'Unable to get weather data');
       });
   }
 
