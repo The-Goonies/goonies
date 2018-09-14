@@ -11,6 +11,7 @@ class Weather extends React.Component {
       currentHumidity: '',
       currentWind: '',
       currentLocation: '',
+      currentWeather: '',
       fiveDayForecast: [],
     };
   }
@@ -23,13 +24,13 @@ class Weather extends React.Component {
   getCurrentWeatherData() {
     axios.get('/api/weathercurrent')
       .then((response) => {
-        console.log('responsed Current', response.data);
         this.setState({
           currentTemp: response.data.main.temp,
           currentClouds: response.data.clouds.all,
           currentHumidity: response.data.main.humidity,
           currentWind: response.data.wind.speed,
           currentLocation: response.data.name,
+          currentWeather: response.data.weather[0].description,
         });
       })
       .catch((error) => {
@@ -41,7 +42,6 @@ class Weather extends React.Component {
   getFiveDayForcast() {
     axios.get('/api/weatherfive')
       .then((response) => {
-        console.log('responded with 5 day', response.data);
         this.setState({
           fiveDayForecast: response.data,
         });
@@ -58,13 +58,15 @@ class Weather extends React.Component {
       currentHumidity,
       currentWind,
       currentLocation,
+      currentWeather,
       fiveDayForecast,
     } = this.state;
     return (
       <div>
         <div>
-          <h2>currentWeather</h2>
+          <h2>Current Weather</h2>
           <h4>{currentLocation}</h4>
+          <h3>{currentWeather}</h3>
           <p>
             Temp:
             {' '}
