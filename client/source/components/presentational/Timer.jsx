@@ -37,32 +37,29 @@ class Timer extends React.Component {
   }
 
   saveTimer() {
-    // let { savePoints, elapsedTime } = this.state;
+    const { savePoints, elapsedTime } = this.state;
     this.setState({
-      savePoints: this.state.savePoints.concat([this.state.elapsedTime]),
+      savePoints: savePoints.concat([elapsedTime]),
     });
   }
 
   render() {
     const timeFormat = sec => (`${Math.floor(sec / 60)}:${(`0${sec % 60}`).slice(-2)}`);
-
     const Button = props => (<button type="button" {...props} />);
-    const { elapsedTime } = this.state;
+    const { elapsedTime, savePoints } = this.state;
     return (
       <div>
         <div className="timer-center">
           <h1 className="timer-format">
             {timeFormat(elapsedTime)}
           </h1>
-          <Button className="timer-btns start-btn" onClick={this.startTimer}>Start</Button>
           <Button className="timer-btns stop-btn" onClick={this.stopTimer}>Stop</Button>
+          <Button className="timer-btns start-btn" onClick={this.startTimer}>Start</Button>
           <Button className="timer-btns stop-btn" onClick={this.resetTimer}>Reset</Button>
           <Button className="timer-btns start-btn" onClick={this.saveTimer}>Save</Button>
         </div>
-        <ul className="stopwatch-laps">
-          {this.state.savePoints.map((point, i) => {
-            <li className="stopwatch-lap"><bold>{i + 1}</bold>{timeFormat(point)}</li>
-          })}
+        <ul className="timer-save">
+          {savePoints.map(point => <li className="timer-point" key={point + 1}>{timeFormat(point)}</li>)}
         </ul>
       </div>
     );
