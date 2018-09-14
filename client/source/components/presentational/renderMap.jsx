@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 
-// import key from '../../../../myapikey';
+import key from '../../../../myapikey';
 
-// const apiKey = key.key;
-const apiKey = '';
+const apiKey = key.key;
+
 // const apiKey = `${process.env.REACT_APP_GOOGLE_MAPS_KEY}`;
 
 class GoogleMapsContainer extends React.Component {
