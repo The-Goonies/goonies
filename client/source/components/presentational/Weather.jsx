@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ForecastForm from './ForecastForm';
 
 class Weather extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Weather extends React.Component {
       currentHumidity: '',
       currentWind: '',
       currentLocation: '',
-      // fiveDayForecast: [],
+      fiveDayForecast: [],
     };
   }
 
@@ -29,7 +30,6 @@ class Weather extends React.Component {
           currentHumidity: response.data.main.humidity,
           currentWind: response.data.wind.speed,
           currentLocation: response.data.name,
-          // fiveDayForecast: [],
         });
       })
       .catch((error) => {
@@ -43,7 +43,7 @@ class Weather extends React.Component {
       .then((response) => {
         console.log('responded with 5 day', response.data);
         this.setState({
-          // fiveDayForecast: response.data,
+          fiveDayForecast: response.data,
         });
       })
       .catch((error) => {
@@ -58,6 +58,7 @@ class Weather extends React.Component {
       currentHumidity,
       currentWind,
       currentLocation,
+      fiveDayForecast,
     } = this.state;
     return (
       <div>
@@ -91,8 +92,9 @@ class Weather extends React.Component {
             mph
           </p>
         </div>
-
-        <h2>5-Day Forcast</h2>
+        <div>
+          <ForecastForm fiveday={fiveDayForecast} />
+        </div>
       </div>
     );
   }
