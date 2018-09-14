@@ -33,7 +33,7 @@ class Login extends React.Component {
       params: LoginInfo,
     })
       .then((res) => {
-        if (res.data === 'invalid') {
+        if (res.data === 'Invalid Password') {
           alert('Invalid username and password. Please try again.');
         } else {
           //  success! redirect
