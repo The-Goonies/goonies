@@ -35,9 +35,10 @@ class Weather extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+        alert(error, 'Could not get weather data');
       });
   }
-  // HAS 8 FORCATS PER DAY EVERY 3 HOURS
+  // HAS 8 FORECAST PER DAY
 
   getFiveDayForcast() {
     axios.get('/api/weatherfive')
@@ -48,6 +49,7 @@ class Weather extends React.Component {
       })
       .catch((error) => {
         console.log(error);
+        alert(error, 'Could not get weather data');
       });
   }
 
