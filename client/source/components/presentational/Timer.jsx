@@ -5,10 +5,9 @@ class Timer extends React.Component {
     super(props);
     this.state = {
       elapsedTime: 0,
-      // stop: null,
-      time: null,
       savePoints: [],
     };
+    this.time = null;
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
@@ -17,16 +16,15 @@ class Timer extends React.Component {
 
   startTimer() {
     this.time = setInterval(() => this.setState({
-      // elapsedTime: this.state.elapsedTime + 1,
+      /* eslint-disable */
+      elapsedTime: this.state.elapsedTime + 1, 
+      /* eslint-enable */
     }),
     1000);
   }
 
   stopTimer() {
     clearInterval(this.time);
-    this.setState({
-      // stop: this.time
-    });
   }
 
   resetTimer() {
@@ -38,12 +36,8 @@ class Timer extends React.Component {
     });
   }
 
-  // awesome
-  saveTime() {
-    const { savePoints, elapsedTime } = this.state;
-
   saveTimer() {
-    let { savePoints, elapsedTime } = this.state;
+    // let { savePoints, elapsedTime } = this.state;
     this.setState({
       savePoints: this.state.savePoints.concat([this.state.elapsedTime]),
     });
@@ -56,18 +50,18 @@ class Timer extends React.Component {
     const { elapsedTime } = this.state;
     return (
       <div>
-        <div>
-          <h1>
+        <div className="timer-center">
+          <h1 className="timer-format">
             {timeFormat(elapsedTime)}
           </h1>
-          <Button onClick={this.startTimer}>Start</Button>
-          <Button onClick={this.stopTimer}>Stop</Button>
-          <Button onClick={this.resetTimer}>Reset</Button>
-          <Button onClick={this.saveTimer}>Save Time</Button>
+          <Button className="timer-btns start-btn" onClick={this.startTimer}>Start</Button>
+          <Button className="timer-btns stop-btn" onClick={this.stopTimer}>Stop</Button>
+          <Button className="timer-btns stop-btn" onClick={this.resetTimer}>Reset</Button>
+          <Button className="timer-btns start-btn" onClick={this.saveTimer}>Save</Button>
         </div>
-        <ul>
+        <ul className="stopwatch-laps">
           {this.state.savePoints.map((point, i) => {
-            <li><bold>{i + 1}</bold>{timeFormat(point)}</li>
+            <li className="stopwatch-lap"><bold>{i + 1}</bold>{timeFormat(point)}</li>
           })}
         </ul>
       </div>
