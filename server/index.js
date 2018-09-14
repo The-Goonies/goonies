@@ -49,8 +49,13 @@ app.get('/api/users/login', (req, res) => {
 });
 
 app.put('/api/users/password/:username/:newPassword', (req, res) => {
-  console.log('what is req', req.params);
-  res.send('ok');
+  db.updatePassword(req.params)
+    .then(() => {
+      res.send('password updated');
+    })
+    .catch((err) => {
+      res.send(err.message);
+    });
 });
 
 /** *********** ROUTES ************** */

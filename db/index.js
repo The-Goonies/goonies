@@ -74,9 +74,22 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
-const updatePassword = ({ username, newPassword }) => {
-
-}
+const updatePassword = function({ username, newPassword }) {
+  return bcrypt.hash(newPassword, salt)
+    .then((hash) => {
+      return User.update(
+        { password: hash },
+        { returning: true, where: { username } },
+      )
+        .then((data) => {
+          if (data[0]) {
+            return data;
+          }
+          throw new Error('Cannot update password');
+        });
+    })
+    .catch((err) => { throw err; });
+};
 
 const getRoutes = () => Routes.findAll();
 
