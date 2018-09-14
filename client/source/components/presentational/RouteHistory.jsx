@@ -51,7 +51,6 @@ class RouteHistory extends React.Component {
   }
 
   handleDelete(targetRoute) {
-    console.log('targetRoute is', targetRoute);
     /* if targetRoute has tempId, it has not yet been saved to the database
     and we can delete locally without communicating to the database */
     if (!targetRoute.id) {

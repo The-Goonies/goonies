@@ -74,31 +74,23 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
-// TODO: refactor to make use of getUserIdForRoutes
-const getRoutes = (username) => {
-  console.log('db received routes request');
-  if (!username) {
-    return Routes.findAll();
-  }
-  return User.findOne({
-    where: {
-      username,
-    },
-  }).then((user) => {
-    const userId = user.dataValues.id;
-    return Routes.findAll({
-      where: {
-        userId,
-      },
-    });
-  });
-};
-
 const getUserIdForRoutes = username => User.findOne({
   where: {
     username,
   },
 }).then(user => user.dataValues.id);
+
+const getRoutes = (username) => {
+  if (!username) {
+    return Routes.findAll();
+  }
+  return getUserIdForRoutes(username)
+    .then(userId => Routes.findAll({
+      where: {
+        userId,
+      },
+    }));
+};
 
 const createRoute = (route, username) => {
   const {

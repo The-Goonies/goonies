@@ -48,18 +48,13 @@ app.get('/api/users/login', (req, res) => {
     });
 });
 
-// ///// ROUTES ///// //
+/** *********** ROUTES ************** */
 
 app.get('/api/routes', (req, res) => {
-  console.log('routes request is:', req, 'username is', req.query.username);
   const { username } = req.query;
   db.getRoutes(username)
     .then(routes => res.status(200).send(routes))
     .catch(err => console.log(err));
-});
-
-app.delete('/api/routes', (req, res) => {
-  console.log('hello', req, res);
 });
 
 app.patch('/api/routes', (req, res) => {
@@ -79,10 +74,8 @@ app.patch('/api/routes', (req, res) => {
 });
 
 app.delete('/api/routes', (req, res) => {
-  console.log('delete request received', req.query);
   db.deleteRoute(req.query)
     .then((rowsDestroyed) => {
-      console.log('rosDestroyed is', rowsDestroyed);
       if (rowsDestroyed === 1) {
         res.status(204);
         console.log('Successfully stored');
