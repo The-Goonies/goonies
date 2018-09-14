@@ -74,25 +74,9 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
-const getUserIdForRoutes = username => User.findOne({
-  where: {
-    username,
-  },
-}).then(user => user.dataValues.id);
+const getRoutes = () => Routes.findAll();
 
-const getRoutes = (username) => {
-  if (!username) {
-    return Routes.findAll();
-  }
-  return getUserIdForRoutes(username)
-    .then(userId => Routes.findAll({
-      where: {
-        userId,
-      },
-    }));
-};
-
-const createRoute = (route, username) => {
+const createRoute = (route) => {
   const {
     id,
     routeName,
@@ -101,16 +85,14 @@ const createRoute = (route, username) => {
     timeToCompleteInHours,
     averageSpeedMPH,
   } = route;
-  return getUserIdForRoutes(username)
-    .then(userId => Routes.upsert({
-      id,
-      routeName,
-      date,
-      distanceInMiles,
-      timeToCompleteInHours,
-      averageSpeedMPH,
-      userId,
-    }));
+  return Routes.upsert({
+    id,
+    routeName,
+    date,
+    distanceInMiles,
+    timeToCompleteInHours,
+    averageSpeedMPH,
+  });
 };
 
 const deleteRoute = route => Routes.destroy({

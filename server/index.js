@@ -20,9 +20,9 @@ app.post('/api/users/create', (req, res) => {
   // pass username, password, and experience level
   // from front-end signup to DB
   db.isUsernameUnique(req.body)
-    .then(() => {
+    .then((data) => {
       console.log('Created new user.');
-      res.end();
+      res.send(data);
     })
     .catch((err) => {
       if (err.message === 'Username Taken') {

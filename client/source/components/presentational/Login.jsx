@@ -38,6 +38,7 @@ class Login extends React.Component {
           alert('Invalid username and password. Please try again.');
         } else {
           //  success! redirect
+          console.log('what is res.data in SignUp', res.data);
           transferUserInfo(res.data);
           this.setState({
             loggedIn: true,
@@ -62,7 +63,7 @@ class Login extends React.Component {
     const { loggedIn, signedUp } = this.state;
     //  if loggedIn is true, then redirect to /maps page without throwing error
     if (loggedIn) {
-      return <Redirect noThrow to="/routes" />;
+      return <Redirect noThrow to="/maps" />;
     }
     if (signedUp) {
       return <Redirect noThrow to="/signUp" />;

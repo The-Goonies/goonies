@@ -75,7 +75,7 @@ class AppContainer extends React.Component {
         </nav>
         <Router>
           <Login exact path="/" transferUserInfo={this.transferUserInfo} />
-          <SignUp path="/signUp" />
+          <SignUp path="/signUp" transferUserInfo={this.transferUserInfo} />
           <MapYourRoute path="/maps" />
           <UserProfile path="/user" userInfo={{ username, password, experience }} />
           <ParkInfo path="/info" />
