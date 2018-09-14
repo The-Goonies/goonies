@@ -5,27 +5,26 @@ class Timer extends React.Component {
     super(props);
     this.state = {
       elapsedTime: 0,
-      // stop: null,
-      time: null,
       savePoints: [],
     };
+    this.time = null;
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
+    this.saveTimer = this.saveTimer.bind(this);
   }
 
   startTimer() {
     this.time = setInterval(() => this.setState({
-      // elapsedTime: this.state.elapsedTime + 1,
+      /* eslint-disable */
+      elapsedTime: this.state.elapsedTime + 1, 
+      /* eslint-enable */
     }),
     1000);
   }
 
   stopTimer() {
     clearInterval(this.time);
-    this.setState({
-      // stop: this.time
-    });
   }
 
   resetTimer() {
@@ -33,11 +32,11 @@ class Timer extends React.Component {
     clearInterval(time);
     this.setState({
       elapsedTime: 0,
+      savePoints: [],
     });
   }
 
-  // awesome
-  saveTime() {
+  saveTimer() {
     const { savePoints, elapsedTime } = this.state;
     this.setState({
       savePoints: savePoints.concat([elapsedTime]),
@@ -46,19 +45,22 @@ class Timer extends React.Component {
 
   render() {
     const timeFormat = sec => (`${Math.floor(sec / 60)}:${(`0${sec % 60}`).slice(-2)}`);
-
     const Button = props => (<button type="button" {...props} />);
-    const { elapsedTime } = this.state;
+    const { elapsedTime, savePoints } = this.state;
     return (
       <div>
-        <div>
-          <h1>
+        <div className="timer-center">
+          <h1 className="timer-format">
             {timeFormat(elapsedTime)}
           </h1>
-          <Button onClick={this.startTimer}>Start</Button>
-          <Button onClick={this.stopTimer}>Stop</Button>
-          <Button onClick={this.resetTimer}>Reset</Button>
+          <Button className="timer-btns stop-btn" onClick={this.stopTimer}>Stop</Button>
+          <Button className="timer-btns start-btn" onClick={this.startTimer}>Start</Button>
+          <Button className="timer-btns stop-btn" onClick={this.resetTimer}>Reset</Button>
+          <Button className="timer-btns start-btn" onClick={this.saveTimer}>Save</Button>
         </div>
+        <ul className="timer-save">
+          {savePoints.map(point => <li className="timer-point" key={point + 1}>{timeFormat(point)}</li>)}
+        </ul>
       </div>
     );
   }
