@@ -41,34 +41,31 @@ class AppContainer extends React.Component {
       showingMenu, username, password, experience,
     } = this.state;
     return (
-      <div className="header">
-        <h1>Backpacker</h1>
-        <nav>
-          { username
-            ? <button className="menu" type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>
-            : (false) }
-          { showingMenu
-            ? (
-              <div className="dropdown">
-                <div className="close">
-                  <button className="close" type="button" onClick={this.handleMenuClick.bind(this)}>X</button>
-                </div>
-                <div role="presentation" onClick={this.handleMenuClick.bind(this)} onKeyPress={this.handleMenuClick.bind(this)}>
-                  <ul className="dropdown">
-                    <li><Link to="/maps" className="menu-link">Map</Link></li>
-                    <li><Link to="/weather" className="menu-link">Weather</Link></li>
-                    <li><Link to="/info" className="menu-link">Park Info</Link></li>
-                    <li><Link to="/timer" className="menu-link">Stop Watch</Link></li>
-                    <li><Link to="/routes" className="menu-link">My History</Link></li>
-                    <li><Link to="/user" className="menu-link">My Profile</Link></li>
-                    <li><Link to="/" className="menu-link">Sign Out</Link></li>
-                  </ul>
-                </div>
+      <div className="app-container">
+        <h1 className="logo">Backpacker</h1>
+        <button className="menu" type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>
+        { showingMenu
+          ? (
+            <div className="dropdown">
+              <div className="close">
+                <button className="close" type="button" onClick={this.handleMenuClick.bind(this)}>X</button>
               </div>
-            )
-            : (null)
-          }
-        </nav>
+              <div role="presentation" onClick={this.handleMenuClick.bind(this)} onKeyPress={this.handleMenuClick.bind(this)}>
+                <br />
+                <ul className="dropdown">
+                  <li><Link to="/maps" className="menu-link">Map</Link></li>
+                  <li><Link to="/weather" className="menu-link">Weather</Link></li>
+                  <li><Link to="/info" className="menu-link">Park Info</Link></li>
+                  <li><Link to="/timer" className="menu-link">Stop Watch</Link></li>
+                  <li><Link to="/routes" className="menu-link">My History</Link></li>
+                  <li><Link to="/user" className="menu-link">My Profile</Link></li>
+                  <li><Link to="/" className="menu-link">Sign Out</Link></li>
+                </ul>
+              </div>
+            </div>
+          )
+          : (null)
+        }
         <Router>
           <Login exact path="/" transferUserInfo={this.transferUserInfo} />
           <SignUp path="/signUp" />

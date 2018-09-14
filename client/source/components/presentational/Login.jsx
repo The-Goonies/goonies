@@ -70,12 +70,14 @@ class Login extends React.Component {
       <div>
         <form>
           Username:
+          <br />
           <input type="text" name="username" onChange={this.handleChange} />
           <br />
           Password:
+          <br />
           <input type="password" name="password" onChange={this.handleChange} />
           <br />
-          <input type="button" value="Login" onClick={this.handleLogin} />
+          <input className="login" type="button" value="Login" onClick={this.handleLogin} />
           <br />
           <input type="button" value="New User? Register" onClick={this.redirToSignUp} />
         </form>
