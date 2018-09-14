@@ -86,26 +86,66 @@ class RouteHistory extends React.Component {
     const avgSpeed = 'placeholder';
     const { routes } = this.state;
     return (
-      <div className="routeHistory">
-        <div className="routesHeader">
-          <h1>My Route History</h1>
-          <p>
-            Average Speed:
-            {avgSpeed}
-            {' '}
-            MPH
-          </p>
+      // <div className="routeHistory">
+      //   <div className="routesHeader">
+      //     <h1>My Route History</h1>
+      //     <p>
+      //       Average Speed:
+      //       {avgSpeed}
+      //       {' '}
+      //       MPH
+      //     </p>
+      //   </div>
+      //   <button className="addRouteButton" type="button" onClick={this.addRoute}>Add New Route</button>
+      //   <div className="routesContainer">
+      //     { routes.map(route => (
+      //       <RouteContainer
+      //         key={Math.random()}
+      //         route={route}
+      //         handleDelete={this.handleDelete}
+      //         handleUpsert={this.handleUpsert}
+      //       />)) }
+      //   </div>
+      // </div>
+
+
+      <div className="container">
+        <div className="header clearfix">
         </div>
-        <button className="addRouteButton" type="button" onClick={this.addRoute}>Add New Route</button>
-        <div className="routesContainer">
-          { routes.map(route => (
-            <RouteContainer
-              key={Math.random()}
-              route={route}
-              handleDelete={this.handleDelete}
-              handleUpsert={this.handleUpsert}
-            />)) }
+
+        <div className="jumbotron">
+          <h1>Route History</h1>
+          <p><a className="btn btn-sm btn-success" href="#" role="button">Add a route</a></p>
         </div>
+
+        <div className="row marketing">
+          <div className="col-lg-6">
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          </div>
+
+          <div className="col-lg-6">
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          </div>
+        </div>
+
+        <footer className="footer">
+          <p>&copy; 2016 Company, Inc.</p>
+        </footer>
+
       </div>
     );
   }
