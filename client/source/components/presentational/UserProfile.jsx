@@ -29,10 +29,10 @@ class UserProfile extends React.Component {
     const { username, newPassword } = this.state;
     return axios.put(`/api/users/password/${username}/${newPassword}`)
       .then((res) => {
-        console.log('what is response', res);
+        alert('Password is updated');
       })
       .catch((err) => {
-        console.log('cannot update password', err);
+        alert(err);
       });
   }
 
