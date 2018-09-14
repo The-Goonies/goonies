@@ -2,7 +2,12 @@
 body {
   width: 320px; /* iphone 4 width*/
   margin: 0 auto;
-  background-color: #34495E; /* or light? #AEB6BF */
+  background-image: url('https://303magazine.com/wp-content/uploads/2016/05/ThinkstockPhotos-177541650-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  /* background-color: #34495E; /* or light? #AEB6BF */ */
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 2em;
@@ -50,7 +55,7 @@ button:focus {
 
 /********* MENU *********/
 button.menu {
-    z-index: 100; 
+    z-index: 100;
     position: relative;
     background-color: #27AE60;
     border: none;
