@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect } from '@reach/router';
 import PropTypes from 'prop-types';
-// import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 class Login extends React.Component {
@@ -38,7 +37,6 @@ class Login extends React.Component {
           alert('Invalid username and password. Please try again.');
         } else {
           //  success! redirect
-          console.log('what is res.data in SignUp', res.data);
           transferUserInfo(res.data);
           this.setState({
             loggedIn: true,
