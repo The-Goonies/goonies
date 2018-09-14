@@ -30,30 +30,6 @@ class RouteForm extends React.Component {
     this.onDelete = this.onDelete.bind(this);
   }
 
-  // componentDidMount() {
-  //   const {
-  //     route: {
-  //       id,
-  //       routeName,
-  //       date,
-  //       distanceInMiles,
-  //       timeToCompleteInHours,
-  //       averageSpeedMPH,
-  //     },
-  //   } = this.props;
-  //   // const { routeName } = this.state;
-  //   if (!Array.from(this.state).length) {
-  //     this.setState({
-  //       id,
-  //       routeName,
-  //       date,
-  //       distanceInMiles,
-  //       timeToCompleteInHours,
-  //       averageSpeedMPH,
-  //     });
-  //   }
-  // }
-
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
