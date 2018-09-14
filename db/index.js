@@ -74,6 +74,10 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
+const updatePassword = ({ username, newPassword }) => {
+
+}
+
 const getRoutes = () => Routes.findAll();
 
 const createRoute = (route) => {
@@ -106,4 +110,5 @@ exports.deleteRoute = deleteRoute;
 exports.isUsernameUnique = isUsernameUnique;
 exports.createUser = createUser;
 exports.verifyUser = verifyUser;
+exports.updatePassword = updatePassword;
 exports.createRoute = createRoute;

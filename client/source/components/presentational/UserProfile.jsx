@@ -5,12 +5,11 @@ class UserProfile extends React.Component {
   constructor({ props, userInfo }) {
     super(props);
 
-    const { username, experience, password } = userInfo;
+    const { username, experience } = userInfo;
 
     this.state = {
       username,
       experience,
-      password,
       oldPassword: '',
       newPassword: '',
       confirmNewPassword: '',
@@ -26,13 +25,26 @@ class UserProfile extends React.Component {
     });
   }
 
+  updatePassword() {
+    const { username, newPassword } = this.state;
+    return axios.put(`/api/users/password/${username}/${newPassword}`)
+      .then((res) => {
+        console.log('what is response', res);
+      })
+      .catch((err) => {
+        console.log('cannot update password', err);
+      });
+  }
+
   passwordMatch(userData) {
     if (userData.data === 'Invalid Password') {
       alert('Your old password is incorrect. Please try again.');
+    } else {
+      this.setState({
+        passwordMatch: true,
+      });
+      this.updatePassword();
     }
-    this.setState({
-      passwordMatch: true,
-    });
   }
 
   handlePasswordChange() {
@@ -47,6 +59,9 @@ class UserProfile extends React.Component {
       axios.get(`/api/users/login?username=${username}&password=${oldPassword}`)
         .then((res) => {
           this.passwordMatch(res);
+        })
+        .catch((err) => {
+          console.log('err in verifying password', err);
         });
     }
   }

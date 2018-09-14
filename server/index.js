@@ -48,6 +48,11 @@ app.get('/api/users/login', (req, res) => {
     });
 });
 
+app.put('/api/users/password/:username/:newPassword', (req, res) => {
+  console.log('what is req', req.params);
+  res.send('ok');
+});
+
 /** *********** ROUTES ************** */
 
 app.get('/api/routes', (req, res) => {
