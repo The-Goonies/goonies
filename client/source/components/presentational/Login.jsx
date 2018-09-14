@@ -62,7 +62,7 @@ class Login extends React.Component {
     const { loggedIn, signedUp } = this.state;
     //  if loggedIn is true, then redirect to /maps page without throwing error
     if (loggedIn) {
-      return <Redirect noThrow to="/routes" />;
+      return <Redirect noThrow to="/maps" />;
     }
     if (signedUp) {
       return <Redirect noThrow to="/signUp" />;
