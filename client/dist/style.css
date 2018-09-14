@@ -1,54 +1,112 @@
 /********* GENERAL *********/
+body {
+  width: 320px; /* iphone 4 width*/
+  margin: 0 auto;
+  background-color: #34495E; /* or light? #AEB6BF */
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 2em;
+}
+h1 {
+  color:  #ffffff;
+}
+h2 {
+  color:  #A9DFBF;
+}
+h3 {
+  color:  #27AE60;
+}
+h4 {
+  color:  #27AE60;
+}
+
+input {
+  font-size: 1em;
+  color: #212F3C;
+}
+
+button, input[type=button], input[type=submit] {
+  background-color: #A9DFBF;
+  border: none;
+  color: #212F3C;
+  padding: 15px 15px;
+  float: right;
+  text-decoration: none;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 5px;
+}
+
 button:focus {
     outline: none;
 }
 
-/********* MENU *********/
-
-nav {
-    text-align: right;
+/********* LOGO *********/
+.logo {
+  font-style: bold;
+  text-transform: uppercase;
+  color:  #27AE60;
 }
+
+/********* MENU *********/
 button.menu {
     z-index: 100; 
     position: relative;
-    background-color: none;
+    background-color: #27AE60;
     border: none;
-    color: black;
+    color: #212F3C;
     padding: 15px 15px;
     float: right;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 1em;
     cursor: pointer;
 }
 button.close {
-    background-color: none;
+    background-color: #ffffff;
     border: none;
-    color: black;
+    color: #27AE60;
     padding: 5px 5px;
     text-align: inherit;
     text-decoration: none;
     float: right;
-    font-size: 16px;
+    font-size: 1em;
     cursor: pointer;
 }
 div.dropdown {
+    color: #212F3C;
     z-index: 100;
-    position: relative;
-    float: right;
+    position: absolute;
+    float: center;
+    width: 320px;
+    height: 400px;
     background-color: white;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    text-transform: uppercase;
 }
 ul.dropdown {
     list-style: none;
-    float: right;
+    align-content: center;
 }
 ul.dropdown li {
     color: black;
     padding: 5px 5px;
     text-decoration: none;
-    display: block;
+}
+ul.dropdown li:hover {
+  background-color:  #A9DFBF;
 }
 .menu-link {
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
+}
+
+/********* LOGIN *********/
+input.login {
+  background-color: #ffffff;
+}
+
+/********* MAP *********/
+.map {
+  align-content: center;
 }
