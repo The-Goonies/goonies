@@ -28,7 +28,7 @@ class UserProfile extends React.Component {
   updatePassword() {
     const { username, newPassword } = this.state;
     return axios.put(`/api/users/password/${username}/${newPassword}`)
-      .then((res) => {
+      .then(() => {
         alert('Password is updated');
       })
       .catch((err) => {
@@ -38,7 +38,9 @@ class UserProfile extends React.Component {
 
   passwordMatch(userData) {
     if (userData.data === 'Invalid Password') {
-      alert('Your old password is incorrect. Please try again.');
+      if (alert('Your old password is incorrect. Please try again.')) {
+        window.location.reload();
+      }
     } else {
       this.setState({
         passwordMatch: true,

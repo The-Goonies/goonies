@@ -74,10 +74,10 @@ const verifyUser = function ({ username, password }) {
     .catch((err) => { throw err; });
 };
 
-const updatePassword = function({ username, newPassword }) {
+const updatePassword = function ({ username, newPassword }) {
   return bcrypt.hash(newPassword, salt)
     .then((hash) => {
-      return User.update(
+      User.update(
         { password: hash },
         { returning: true, where: { username } },
       )
