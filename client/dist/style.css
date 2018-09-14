@@ -129,6 +129,7 @@ input.login {
     border-radius: 12px;
     outline: none;
     background: rgba(177, 177, 177, 0.774);
+    float:none;
   }
 .start-btn { color: #0a970a }
 .stop-btn { color: #df1d0f }
@@ -142,7 +143,7 @@ input.login {
   border-width: 2px 0;
 }
 .timer-save {
-    padding: 200px 0 0 20px;
+    padding: 0 0 0 20px;
     list-style-type: none;
   }
 .timer-point {
