@@ -70,13 +70,12 @@ app.put('/api/users/update/:username/:newUsername', (req, res) => {
     });
 });
 
-app.put('/api/users/update/:username/:experience', (req, res) => {
+app.put('/api/users/update/exp/:username/:experience', (req, res) => {
   db.updateExperience(req.params)
     .then((data) => {
-      if (data[0]) {
+      if (data) {
         res.send('Experience Updated');
       }
-      throw new Error('Username Not Found');
     })
     .catch((err) => {
       res.send(err.message);

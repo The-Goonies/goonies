@@ -105,12 +105,19 @@ const updateUsername = function (usernames) {
     });
 };
 
-const updateExperience = (experienceOfUser) => {
+const updateExperience = function (experienceOfUser) {
   const { username, experience } = experienceOfUser;
   return User.update(
     { experience },
     { returning: true, where: { username } },
-  );
+  )
+    .then((data) => {
+      console.log(data)
+      if (data[0]) {
+        return 'Experience Updated';
+      }
+      throw new Error('Username Not Found');
+    });
 };
 
 const getRoutes = () => Routes.findAll();
