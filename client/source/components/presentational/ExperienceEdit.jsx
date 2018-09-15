@@ -7,7 +7,6 @@ class ExperienceEdit extends React.Component {
     this.state = {
       newExperience: '',
     };
-    console.log('ExperienceEdit props=', this.props);
     this.handleChange = this.handleChange.bind(this);
   }
 

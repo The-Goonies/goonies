@@ -22,6 +22,7 @@ class UserProfile extends React.Component {
     this.changeUserProfile = this.changeUserProfile.bind(this);
     this.handleCancelChange = this.handleCancelChange.bind(this);
     this.handleNewUsername = this.handleNewUsername.bind(this);
+    this.handleNewExperience = this.handleNewExperience.bind(this);
   }
 
   componentDidMount() {
@@ -141,8 +142,23 @@ class UserProfile extends React.Component {
       });
   }
 
-  handleNewExperience(experience) {
-    console.log('what is experience', experience);
+  handleNewExperience(newExperience) {
+    console.log('what is experience', newExperience);
+    const { username } = this.state;
+    axios.put(`/api/users/update/exp/${username}/${newExperience}`)
+      .then((res) => {
+        if (res.data === 'Experience Updated') {
+          this.setState({
+            experience: newExperience,
+          });
+        }
+      })
+      .then(() => {
+        this.handleCancelChange('cancelExperience');
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   render() {
