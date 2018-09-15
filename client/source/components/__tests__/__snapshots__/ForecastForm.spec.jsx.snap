@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Renders correctly 1`] = `
+<div>
+  <h2>
+    3 Day Forecast
+  </h2>
+  <h3>
+    Tomorrow
+  </h3>
+  <h4>
+    
+  </h4>
+  <p>
+    High Temp:
+     
+    
+     
+    F°
+  </p>
+  <p>
+    Low Temp:
+     
+    
+     
+    F°
+  </p>
+  <h3>
+    Day 2
+  </h3>
+  <h4>
+    
+  </h4>
+  <p>
+    High Temp:
+     
+    
+     
+    F°
+  </p>
+  <p>
+    Low Temp:
+     
+    
+     
+    F°
+  </p>
+  <h3>
+    Day 3
+  </h3>
+  <h4>
+    
+  </h4>
+  <p>
+    High Temp:
+     
+    
+     
+    F°
+  </p>
+  <p>
+    Low Temp:
+     
+    
+     
+    F°
+  </p>
+</div>
+`;

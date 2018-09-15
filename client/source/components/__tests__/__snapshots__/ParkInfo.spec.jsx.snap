@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Renders correctly 1`] = `
+<div>
+  <h2>
+    
+  </h2>
+  <h3>
+    Alerts
+  </h3>
+  <h3>
+    Park Info
+  </h3>
+  <div>
+    <p>
+      <br />
+      <a>
+        Learn More
+      </a>
+    </p>
+    <p>
+      <strong>
+        Directions
+      </strong>
+      <br />
+      <br />
+      <a>
+        Driving Directions
+      </a>
+    </p>
+  </div>
+</div>
+`;
