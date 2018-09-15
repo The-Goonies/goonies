@@ -25,11 +25,22 @@ class UserProfile extends React.Component {
     });
   }
 
+  resetPasswordFields() {
+    this.setState({
+      oldPassword: '',
+      newPassword: '',
+      confirmNewPassword: '',
+    });
+  }
+
   updatePassword() {
     const { username, newPassword } = this.state;
     return axios.put(`/api/users/password/${username}/${newPassword}`)
       .then(() => {
         alert('Password is updated');
+      })
+      .then(() => {
+        this.resetPasswordFields();
       })
       .catch((err) => {
         alert(err);
@@ -41,11 +52,13 @@ class UserProfile extends React.Component {
       if (alert('Your old password is incorrect. Please try again.')) {
         window.location.reload();
       }
+      this.resetPasswordFields();
     } else {
       this.setState({
         passwordMatch: true,
       });
       this.updatePassword();
+      this.resetPasswordFields();
     }
   }
 
@@ -55,8 +68,10 @@ class UserProfile extends React.Component {
     } = this.state;
     if (newPassword !== confirmNewPassword) {
       alert('Your new password does not match your password confirmation. Please try again');
+      this.resetPasswordFields();
     } else if (newPassword === oldPassword) {
       alert('Your new password should not match your old password. Please try again.');
+      this.resetPasswordFields();
     } else {
       axios.get(`/api/users/login?username=${username}&password=${oldPassword}`)
         .then((res) => {
@@ -69,7 +84,9 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    const { username, experience, passwordMatch } = this.state;
+    const {
+      username, experience, passwordMatch, oldPassword, newPassword, confirmNewPassword,
+    } = this.state;
     return (
       <div>
         <h1>User Profile</h1>
@@ -86,15 +103,15 @@ class UserProfile extends React.Component {
           <h4>Change Password</h4>
           Old Password:
           <br />
-          <input type="password" name="oldPassword" onChange={this.changePassword} />
+          <input type="password" name="oldPassword" value={oldPassword} onChange={this.changePassword} />
           <br />
           New Password:
           <br />
-          <input type="password" name="newPassword" onChange={this.changePassword} />
+          <input type="password" name="newPassword" value={newPassword} onChange={this.changePassword} />
           <br />
           Confirm New Password:
           <br />
-          <input type="password" name="confirmNewPassword" onChange={this.changePassword} />
+          <input type="password" name="confirmNewPassword" value={confirmNewPassword} onChange={this.changePassword} />
           <br />
           <input type="button" value="Update Password" onClick={this.handlePasswordChange} />
         </form>
