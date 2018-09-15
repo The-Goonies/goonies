@@ -91,6 +91,34 @@ const updatePassword = function ({ username, newPassword }) {
     .catch((err) => { throw err; });
 };
 
+const updateUsername = function (usernames) {
+  const { username, newUsername } = usernames;
+  return User.find({ where: { username: newUsername } })
+    .then((data) => {
+      if (data === null) {
+        return User.update(
+          { username: newUsername },
+          { returning: true, where: { username } },
+        );
+      }
+      throw new Error('Username Taken');
+    });
+};
+
+const updateExperience = function (experienceOfUser) {
+  const { username, experience } = experienceOfUser;
+  return User.update(
+    { experience },
+    { returning: true, where: { username } },
+  )
+    .then((data) => {
+      if (data[0]) {
+        return 'Experience Updated';
+      }
+      throw new Error('Username Not Found');
+    });
+};
+
 const getRoutes = () => Routes.findAll();
 
 const createRoute = (route) => {
@@ -125,3 +153,5 @@ exports.createUser = createUser;
 exports.verifyUser = verifyUser;
 exports.updatePassword = updatePassword;
 exports.createRoute = createRoute;
+exports.updateUsername = updateUsername;
+exports.updateExperience = updateExperience;

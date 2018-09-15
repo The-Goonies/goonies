@@ -58,6 +58,30 @@ app.put('/api/users/password/:username/:newPassword', (req, res) => {
     });
 });
 
+app.put('/api/users/update/:username/:newUsername', (req, res) => {
+  db.updateUsername(req.params)
+    .then((data) => {
+      if (data[0]) {
+        res.send('Username Updated');
+      }
+    })
+    .catch((err) => {
+      res.send(err.message);
+    });
+});
+
+app.put('/api/users/update/exp/:username/:experience', (req, res) => {
+  db.updateExperience(req.params)
+    .then((data) => {
+      if (data) {
+        res.send('Experience Updated');
+      }
+    })
+    .catch((err) => {
+      res.send(err.message);
+    });
+});
+
 /** *********** ROUTES ************** */
 
 app.get('/api/routes', (req, res) => {

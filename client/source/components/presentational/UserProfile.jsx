@@ -1,27 +1,51 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import UsernameEdit from './UsernameEdit';
+import ExperienceEdit from './ExperienceEdit';
 
 class UserProfile extends React.Component {
-  constructor({ props, userInfo }) {
+  constructor(props) {
     super(props);
 
-    const { username, experience } = userInfo;
-
     this.state = {
-      username,
-      experience,
+      username: '',
+      experience: '',
       oldPassword: '',
       newPassword: '',
       confirmNewPassword: '',
-      passwordMatch: false,
+      editUsername: false,
+      editExperience: false,
     };
     this.changePassword = this.changePassword.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.changeUserProfile = this.changeUserProfile.bind(this);
+    this.handleCancelChange = this.handleCancelChange.bind(this);
+    this.handleNewUsername = this.handleNewUsername.bind(this);
+    this.handleNewExperience = this.handleNewExperience.bind(this);
   }
+
+  componentDidMount() {
+    const { userInfo } = this.props;
+    const { username, experience } = userInfo;
+    this.setState({
+      username,
+      experience,
+    });
+  }
+  //  ************** Password Change *************  //
 
   changePassword(e) {
     this.setState({
       [e.target.name]: e.target.value,
+    });
+  }
+
+  resetPasswordFields() {
+    this.setState({
+      oldPassword: '',
+      newPassword: '',
+      confirmNewPassword: '',
     });
   }
 
@@ -30,6 +54,9 @@ class UserProfile extends React.Component {
     return axios.put(`/api/users/password/${username}/${newPassword}`)
       .then(() => {
         alert('Password is updated');
+      })
+      .then(() => {
+        this.resetPasswordFields();
       })
       .catch((err) => {
         alert(err);
@@ -41,11 +68,10 @@ class UserProfile extends React.Component {
       if (alert('Your old password is incorrect. Please try again.')) {
         window.location.reload();
       }
+      this.resetPasswordFields();
     } else {
-      this.setState({
-        passwordMatch: true,
-      });
       this.updatePassword();
+      this.resetPasswordFields();
     }
   }
 
@@ -55,8 +81,10 @@ class UserProfile extends React.Component {
     } = this.state;
     if (newPassword !== confirmNewPassword) {
       alert('Your new password does not match your password confirmation. Please try again');
+      this.resetPasswordFields();
     } else if (newPassword === oldPassword) {
       alert('Your new password should not match your old password. Please try again.');
+      this.resetPasswordFields();
     } else {
       axios.get(`/api/users/login?username=${username}&password=${oldPassword}`)
         .then((res) => {
@@ -68,33 +96,131 @@ class UserProfile extends React.Component {
     }
   }
 
+  //  ************** UserInfo Change *************  //
+
+  changeUserProfile(e) {
+    const { editUsername, editExperience } = this.state;
+    if (e.target.name === 'newName') {
+      this.setState({
+        editUsername: !editUsername,
+      });
+    } else if (e.target.name === 'newExp') {
+      this.setState({
+        editExperience: !editExperience,
+      });
+    }
+  }
+
+  handleCancelChange(componentChange) {
+    const { editUsername, editExperience } = this.state;
+    if (componentChange === 'cancelUsername') {
+      this.setState({
+        editUsername: !editUsername,
+      });
+    } else {
+      this.setState({
+        editExperience: !editExperience,
+      });
+    }
+  }
+
+  handleNewUsername(newUsername) {
+    const { username } = this.state;
+    axios.put(`/api/users/update/${username}/${newUsername}`)
+      .then((res) => {
+        if (res.data === 'Username Updated') {
+          this.setState({
+            username: newUsername,
+          });
+        }
+      })
+      .then(() => {
+        this.handleCancelChange('cancelUsername');
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
+  handleNewExperience(newExperience) {
+    console.log('what is experience', newExperience);
+    const { username } = this.state;
+    axios.put(`/api/users/update/exp/${username}/${newExperience}`)
+      .then((res) => {
+        if (res.data === 'Experience Updated') {
+          this.setState({
+            experience: newExperience,
+          });
+        }
+      })
+      .then(() => {
+        this.handleCancelChange('cancelExperience');
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+
   render() {
-    const { username, experience, passwordMatch } = this.state;
+    const {
+      username,
+      experience,
+      oldPassword,
+      newPassword,
+      confirmNewPassword,
+      editUsername,
+      editExperience,
+    } = this.state;
     return (
       <div>
         <h1>User Profile</h1>
         <form>
-          Username:
-          { username }
-          <input type="button" value="Change Username" name="newName" onClick={this.changeUserProfile} />
+          {
+            editUsername ? (
+              <UsernameEdit
+                username={username}
+                handleCancelChange={this.handleCancelChange}
+                handleNewUsername={this.handleNewUsername}
+              />
+            ) : (
+              <div>
+                Username:
+                {' '}
+                {username}
+                <input type="button" value="Change Username" name="newName" onClick={this.changeUserProfile} />
+              </div>
+            )
+          }
           <br />
-          Experience Level:
-          { experience }
-          { passwordMatch }
-          <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
+          {
+            editExperience ? (
+              <ExperienceEdit
+                experience={experience}
+                handleCancelChange={this.handleCancelChange}
+                handleNewExperience={this.handleNewExperience}
+              />
+            ) : (
+              <div>
+                Experience Level:
+                {' '}
+                {experience}
+                <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
+              </div>
+            )
+          }
           <br />
           <h4>Change Password</h4>
           Old Password:
           <br />
-          <input type="password" name="oldPassword" onChange={this.changePassword} />
+          <input type="password" name="oldPassword" value={oldPassword} onChange={this.changePassword} />
           <br />
           New Password:
           <br />
-          <input type="password" name="newPassword" onChange={this.changePassword} />
+          <input type="password" name="newPassword" value={newPassword} onChange={this.changePassword} />
           <br />
           Confirm New Password:
           <br />
-          <input type="password" name="confirmNewPassword" onChange={this.changePassword} />
+          <input type="password" name="confirmNewPassword" value={confirmNewPassword} onChange={this.changePassword} />
           <br />
           <input type="button" value="Update Password" onClick={this.handlePasswordChange} />
         </form>
@@ -102,5 +228,9 @@ class UserProfile extends React.Component {
     );
   }
 }
+
+UserProfile.propTypes = {
+  userInfo: PropTypes.objectOf(PropTypes.string).isRequired,
+};
 
 export default UserProfile;
