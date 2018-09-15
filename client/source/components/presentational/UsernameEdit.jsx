@@ -7,15 +7,23 @@ class UsernameEdit extends React.Component {
     this.state = {
       newUsername: '',
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   }
 
   render() {
-    const { username, handleCancelChange } = this.props;
+    const { username, handleCancelChange, handleNewUsername } = this.props;
+    const { newUsername } = this.state;
     return (
       <div>
-        <input type="text" placeholder={username} name="newUsername" />
-        <button type="button">Save</button>
-        <button type="button" onClick={() => {handleCancelChange('cancelUsername')}}>Cancel</button>
+        <input type="text" placeholder={username} name="newUsername" onChange={this.handleChange} />
+        <button type="button" onClick={() => { handleNewUsername(newUsername); }}>Save</button>
+        <button type="button" onClick={() => { handleCancelChange('cancelUsername'); }}>Cancel</button>
       </div>
     );
   }
@@ -24,6 +32,7 @@ class UsernameEdit extends React.Component {
 UsernameEdit.propTypes = {
   username: PropTypes.string.isRequired,
   handleCancelChange: PropTypes.func.isRequired,
+  handleNewUsername: PropTypes.func.isRequired,
 };
 
 export default UsernameEdit;

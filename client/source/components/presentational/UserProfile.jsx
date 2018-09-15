@@ -1,17 +1,16 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import UsernameEdit from './UsernameEdit';
 import ExperienceEdit from './ExperienceEdit';
 
 class UserProfile extends React.Component {
-  constructor({ props, userInfo }) {
+  constructor(props) {
     super(props);
 
-    const { username, experience } = userInfo;
-
     this.state = {
-      username,
-      experience,
+      username: '',
+      experience: '',
       oldPassword: '',
       newPassword: '',
       confirmNewPassword: '',
@@ -22,6 +21,16 @@ class UserProfile extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.changeUserProfile = this.changeUserProfile.bind(this);
     this.handleCancelChange = this.handleCancelChange.bind(this);
+    this.handleNewUsername = this.handleNewUsername.bind(this);
+  }
+
+  componentDidMount() {
+    const { userInfo } = this.props;
+    const { username, experience } = userInfo;
+    this.setState({
+      username,
+      experience,
+    });
   }
   //  ************** Password Change *************  //
 
@@ -105,13 +114,31 @@ class UserProfile extends React.Component {
     const { editUsername, editExperience } = this.state;
     if (componentChange === 'cancelUsername') {
       this.setState({
-        editUsername: false,
+        editUsername: !editUsername,
       });
     } else {
       this.setState({
         editExperience: !editExperience,
       });
     }
+  }
+
+  handleNewUsername(newUsername) {
+    const { username } = this.state;
+    axios.put(`/api/users/update/${username}/${newUsername}`)
+      .then((res) => {
+        if (res.data === 'Username Updated') {
+          this.setState({
+            username: newUsername,
+          });
+        }
+      })
+      .then(() => {
+        this.handleCancelChange('cancelUsername');
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   render() {
@@ -130,10 +157,15 @@ class UserProfile extends React.Component {
         <form>
           {
             editUsername ? (
-              <UsernameEdit username={username} handleCancelChange={this.handleCancelChange} />
+              <UsernameEdit
+                username={username}
+                handleCancelChange={this.handleCancelChange}
+                handleNewUsername={this.handleNewUsername}
+              />
             ) : (
               <div>
                 Username:
+                {' '}
                 {username}
                 <input type="button" value="Change Username" name="newName" onClick={this.changeUserProfile} />
               </div>
@@ -142,10 +174,14 @@ class UserProfile extends React.Component {
           <br />
           {
             editExperience ? (
-              <ExperienceEdit experience={experience} handleCancelChange={this.handleCancelChange} />
+              <ExperienceEdit
+                experience={experience}
+                handleCancelChange={this.handleCancelChange}
+              />
             ) : (
               <div>
                 Experience Level:
+                {' '}
                 {experience}
                 <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
               </div>
@@ -171,5 +207,9 @@ class UserProfile extends React.Component {
     );
   }
 }
+
+UserProfile.propTypes = {
+  userInfo: PropTypes.objectOf(PropTypes.string).isRequired,
+};
 
 export default UserProfile;
