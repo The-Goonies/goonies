@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "jest": "npm run jest",
+    "jest-test": "jest",
+    "jest-update": "jest -u",
+    "jest-watch": "jest --watch",
+    "jest-coverage": "jest --coverage",
     "lint": "eslint './client/source/components/**/*.jsx' db server",
     "lintFix": "eslint --fix './client/source/components/**/*.jsx' db server",
     "react-dev": "webpack --mode development --watch",
@@ -15,7 +18,13 @@
   "jest": {
     "verbose": true,
     "collectCoverage": true,
-    "forceExit": true
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "forceExit": true,
+    "setupFiles": [
+      "/Users/high-z/Desktop/HRR-33/goonies/client/source/components/__tests__/jestsetup.js"
+    ]
   },
   "engines": {
     "node": "8.11.4"
@@ -25,10 +34,17 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -37,8 +53,11 @@
     "eslint-plugin-react": "^7.11.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
+    "react-test-renderer": "^16.5.1",
     "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "ts-jest": "^23.1.4"
   },
   "dependencies": {
     "@reach/router": "^1.1.1",
@@ -49,6 +68,7 @@
     "dotenv-webpack": "^1.5.7",
     "express": "^4.16.3",
     "google-maps-react": "^2.0.2",
+    "identity-obj-proxy": "^3.0.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "prop-types": "^15.6.2",
