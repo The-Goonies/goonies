@@ -13,7 +13,6 @@ class UserProfile extends React.Component {
       oldPassword: '',
       newPassword: '',
       confirmNewPassword: '',
-      passwordMatch: false,
     };
     this.changePassword = this.changePassword.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -54,9 +53,6 @@ class UserProfile extends React.Component {
       }
       this.resetPasswordFields();
     } else {
-      this.setState({
-        passwordMatch: true,
-      });
       this.updatePassword();
       this.resetPasswordFields();
     }
@@ -85,7 +81,7 @@ class UserProfile extends React.Component {
 
   render() {
     const {
-      username, experience, passwordMatch, oldPassword, newPassword, confirmNewPassword,
+      username, experience, oldPassword, newPassword, confirmNewPassword,
     } = this.state;
     return (
       <div>
@@ -97,7 +93,6 @@ class UserProfile extends React.Component {
           <br />
           Experience Level:
           { experience }
-          { passwordMatch }
           <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
           <br />
           <h4>Change Password</h4>
