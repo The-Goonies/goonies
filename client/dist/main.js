@@ -273,7 +273,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = {\n  key: 'AIzaSyChc7CFN2dKz5VgYEiO1C9EJDP6UzeLoeg',\n};\n\n\n//# sourceURL=webpack:///./myapikey.js?");
+eval("module.exports = {\n  key: '',\n};\n\n\n//# sourceURL=webpack:///./myapikey.js?");
 
 /***/ }),
 
