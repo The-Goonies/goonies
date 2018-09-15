@@ -95,7 +95,6 @@ class Timer extends React.Component {
               {' '}
               {timeFormat(point)}
               <span className="timer-distance">
-                {/* Average speed formula: Distance / time. Note the time conversion: Hour = (seconds / 3600)  */}
                 { Math.floor(distanceInMiles / (point / 3600)) }
                 {' '}
                 MPH
