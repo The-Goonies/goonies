@@ -52,15 +52,21 @@ class Timer extends React.Component {
     });
   }
 
-  handleSave() {
+  handleSave(e) {
+    e.preventDefault();
     const { distanceInMiles } = this.state;
-    this.setState({ distanceInMiles }, () => this.render());
+    this.setState({ distanceInMiles });
   }
 
   render() {
     const timeFormat = sec => (`${Math.floor(sec / 60)}:${(`0${sec % 60}`).slice(-2)}`);
     const Button = props => (<button type="button" {...props} />);
-    const { elapsedTime, savePoints, distanceInMiles } = this.state;
+    const {
+      elapsedTime,
+      savePoints,
+      distanceInMiles,
+    } = this.state;
+
     return (
       <div>
         <div className="timer-center">
@@ -72,10 +78,10 @@ class Timer extends React.Component {
           <Button className="timer-btns stop-btn" onClick={this.resetTimer}>Reset</Button>
           <Button className="timer-btns start-btn" onClick={this.saveTimer}>Save</Button>
           <br />
-          Distance:
+          <div className="timer-text"> Distance: </div>
           <div className="fieldwrapper">
             <input type="text" name="distanceInMiles" value={distanceInMiles} onChange={this.onChange} />
-            <button type="submit" onClick={this.handleSave}>Save</button>
+            {/* <button type="button" onClick={this.handleSave}>Save</button> */}
           </div>
         </div>
         <ul className="timer-save">
@@ -85,9 +91,9 @@ class Timer extends React.Component {
               {' '}
               {timeFormat(point)}
               <span className="timer-distance">
-                {distanceInMiles}
+                {distanceInMiles / (point / 100)}
                 {' '}
-                Miles
+                mph
               </span>
             </li>))}
         </ul>
