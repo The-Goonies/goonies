@@ -5,7 +5,7 @@ class ExperienceEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newExperience: '',
+      newExperience: 'Novice',
     };
     this.handleChange = this.handleChange.bind(this);
   }

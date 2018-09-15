@@ -195,6 +195,7 @@ class UserProfile extends React.Component {
           {
             editExperience ? (
               <ExperienceEdit
+                experience={experience}
                 handleCancelChange={this.handleCancelChange}
                 handleNewExperience={this.handleNewExperience}
               />
