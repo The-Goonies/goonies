@@ -18,21 +18,23 @@ class ExperienceEdit extends React.Component {
   }
 
   render() {
-    const { experience } = this.props;
+    const { newExperience } = this.state;
+    const { handleNewExperience, handleCancelChange } = this.props;
     return (
       <div>
-        <select name="newExperience" value={experience} onChange={this.handleChange}>
+        <select name="newExperience" onChange={this.handleChange}>
           <option value="Novice">Novice</option>
           <option value="Intermediate">Intermediate</option>
           <option value="Advanced">Advanced</option>
         </select>
+        <button type="button" onClick={() => { handleNewExperience(newExperience); }}>Save</button>
+        <button type="button" onClick={() => { handleCancelChange('cancelExp'); }}>Cancel</button>
       </div>
     );
   }
 }
 
 ExperienceEdit.propTypes = {
-  experience: PropTypes.string.isRequired,
   handleCancelChange: PropTypes.func.isRequired,
   handleNewExperience: PropTypes.func.isRequired,
 };
