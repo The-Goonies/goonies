@@ -101,7 +101,7 @@ const updateUsername = function (usernames) {
           { returning: true, where: { username } },
         );
       }
-      throw new Error('Username Taken')
+      throw new Error('Username Taken');
     });
 };
 
@@ -112,7 +112,6 @@ const updateExperience = function (experienceOfUser) {
     { returning: true, where: { username } },
   )
     .then((data) => {
-      console.log(data)
       if (data[0]) {
         return 'Experience Updated';
       }
