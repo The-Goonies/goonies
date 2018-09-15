@@ -136,6 +136,11 @@ input.login {
   }
 .start-btn { color: #0a970a }
 .stop-btn { color: #df1d0f }
+.timer-btns:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #050404;
+}
 .timer-center { text-align: center }
 .timer-format {
   font-size: 76px;
@@ -163,6 +168,24 @@ input.login {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.timer-text {
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font: white;
+    font-style: bold;
+}
+.distance-calculator {
+    background-color: white;
+    background-image: url('https://cdn.onlinewebfonts.com/svg/img_546769.png');
+    background-position: 60px 3px; 
+    background-repeat: no-repeat;
+    background-size: 17px;
+    margin: 30px;
+    width: 100px;
+}
+input[type=text]:focus {
+    background-color: lightblue;
 }
 
  
