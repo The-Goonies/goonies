@@ -7,6 +7,7 @@ class Timer extends React.Component {
       elapsedTime: 0,
       savePoints: [],
       distanceInMiles: 0,
+      trailDistance: 0,
     };
     this.time = null;
     this.startTimer = this.startTimer.bind(this);
@@ -52,30 +53,39 @@ class Timer extends React.Component {
     });
   }
 
-  handleSave() {
+  handleSave(e) {
+    e.preventDefault();
     const { distanceInMiles } = this.state;
-    this.setState({ distanceInMiles }, () => this.render());
+    this.setState({ distanceInMiles });
   }
 
   render() {
     const timeFormat = sec => (`${Math.floor(sec / 60)}:${(`0${sec % 60}`).slice(-2)}`);
+
     const Button = props => (<button type="button" {...props} />);
-    const { elapsedTime, savePoints, distanceInMiles } = this.state;
+    const {
+      elapsedTime,
+      savePoints,
+      distanceInMiles,
+      trailDistance,
+    } = this.state;
+
     return (
       <div>
         <div className="timer-center">
           <h1 className="timer-format">
             {timeFormat(elapsedTime)}
           </h1>
-          <Button className="timer-btns stop-btn" onClick={this.stopTimer}>Stop</Button>
           <Button className="timer-btns start-btn" onClick={this.startTimer}>Start</Button>
-          <Button className="timer-btns stop-btn" onClick={this.resetTimer}>Reset</Button>
+          <Button className="timer-btns stop-btn" onClick={this.stopTimer}>Stop</Button>
           <Button className="timer-btns start-btn" onClick={this.saveTimer}>Save</Button>
+          <Button className="timer-btns stop-btn" onClick={this.resetTimer}>Reset</Button>
           <br />
-          Distance:
           <div className="fieldwrapper">
-            <input type="text" name="distanceInMiles" value={distanceInMiles} onChange={this.onChange} />
-            <button type="submit" onClick={this.handleSave}>Save</button>
+            <div className="timer-text"> Distance Hiked: </div>
+            <input className="distance-calculator" type="text" name="distanceInMiles" value={distanceInMiles} onChange={this.onChange} />
+            <div className="timer-text"> Total: </div>
+            <input className="distance-calculator" type="text" name="trailDistance" value={trailDistance} onChange={this.onChange} />
           </div>
         </div>
         <ul className="timer-save">
@@ -85,10 +95,18 @@ class Timer extends React.Component {
               {' '}
               {timeFormat(point)}
               <span className="timer-distance">
-                {distanceInMiles}
+                { Math.floor(distanceInMiles / (point / 3600)) }
                 {' '}
-                Miles
+                MPH
               </span>
+              {/* Projected time formula: Total Distance / Avg Speed = Time to destination */}
+              <div>
+                Projected Time:
+                {' '}
+                { Math.floor(trailDistance / Math.floor(distanceInMiles / (point / 3600))) }
+                {' '}
+                Hours
+              </div>
             </li>))}
         </ul>
       </div>
