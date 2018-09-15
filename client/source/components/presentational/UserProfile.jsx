@@ -13,9 +13,12 @@ class UserProfile extends React.Component {
       oldPassword: '',
       newPassword: '',
       confirmNewPassword: '',
+      editUsername: false,
+      editExperience: false,
     };
     this.changePassword = this.changePassword.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.changeUserProfile = this.changeUserProfile.bind(this);
   }
 
   changePassword(e) {
@@ -79,21 +82,52 @@ class UserProfile extends React.Component {
     }
   }
 
+  changeUserProfile(e) {
+    const { editUsername, editExperience } = this.state;
+    if (e.target.name === 'newName') {
+      this.setState({
+        editUsername: !editUsername,
+      });
+    } else if (e.target.name === 'newExp') {
+      this.setState({
+        editExperience: !editExperience,
+      });
+    }
+  }
+
   render() {
     const {
-      username, experience, oldPassword, newPassword, confirmNewPassword,
+      username,
+      experience,
+      oldPassword,
+      newPassword,
+      confirmNewPassword,
+      editUsername,
+      editExperience,
     } = this.state;
     return (
       <div>
         <h1>User Profile</h1>
         <form>
-          Username:
-          { username }
-          <input type="button" value="Change Username" name="newName" onClick={this.changeUserProfile} />
+          {
+            editUsername ? (<div>hello</div>) : (
+              <div>
+                Username:
+                {username}
+                <input type="button" value="Change Username" name="newName" onClick={this.changeUserProfile} />
+              </div>
+            )
+          }
           <br />
-          Experience Level:
-          { experience }
-          <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
+          {
+            editExperience ? (<div>hi</div>) : (
+              <div>
+                Experience Level:
+                {experience}
+                <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
+              </div>
+            )
+        }
           <br />
           <h4>Change Password</h4>
           Old Password:
