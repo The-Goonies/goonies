@@ -141,6 +141,10 @@ class UserProfile extends React.Component {
       });
   }
 
+  handleNewExperience(experience){
+    console.log('what is experience', experience);
+  }
+
   render() {
     const {
       username,
@@ -175,8 +179,10 @@ class UserProfile extends React.Component {
           {
             editExperience ? (
               <ExperienceEdit
+                username={username}
                 experience={experience}
                 handleCancelChange={this.handleCancelChange}
+                handleNewExperience={this.handleNewExperience}
               />
             ) : (
               <div>
