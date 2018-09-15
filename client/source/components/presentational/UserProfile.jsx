@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import UsernameEdit from './UsernameEdit';
+import ExperienceEdit from './ExperienceEdit';
 
 class UserProfile extends React.Component {
   constructor({ props, userInfo }) {
@@ -19,7 +21,9 @@ class UserProfile extends React.Component {
     this.changePassword = this.changePassword.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.changeUserProfile = this.changeUserProfile.bind(this);
+    this.handleCancelChange = this.handleCancelChange.bind(this);
   }
+  //  ************** Password Change *************  //
 
   changePassword(e) {
     this.setState({
@@ -82,6 +86,8 @@ class UserProfile extends React.Component {
     }
   }
 
+  //  ************** UserInfo Change *************  //
+
   changeUserProfile(e) {
     const { editUsername, editExperience } = this.state;
     if (e.target.name === 'newName') {
@@ -89,6 +95,19 @@ class UserProfile extends React.Component {
         editUsername: !editUsername,
       });
     } else if (e.target.name === 'newExp') {
+      this.setState({
+        editExperience: !editExperience,
+      });
+    }
+  }
+
+  handleCancelChange(componentChange) {
+    const { editUsername, editExperience } = this.state;
+    if (componentChange === 'cancelUsername') {
+      this.setState({
+        editUsername: false,
+      });
+    } else {
       this.setState({
         editExperience: !editExperience,
       });
@@ -110,7 +129,9 @@ class UserProfile extends React.Component {
         <h1>User Profile</h1>
         <form>
           {
-            editUsername ? (<div>hello</div>) : (
+            editUsername ? (
+              <UsernameEdit username={username} handleCancelChange={this.handleCancelChange} />
+            ) : (
               <div>
                 Username:
                 {username}
@@ -120,14 +141,16 @@ class UserProfile extends React.Component {
           }
           <br />
           {
-            editExperience ? (<div>hi</div>) : (
+            editExperience ? (
+              <ExperienceEdit experience={experience} handleCancelChange={this.handleCancelChange} />
+            ) : (
               <div>
                 Experience Level:
                 {experience}
                 <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
               </div>
             )
-        }
+          }
           <br />
           <h4>Change Password</h4>
           Old Password:
