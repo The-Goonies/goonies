@@ -99,56 +99,64 @@ class ForecastForm extends React.Component {
       day3Weather,
     } = this.state;
     return (
-      <div>
+      <div className="threedayforecast">
         <h2>3 Day Forecast</h2>
-        <h3>Tomorrow</h3>
-        <h4>{tomorrowWeather}</h4>
-        <p>
-          High Temp:
-          {' '}
-          {tomorrowHigh}
-          {' '}
-          F°
-        </p>
-        <p>
-          Low Temp:
-          {' '}
-          {tomorrowLow}
-          {' '}
-          F°
-        </p>
-        <h3>Day 2</h3>
-        <h4>{day2Weather}</h4>
-        <p>
-          High Temp:
-          {' '}
-          {day2High}
-          {' '}
-          F°
-        </p>
-        <p>
-          Low Temp:
-          {' '}
-          {day2Low}
-          {' '}
-          F°
-        </p>
-        <h3>Day 3</h3>
-        <h4>{day3Weather}</h4>
-        <p>
-          High Temp:
-          {' '}
-          {day3High}
-          {' '}
-          F°
-        </p>
-        <p>
-          Low Temp:
-          {' '}
-          {day3Low}
-          {' '}
-          F°
-        </p>
+        <div className="foreHolder">
+          <div className="tomorrow">
+            <h3> Tomorrow </h3>
+            <h4>{tomorrowWeather}</h4>
+            <p>
+              High Temp:
+              {' '}
+              {tomorrowHigh}
+              {' '}
+              F°
+            </p>
+            <p>
+              Low Temp:
+              {' '}
+              {tomorrowLow}
+              {' '}
+              F°
+            </p>
+          </div>
+          <div className="day2">
+            <h3> Day 2 </h3>
+            <h4>{day2Weather}</h4>
+            <p>
+              High Temp:
+              {' '}
+              {day2High}
+              {' '}
+              F°
+            </p>
+            <p>
+              Low Temp:
+              {' '}
+              {day2Low}
+              {' '}
+              F°
+            </p>
+          </div>
+          <div className="day3">
+            <h3> Day 3 </h3>
+            <h4>{day3Weather}</h4>
+            <p>
+              High Temp:
+              {' '}
+              {day3High}
+              {' '}
+              F°
+              {' '}
+            </p>
+            <p>
+              Low Temp:
+              {' '}
+              {day3Low}
+              F°
+            </p>
+          </div>
+        </div>
       </div>
     );
   }

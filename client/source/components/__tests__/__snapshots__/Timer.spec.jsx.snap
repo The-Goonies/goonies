@@ -2,28 +2,63 @@
 
 exports[`App Renders correctly 1`] = `
 <div>
-  <div>
-    <h1>
+  <div
+    className="timer-center"
+  >
+    <h1
+      className="timer-format"
+    >
       0:00
     </h1>
     <button
-      onClick={[Function]}
-      type="button"
-    >
-      Start
-    </button>
-    <button
+      className="timer-btns stop-btn"
       onClick={[Function]}
       type="button"
     >
       Stop
     </button>
     <button
+      className="timer-btns start-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Start
+    </button>
+    <button
+      className="timer-btns stop-btn"
       onClick={[Function]}
       type="button"
     >
       Reset
     </button>
+    <button
+      className="timer-btns start-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Save
+    </button>
+    <br />
+    Distance:
+    <div
+      className="fieldwrapper"
+    >
+      <input
+        name="distanceInMiles"
+        onChange={[Function]}
+        type="text"
+        value={0}
+      />
+      <button
+        onClick={[Function]}
+        type="submit"
+      >
+        Save
+      </button>
+    </div>
   </div>
+  <ul
+    className="timer-save"
+  />
 </div>
 `;
