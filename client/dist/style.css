@@ -191,14 +191,14 @@ input[type=text]:focus {
     background-color: lightblue;
 }
 
+
  /********Login********/
 
-<<<<<<< HEAD
- div.login label {
+div.login label {
   color: black;
   text-align: left;
   font-size: 18px;
- }
+}
   
 input[type=button].login {
   padding: 14px 20px;
@@ -255,8 +255,10 @@ div.userprofilewrapper {
 
 .userprofilewrapper input[type=button] {
   margin: 0px 65px;
-=======
+}
+
 /********* Weather *********/
+
 .forecast {
   display: flex;
 }
@@ -291,5 +293,4 @@ p {
 }
 .day3 {
   display: flex;
->>>>>>> updated snap shot files added css for weather
 }
