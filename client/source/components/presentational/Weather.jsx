@@ -38,7 +38,7 @@ class Weather extends React.Component {
         alert(error, 'Could not get weather data');
       });
   }
-  // HAS 8 FORECAST PER DAY
+  // HAS 8 FORECAST PER 1 DAY
 
   getFiveDayForcast() {
     axios.get('/api/weatherfive')
@@ -64,8 +64,8 @@ class Weather extends React.Component {
       fiveDayForecast,
     } = this.state;
     return (
-      <div>
-        <div>
+      <div className="allweather"> 
+        <div className="currentW">
           <h2>Current Weather</h2>
           <h4>{currentLocation}</h4>
           <h3>{currentWeather}</h3>

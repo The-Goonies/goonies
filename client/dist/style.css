@@ -1,6 +1,6 @@
 /********* GENERAL *********/
 body {
-  width: 320px; /* iphone 4 width*/
+  width: 500px; /* iphone 4 width*/
   margin: 0 auto;
   background-image: url('https://303magazine.com/wp-content/uploads/2016/05/ThinkstockPhotos-177541650-1.jpg');
   background-repeat: no-repeat;
@@ -11,8 +11,7 @@ body {
   line-height: 2em;
 }
 h1 {
-  color:  #ffffff;
-  text-align: center;
+  color:  hsl(248, 80%, 6%);
 }
 h2 {
   color:  #A9DFBF;
@@ -22,6 +21,8 @@ h3 {
 }
 h4 {
   color:  #27AE60;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 input {
@@ -192,6 +193,7 @@ input[type=text]:focus {
 
  /********Login********/
 
+<<<<<<< HEAD
  div.login label {
   color: black;
   text-align: left;
@@ -253,4 +255,41 @@ div.userprofilewrapper {
 
 .userprofilewrapper input[type=button] {
   margin: 0px 65px;
+=======
+/********* Weather *********/
+.forecast {
+  display: flex;
+}
+
+/********* Forecast *********/
+.allweather {
+  display: flex;
+  flex-direction: column;
+}
+
+.threedayforecast {
+  display: flex;
+  flex-flow: column;
+}
+
+p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.foreHolder {
+  display: flex;
+  justify-content: center;
+}
+
+.tomorrow {
+  display: flex;
+}
+
+.day2 {
+  display:flex
+}
+.day3 {
+  display: flex;
+>>>>>>> updated snap shot files added css for weather
 }
