@@ -64,7 +64,7 @@ class Weather extends React.Component {
       fiveDayForecast,
     } = this.state;
     return (
-      <div className="allweather"> 
+      <div className="allweather">
         <div className="currentW">
           <h2>Current Weather</h2>
           <h4>
