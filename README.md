@@ -34,3 +34,20 @@ Express with a 'catchall' router setup to direct all users back to our homepage
 ## DB ##
 PostgreSQL hosted on an ElephantSQL server (DB_URL is an environmental variable)
 
+# Functionality at-a-glance #
+
+## Map ##
+
+## Park Info ##
+
+## Sign up and Login ##
+
+## Stopwatch ##
+
+## Route History ##
+Objective:
+Description:
+Tips:
+Vision for more features?
+
+## Weather ##
