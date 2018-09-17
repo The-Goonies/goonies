@@ -16,6 +16,7 @@ const Route = ({ route, handleEdit }) => {
   const date = route.date.toString();
 
   return (
+    // may want to move style into CSS
     <div className="route" style={divStyle}>
       <div />
       <div>

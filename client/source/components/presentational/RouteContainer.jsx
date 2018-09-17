@@ -18,7 +18,8 @@ class RouteContainer extends React.Component {
   }
 
   componentDidMount() {
-    // think can take out logic here
+  /* if id does not exist it means the "Add Route" button was clicked
+  and so we want it to immediately be editable */
     const { route, route: { id } } = this.props;
     if (!id) {
       this.setState({
