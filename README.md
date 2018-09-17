@@ -51,3 +51,31 @@ Tips:
 Vision for more features?
 
 ## Weather ##
+Tips:
+  Need to get an free API Key which is free up to a 1000 pulls per day
+  Displays the current and forecasted weather using https://openweathermap.org/api 
+  Uses 5 day forcast API that returns an array of 40 objects one for every 3 hours
+  Currently uses Latitude and Longitude coordinates to get weather data  
+
+Vision for more features:
+  Use map or some other way to get current location to get weather data for other places
+  Create a better UX with graphics for weather conditions 
+
+Resources: 
+  https://openweathermap.org/api
+
+
+## Jest Testing ##
+Tips:
+  Currently Jest/enzyme is set up for most components Snapshot testing and Coverage testing,
+  There are some errors with the components having a Dom render and undefined values 
+  The chart that is generated is showing code coverage and shows which lines are not covered by Jest testing 
+
+Vision for more features:
+  Additional features is adding more tests to get full coverage and all components and functions 
+
+Resources:
+  https://jestjs.io/docs/en/snapshot-testing#snapshot-testing-with-jest
+  https://hackernoon.com/testing-react-components-with-jest-and-enzyme-41d592c174f
+  https://airbnb.io/enzyme/docs/api/
+  https://jestjs.io/docs/en/configuration.html
