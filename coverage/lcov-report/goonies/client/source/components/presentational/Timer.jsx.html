@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">30.77% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/13</span>
+        <span class='fraction'>4/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.17% </span>
+        <span class="strong">52% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/24</span>
+        <span class='fraction'>13/25</span>
       </div>
     </div>
   </div>
@@ -142,12 +142,31 @@
 97
 98
 99
-100</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,13 +218,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,6 +253,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,6 +286,7 @@ class Timer extends React.Component {
       elapsedTime: 0,
       savePoints: [],
       distanceInMiles: 0,
+      trailDistance: 0,
     };
     this.time = null;
     this.startTimer = this.startTimer.bind(this);
@@ -295,30 +332,39 @@ class Timer extends React.Component {
     });
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  ha</span>ndleSave() {
+<span class="fstat-no" title="function not covered" >  ha</span>ndleSave(e) {
+<span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
     const { distanceInMiles } = <span class="cstat-no" title="statement not covered" >this.state;</span>
-<span class="cstat-no" title="statement not covered" >    this.setState({ distanceInMiles }, <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >this.render())</span>;</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({ distanceInMiles });</span>
   }
 &nbsp;
   render() {
     const timeFormat = sec =&gt; (`${Math.floor(sec / 60)}:${(`0${sec % 60}`).slice(-2)}`);
+&nbsp;
     const Button = props =&gt; (&lt;button type="button" {...props} /&gt;);
-    const { elapsedTime, savePoints, distanceInMiles } = this.state;
+    const {
+      elapsedTime,
+      savePoints,
+      distanceInMiles,
+      trailDistance,
+    } = this.state;
+&nbsp;
     return (
       &lt;div&gt;
         &lt;div className="timer-center"&gt;
           &lt;h1 className="timer-format"&gt;
             {timeFormat(elapsedTime)}
           &lt;/h1&gt;
-          &lt;Button className="timer-btns stop-btn" onClick={this.stopTimer}&gt;Stop&lt;/Button&gt;
           &lt;Button className="timer-btns start-btn" onClick={this.startTimer}&gt;Start&lt;/Button&gt;
-          &lt;Button className="timer-btns stop-btn" onClick={this.resetTimer}&gt;Reset&lt;/Button&gt;
+          &lt;Button className="timer-btns stop-btn" onClick={this.stopTimer}&gt;Stop&lt;/Button&gt;
           &lt;Button className="timer-btns start-btn" onClick={this.saveTimer}&gt;Save&lt;/Button&gt;
+          &lt;Button className="timer-btns stop-btn" onClick={this.resetTimer}&gt;Reset&lt;/Button&gt;
           &lt;br /&gt;
-          Distance:
           &lt;div className="fieldwrapper"&gt;
-            &lt;input type="text" name="distanceInMiles" value={distanceInMiles} onChange={this.onChange} /&gt;
-            &lt;button type="submit" onClick={this.handleSave}&gt;Save&lt;/button&gt;
+            &lt;div className="timer-text"&gt; Distance Hiked: &lt;/div&gt;
+            &lt;input className="distance-calculator" type="text" name="distanceInMiles" value={distanceInMiles} onChange={this.onChange} /&gt;
+            &lt;div className="timer-text"&gt; Total: &lt;/div&gt;
+            &lt;input className="distance-calculator" type="text" name="trailDistance" value={trailDistance} onChange={this.onChange} /&gt;
           &lt;/div&gt;
         &lt;/div&gt;
         &lt;ul className="timer-save"&gt;
@@ -328,10 +374,18 @@ class Timer extends React.Component {
               {' '}
               {timeFormat(point)}
               &lt;span className="timer-distance"&gt;
-                {distanceInMiles}
+                { Math.floor(distanceInMiles / (point / 3600)) }
                 {' '}
-                Miles
+                MPH
               &lt;/span&gt;
+              {/* Projected time formula: Total Distance / Avg Speed = Time to destination */}
+              &lt;div&gt;
+                Projected Time:
+                {' '}
+                { Math.floor(trailDistance / Math.floor(distanceInMiles / (point / 3600))) }
+                {' '}
+                Hours
+              &lt;/div&gt;
             &lt;/li&gt;))}
         &lt;/ul&gt;
       &lt;/div&gt;
@@ -346,7 +400,7 @@ export default Timer;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Sep 15 2018 18:44:46 GMT-0500 (CDT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 17 2018 12:13:43 GMT-0500 (CDT)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

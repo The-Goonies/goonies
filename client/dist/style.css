@@ -20,7 +20,7 @@ h3 {
   color:  #051886;
 }
 h4 {
-  color:  #27AE60;
+  color:  rgb(5, 46, 22);
   margin-left: 8px;
   margin-right: 8px;
 }
@@ -218,11 +218,14 @@ p {
 
 .tomorrow {
   display: flex;
+  background-color: rgb(252, 250, 250, .3);
 }
 
 .day2 {
-  display:flex
+  display:flex;
+  background-color:  rgb(252, 250, 250, .3);
 }
 .day3 {
   display: flex;
+  background-color:  rgb(252, 250, 250, .3);
 }

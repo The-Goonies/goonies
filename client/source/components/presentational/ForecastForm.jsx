@@ -17,6 +17,7 @@ class ForecastForm extends React.Component {
       day3Weather: '',
     };
   }
+  // HAS 8 FORECAST PER 1 DAY
 
   componentDidUpdate(prevProps) {
     const { fiveday } = this.props;
