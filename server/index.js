@@ -147,6 +147,7 @@ app.get('/api/weatherfive', (req, res) => {
 // ///// PARK INFO ///// //
 
 app.get('/api/park/alerts', (req, res) => {
+  // hard coded for yosemite alerts (parkCode=yose)
   axios.get(`https://api.nps.gov/api/v1/alerts?parkCode=yose%2C&stateCode=ca&limit=10&api_key=${process.env.PARK_API}`)
     .then((data) => {
       res.send(data.data);
@@ -157,6 +158,7 @@ app.get('/api/park/alerts', (req, res) => {
 });
 
 app.get('/api/park/info', (req, res) => {
+  // hard coded for yosemite park info (parkCode=yose)
   axios.get(`https://api.nps.gov/api/v1/parks?parkCode=yose&stateCode=ca&api_key=${process.env.PARK_API}`)
     .then((data) => {
       res.send(data.data.data);
