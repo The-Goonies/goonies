@@ -88,6 +88,7 @@ class RouteHistory extends React.Component {
       <div className="routeHistory">
         <div className="routesHeader">
           <h1>My Route History</h1>
+          <button className="addRouteButton" type="button" onClick={this.addRoute}>Add New Route</button>
           <p>
             Average Speed:
             {avgSpeed}
@@ -95,7 +96,6 @@ class RouteHistory extends React.Component {
             MPH
           </p>
         </div>
-        <button className="addRouteButton" type="button" onClick={this.addRoute}>Add New Route</button>
         <div className="routesContainer">
           { routes.map(route => (
             <RouteContainer
