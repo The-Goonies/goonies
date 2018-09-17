@@ -41,6 +41,7 @@ Express with a 'catchall' router setup to direct all users back to our homepage.
 
 ## DB ##
 PostgreSQL hosted on an ElephantSQL server (DB_URL is an environmental variable)
+https://www.elephantsql.com/
 
 # Functionality at-a-glance #
 
