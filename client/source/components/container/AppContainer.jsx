@@ -43,7 +43,7 @@ class AppContainer extends React.Component {
     // this the appcontainer code that should hide the button
     return (
       <div className="header">
-        <h1>Backpacker</h1>
+        <h1 className="logo">Backpacker</h1>
         <nav>
           { username
             ? <button className="menu" type="button" onClick={this.handleMenuClick.bind(this)}>MENU</button>

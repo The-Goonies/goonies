@@ -67,19 +67,26 @@ class Login extends React.Component {
       return <Redirect noThrow to="/signUp" />;
     }
     return (
-      <div>
+      <div className="login">
         <form>
-          Username:
-          <br />
-          <input type="text" name="username" onChange={this.handleChange} />
-          <br />
-          Password:
-          <br />
-          <input type="password" name="password" onChange={this.handleChange} />
-          <br />
-          <input className="login" type="button" value="Login" onClick={this.handleLogin} />
-          <br />
-          <input type="button" value="New User? Register" onClick={this.redirToSignUp} />
+          <div>
+            <label htmlFor="username">
+            Username:
+              <input type="text" name="username" onChange={this.handleChange} />
+            </label>
+            <br />
+            <label htmlFor="password">
+              Password:
+              <input type="password" name="password" onChange={this.handleChange} />
+            </label>
+            <br />
+          </div>
+          <div>
+            <input type="button" className="login" value="Login" onClick={this.handleLogin} />
+          </div>
+          <div>
+            <input type="button" value="New User? Register" onClick={this.redirToSignUp} />
+          </div>
         </form>
       </div>
     );
