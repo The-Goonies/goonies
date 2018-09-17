@@ -1,39 +1,40 @@
 # Project Name #
 
-Goonies
+Backpacker
 
 ## Heading ##
 
-  Goonies BackPacker App
+Helpful tools for backpackers on the trail
 
 ## Sub-Heading ##
 
-  Individuals looking to plan a hiking route in Yosemite. Users can set their route on a map and see instant data on distance, elevation, estimated duration, estimated water required, and estimated calories required.
+Backpackers can improve their hiking adventures in Yosemite with access to a map, weather updates, saftey alerts, park information, a stop watch, and their saved route history. 
 
 ## Summary ##
 
-  Planning to hike can be inconvenient at best and dangerous at worst. Newcomers may not know what to expect, and experienced backpackers are constantly struggling to pack just right for long and strenuous journeys. The Goonies backpacking app makes route planning easy and gives you instant estimates for duration and water/food needs, giving you the confidence you need to spend less time planning and more time hiking! The initial release is limited to Yosemite National Park in the US.
+So, you made it to Yosemite. You have your gear and some food, and now you're stepping into the wilderness. Backpacker is there for you in this moment. Pull out one simple app to find essential information to put you and your buddies at ease and make this a trip to remember for all the right reasons. 
+
+With a built in map, weather updates, safety alerts, and park information, you have the tools you need to help keep you safe. Additional tools like a stop watch and route history allow you to know your pace and aim to beat your past records!
 
 ## Problem ##
 
-  Selecting hiking routes and planning accordingly can be a tedious task for new and experienced hikers alike. An informed decision requires knowing distance and elevation so that often inaccurate estimations can be made for how long it will take and how much water and food needs to be carried in. Hikers usually pick new routes, so these estimations are a recurring challenge, and given the circumstance, can be dangerous if incorrect!
+There are a lot of factors to be aware of when backpacking in the wilderness. Where am I? Where does this trail go? Will it be this hot tomorrow? Are those clouds rain clouds? How fast am I going? How long will it take me to finish 10 miles at my current pace? Which trail did I take last time? Is there a fire nearby? 
 
 ## Solution ##
-
-  The Goonies Backpacking App addresses these needs by offering a simple map on which hikers can drop pins to set a route, and see instant estimates for calories needed, water needed, and duration based on distance and elevation changes of their route.
+Backpacker addresses these needs by offering simple, easy to use tools all in one place. Hikers can quickly take a look at the map, check the weather, see alerts, measure their pace, and track past routes. Backpacker has your back! 
 
 ## Quote from You ##
 
-  "Our backpacker app is the perfect mix between convenience and safety - we take the hassle out of planning and give you confidence you're prepared!"
+"Our Backpacker app is the perfect mix between convenience and safety. Backpacker has your back to make this a hiking trip you'll remember for all the right reasons!"
 
 ## How to Get Started ##
 
-  Visit our app at www.goonies.heroku.com to sign up and start planning your Yosemite route!
+Visit our app at www.goonies.heroku.com to sign up and start using Backpacker's tools on your next trip to Yosemite!
 
 ## Customer Quote ##
 
-   "I use Goonies for absolutely every trip. It's simple route planning tool and instant feedback cuts the planning trip in half, and I never end up carrying too much or too little." -- experienced backpacker
+"I was so thankful for Backpacker when it notified me that a forest fire had started nearby. I was able to use the map to get back to a safe area. " -- a backpacker at Yosemite National Park
 
 ## Closing and Call to Action ##
 
-  Want to visit Yosemite? Visit www.goonies.heroku.com to make it a reality.
+Ready to hit the trails? Visit www.goonies.heroku.com!

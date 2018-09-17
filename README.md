@@ -48,6 +48,12 @@ https://www.elephantsql.com/
 ## Map ##
 
 ## Park Info ##
+The park info uses the National Park Services API to get safety alerts and park info for Yosemite. 
+https://www.nps.gov/subjects/digital/nps-data-api.htm
+
+The API key is stored as PARK_API in a .env file (local) as well as a Config Var on Heroku (deplyed).
+
+Sample data can be found in SampleData.js, additional sample data can be found in the NPS API documentation.
 
 ## Sign up and Login ##
 
