@@ -119,6 +119,11 @@ input.login {
   padding: 20px;
 }
 
+/********* PARK INFO *********/
+.parksInfo {
+  background-color: rgba(56, 46, 46, 0.3);
+}
+
 /********* STOP WATCH *********/
 .timer-btns {
     font-family: inherit;
