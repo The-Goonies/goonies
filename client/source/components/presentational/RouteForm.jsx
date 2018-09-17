@@ -63,7 +63,7 @@ class RouteForm extends React.Component {
       averageSpeedMPH,
     } = this.state;
     return (
-      // TODO: will want to implement validation on this form
+      // TODO: implement validation on this form
       <div className="routeForm" style={divStyle}>
         <form onSubmit={this.onSubmit}>
           <label htmlFor="routeName">

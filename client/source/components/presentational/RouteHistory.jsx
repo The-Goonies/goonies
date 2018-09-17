@@ -16,8 +16,6 @@ class RouteHistory extends React.Component {
     this.handleUpsert = this.handleUpsert.bind(this);
   }
 
-  // TODO: get routes sorted by date, or do we want as is by most recently created?
-
   componentDidMount() {
     this.getRoutes();
   }
