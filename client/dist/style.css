@@ -12,6 +12,7 @@ body {
 }
 h1 {
   color:  #ffffff;
+  text-align: center;
 }
 h2 {
   color:  #A9DFBF;
@@ -47,8 +48,9 @@ button:focus {
 /********* LOGO *********/
 .logo {
   font-style: bold;
-  text-transform: uppercase;
-  color:  #27AE60;
+  font-size: 56px;
+  text-align: center;
+  color:  #087335;
 }
 
 /********* MENU *********/
@@ -188,6 +190,67 @@ input[type=text]:focus {
     background-color: lightblue;
 }
 
- 
-  
+ /********Login********/
 
+ div.login label {
+  color: black;
+  text-align: left;
+  font-size: 18px;
+ }
+  
+input[type=button].login {
+  padding: 14px 20px;
+  margin: 8px 0;
+}
+
+div.login p {
+  color: black;
+  text-align: left;
+  font-size: 18px;
+}
+
+div.login select {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+input[type=button].signup {
+  float: left;
+  padding: 15px 30px;
+  text-align: center;
+  display: inline-block;
+}
+
+/******UserProfile*********/
+
+
+.userprofile p {
+  color: black;
+  text-align: left;
+  font-size: 18px;
+}
+
+.userprofile select {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+div.userprofilewrapper {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.userprofilewrapper input[type=button] {
+  margin: 0px 65px;
+}

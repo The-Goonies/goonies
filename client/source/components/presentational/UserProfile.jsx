@@ -143,7 +143,6 @@ class UserProfile extends React.Component {
   }
 
   handleNewExperience(newExperience) {
-    console.log('what is experience', newExperience);
     const { username } = this.state;
     axios.put(`/api/users/update/exp/${username}/${newExperience}`)
       .then((res) => {
@@ -172,8 +171,8 @@ class UserProfile extends React.Component {
       editExperience,
     } = this.state;
     return (
-      <div>
-        <h1>User Profile</h1>
+      <div className="userprofile">
+        <h3>My Profile</h3>
         <form>
           {
             editUsername ? (
@@ -183,10 +182,12 @@ class UserProfile extends React.Component {
                 handleNewUsername={this.handleNewUsername}
               />
             ) : (
-              <div>
-                Username:
-                {' '}
-                {username}
+              <div className="userprofilewrapper">
+                <p>
+                  Username:
+                  {' '}
+                  {username}
+                </p>
                 <input type="button" value="Change Username" name="newName" onClick={this.changeUserProfile} />
               </div>
             )
@@ -200,27 +201,35 @@ class UserProfile extends React.Component {
                 handleNewExperience={this.handleNewExperience}
               />
             ) : (
-              <div>
-                Experience Level:
-                {' '}
-                {experience}
+              <div className="userprofile-wrapper">
+                <p>
+                  Experience Level:
+                  {' '}
+                  {experience}
+                </p>
                 <input type="button" value="Edit" name="newExp" onClick={this.changeUserProfile} />
               </div>
             )
           }
           <br />
-          <h4>Change Password</h4>
+          <h3>Change Password</h3>
+          <label htmlFor="oldpassword">
           Old Password:
+            <br />
+            <input type="password" name="oldPassword" value={oldPassword} onChange={this.changePassword} />
+          </label>
           <br />
-          <input type="password" name="oldPassword" value={oldPassword} onChange={this.changePassword} />
-          <br />
+          <label htmlFor="newpassword">
           New Password:
+            <br />
+            <input type="password" name="newPassword" value={newPassword} onChange={this.changePassword} />
+          </label>
           <br />
-          <input type="password" name="newPassword" value={newPassword} onChange={this.changePassword} />
-          <br />
+          <label htmlFor="confirmpassword">
           Confirm New Password:
-          <br />
-          <input type="password" name="confirmNewPassword" value={confirmNewPassword} onChange={this.changePassword} />
+            <br />
+            <input type="password" name="confirmNewPassword" value={confirmNewPassword} onChange={this.changePassword} />
+          </label>
           <br />
           <input type="button" value="Update Password" onClick={this.handlePasswordChange} />
         </form>
