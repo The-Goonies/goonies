@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "jest-test": "jest",
-    "jest-update": "jest -u",
+    "jest-update": "jest -- -u",
     "jest-watch": "jest --watch",
     "jest-coverage": "jest --coverage",
     "lint": "eslint './client/source/components/**/*.jsx' db server",
@@ -23,7 +23,7 @@
     ],
     "forceExit": true,
     "setupFiles": [
-      "/Users/high-z/Desktop/HRR-33/goonies/client/source/components/__tests__/jestsetup.js"
+      "/Users/high-z/Desktop/HRR-33/goonies/jestsetup.js"
     ]
   },
   "engines": {
@@ -42,7 +42,6 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "enzyme-to-json": "^3.3.4",
     "eslint": "^5.5.0",
@@ -60,6 +59,7 @@
     "ts-jest": "^23.1.4"
   },
   "dependencies": {
+    "enzyme": "^3.6.0",
     "@reach/router": "^1.1.1",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.0",

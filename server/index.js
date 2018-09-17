@@ -143,25 +143,6 @@ app.get('/api/weatherfive', (req, res) => {
     });
 });
 
-app.get('/api/weathercurrent', (req, res) => {
-  weather.getCurrentWeather()
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(err, 'Error getting weather data');
-    });
-});
-
-app.get('/api/weatherfive', (req, res) => {
-  weather.getFiveDayWeather()
-    .then((data) => {
-      res.send(data.list);
-    })
-    .catch((err) => {
-      res.status(err, 'Error getting weather data');
-    });
-});
 
 // ///// PARK INFO ///// //
 
