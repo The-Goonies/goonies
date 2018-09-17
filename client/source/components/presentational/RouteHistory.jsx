@@ -85,6 +85,7 @@ class RouteHistory extends React.Component {
     return (
       <div className="routeHistory">
         <div className="routesHeader">
+        
           <h1>My Route History</h1>
           <button className="addRouteButton" type="button" onClick={this.addRoute}>Add New Route</button>
           <p>
