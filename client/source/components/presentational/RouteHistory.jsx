@@ -84,8 +84,7 @@ class RouteHistory extends React.Component {
     const { routes } = this.state;
     return (
       <div className="routeHistory">
-        <div className="routesHeader">
-        
+        <div className="routesHeader">     
           <h1>My Route History</h1>
           <button className="addRouteButton" type="button" onClick={this.addRoute}>Add New Route</button>
           <p>
