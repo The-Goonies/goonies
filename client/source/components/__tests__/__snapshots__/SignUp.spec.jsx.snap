@@ -1,50 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignUp Renders correctly 1`] = `
-<div>
+<div
+  className="login"
+>
   <form>
-    Username:
-    <input
-      name="username"
-      onChange={[Function]}
-      type="text"
-    />
-    <br />
-    Password:
-    <input
-      name="password"
-      onChange={[Function]}
-      type="password"
-    />
-    <br />
-    Experience Level:
-    <select
-      name="experience"
-      onChange={[Function]}
-      value="Novice"
+    <div
+      className="loginfield"
     >
-      <option
+      <label
+        htmlFor="username"
+      >
+        Username:
+        <br />
+        <input
+          name="username"
+          onChange={[Function]}
+          type="text"
+        />
+      </label>
+      <br />
+      <label
+        htmlFor="password"
+      >
+        Password:
+        <br />
+        <input
+          name="password"
+          onChange={[Function]}
+          type="password"
+        />
+      </label>
+      <br />
+      <p>
+        Experience Level:
+      </p>
+      <select
+        name="experience"
+        onChange={[Function]}
         value="Novice"
       >
-        Novice
-      </option>
-      <option
-        value="Intermediate"
-      >
-        Intermediate
-      </option>
-      <option
-        value="Advanced"
-      >
-        Advanced
-      </option>
-    </select>
-    <br />
-    <input
-      onClick={[Function]}
-      type="button"
-      value="Submit"
-    />
+        <option
+          value="Novice"
+        >
+          Novice
+        </option>
+        <option
+          value="Intermediate"
+        >
+          Intermediate
+        </option>
+        <option
+          value="Advanced"
+        >
+          Advanced
+        </option>
+      </select>
+      <br />
+      <input
+        className="signup"
+        onClick={[Function]}
+        type="button"
+        value="Submit"
+      />
+    </div>
   </form>
 </div>
 `;
