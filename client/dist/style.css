@@ -241,7 +241,6 @@ div.login select {
 }
 
 input[type=button].signup {
-  float: left;
   padding: 15px 30px;
   text-align: center;
   display: inline-block;
