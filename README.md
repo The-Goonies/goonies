@@ -56,6 +56,12 @@ The API key is stored as PARK_API in a .env file (local) as well as a Config Var
 Sample data can be found in SampleData.js, additional sample data can be found in the NPS API documentation.
 
 ## Sign up and Login ##
+Upon successful signup and login, the user is redirected to map.
+For signing up a new user, the user must pick a username that is unique.
+
+## User Profile ##
+Allow user to edit profile information, such as username, experience level, and password.
+Made up of 3 components: UserProfile, UsernameEdit, ExperienceEdit.
 
 ## Stopwatch ##
 
