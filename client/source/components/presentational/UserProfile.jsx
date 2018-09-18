@@ -201,7 +201,7 @@ class UserProfile extends React.Component {
                 handleNewExperience={this.handleNewExperience}
               />
             ) : (
-              <div className="userprofile-wrapper">
+              <div>
                 <p>
                   Experience Level:
                   {' '}
