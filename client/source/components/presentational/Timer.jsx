@@ -82,10 +82,10 @@ class Timer extends React.Component {
           <Button className="timer-btns stop-btn" onClick={this.resetTimer}>Reset</Button>
           <br />
           <div className="fieldwrapper">
-            <div className="timer-text"> Distance Hiked: </div>
-            <input className="distance-calculator" type="text" name="distanceInMiles" value={distanceInMiles} onChange={this.onChange} />
-            <div className="timer-text"> Total: </div>
-            <input className="distance-calculator" type="text" name="trailDistance" value={trailDistance} onChange={this.onChange} />
+            <div className="timer-text"> Distance Hiked (miles): </div>
+            <input className="distance-calculator" type="text" name="distanceInMiles" placeholder="miles" value={distanceInMiles} onChange={this.onChange} />
+            <div className="timer-text"> Total (miles): </div>
+            <input className="distance-calculator" type="text" name="trailDistance" placeholder="miles" value={trailDistance} onChange={this.onChange} />
           </div>
         </div>
         <ul className="timer-save">
@@ -103,6 +103,7 @@ class Timer extends React.Component {
               <div>
                 Projected Time:
                 {' '}
+                {/* trailDistance = Total distance in miles */}
                 { Math.floor(trailDistance / Math.floor(distanceInMiles / (point / 3600))) }
                 {' '}
                 Hours
