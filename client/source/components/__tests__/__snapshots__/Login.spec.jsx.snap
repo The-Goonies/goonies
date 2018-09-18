@@ -1,36 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Login Renders correctly 1`] = `
-<div>
+<div
+  className="login"
+>
   <form>
-    Username:
-    <br />
-    <input
-      name="username"
-      onChange={[Function]}
-      type="text"
-    />
-    <br />
-    Password:
-    <br />
-    <input
-      name="password"
-      onChange={[Function]}
-      type="password"
-    />
-    <br />
-    <input
-      className="login"
-      onClick={[Function]}
-      type="button"
-      value="Login"
-    />
-    <br />
-    <input
-      onClick={[Function]}
-      type="button"
-      value="New User? Register"
-    />
+    <div
+      className="loginfield"
+    >
+      <label
+        htmlFor="username"
+      >
+        Username:
+        <br />
+        <input
+          name="username"
+          onChange={[Function]}
+          type="text"
+        />
+      </label>
+      <br />
+      <label
+        htmlFor="password"
+      >
+        Password:
+        <br />
+        <input
+          name="password"
+          onChange={[Function]}
+          type="password"
+        />
+      </label>
+      <br />
+    </div>
+    <div
+      className="loginPageButtons"
+    >
+      <input
+        className="login"
+        onClick={[Function]}
+        type="button"
+        value="Login"
+      />
+      <input
+        onClick={[Function]}
+        type="button"
+        value="New User? Register"
+      />
+    </div>
   </form>
 </div>
 `;

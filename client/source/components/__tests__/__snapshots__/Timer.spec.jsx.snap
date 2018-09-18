@@ -45,24 +45,26 @@ exports[`Timer Renders correctly 1`] = `
       <div
         className="timer-text"
       >
-         Distance Hiked: 
+         Distance Hiked (miles): 
       </div>
       <input
         className="distance-calculator"
         name="distanceInMiles"
         onChange={[Function]}
+        placeholder="miles"
         type="text"
         value={0}
       />
       <div
         className="timer-text"
       >
-         Total: 
+         Total (miles): 
       </div>
       <input
         className="distance-calculator"
         name="trailDistance"
         onChange={[Function]}
+        placeholder="miles"
         type="text"
         value={0}
       />
