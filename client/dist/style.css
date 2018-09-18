@@ -107,11 +107,6 @@ ul.dropdown li:hover {
     cursor: pointer;
 }
 
-/********* LOGIN *********/
-input.login {
-  background-color: #ffffff;
-}
-
 /********* MAP *********/
 .map {
   display: flex;
@@ -199,15 +194,33 @@ input[type=text]:focus {
 
  /********Login********/
 
+input.login {
+  background-color: #ffffff;
+}
+
+div.loginfield {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
+.loginPageButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 div.login label {
   color: black;
   text-align: left;
   font-size: 18px;
 }
   
-input[type=button].login {
-  padding: 14px 20px;
-  margin: 8px 0;
+.login input[type=button] {
+  padding: 16px 20px;
+  margin: 8px 10px;
 }
 
 div.login p {
@@ -224,6 +237,7 @@ div.login select {
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 16px;
+  width: 384px
 }
 
 input[type=button].signup {
