@@ -20,11 +20,14 @@ const User = sequelize.define('user', {
 });
 
 const Routes = sequelize.define('route', {
-  routeName: { type: Sequelize.STRING },
-  date: { type: Sequelize.STRING },
-  distanceInMiles: { type: Sequelize.INTEGER },
-  timeToCompleteInHours: { type: Sequelize.INTEGER },
-  averageSpeedMPH: { type: Sequelize.INTEGER },
+  trailName: { type: Sequelize.STRING },
+  distance: { type: Sequelize.INTEGER },
+  difficulty: { type: Sequelize.STRING },
+  latitude: { type: Sequelize.INTEGER },
+  longitude: { type: Sequelize.INTEGER },
+  rating: { type: Sequelize.INTEGER },
+  ratingVotes: { type: Sequelize.INTEGER },
+  summary: { type: Sequelize.STRING },
 });
 
 User.hasMany(Routes);
@@ -124,19 +127,25 @@ const getRoutes = () => Routes.findAll();
 const createRoute = (route) => {
   const {
     id,
-    routeName,
-    date,
-    distanceInMiles,
-    timeToCompleteInHours,
-    averageSpeedMPH,
+    trailName,
+    distance,
+    difficulty,
+    latitude,
+    longitude,
+    rating,
+    ratingVotes,
+    summary,
   } = route;
   return Routes.upsert({
     id,
-    routeName,
-    date,
-    distanceInMiles,
-    timeToCompleteInHours,
-    averageSpeedMPH,
+    trailName,
+    distance,
+    difficulty,
+    latitude,
+    longitude,
+    rating,
+    ratingVotes,
+    summary,
   });
 };
 
