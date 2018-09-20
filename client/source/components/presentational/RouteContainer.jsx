@@ -56,7 +56,7 @@ class RouteContainer extends React.Component {
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
   }
 
-  componentDidMount() {    
+  componentDidMount() {
   /* if id does not exist it means the "Add Route" button was clicked
   and so we want it to immediately be editable */
     const { route, route: { id } } = this.props;
