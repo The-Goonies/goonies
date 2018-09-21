@@ -23,9 +23,9 @@ const Routes = sequelize.define('route', {
   trailName: { type: Sequelize.STRING },
   distance: { type: Sequelize.INTEGER },
   difficulty: { type: Sequelize.STRING },
-  latitude: { type: Sequelize.INTEGER },
-  longitude: { type: Sequelize.INTEGER },
-  rating: { type: Sequelize.INTEGER },
+  latitude: { type: Sequelize.DECIMAL(7, 4) },
+  longitude: { type: Sequelize.DECIMAL(7, 4) },
+  rating: { type: Sequelize.DECIMAL(2, 1) },
   ratingVotes: { type: Sequelize.INTEGER },
   summary: { type: Sequelize.STRING },
 });
