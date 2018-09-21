@@ -22,7 +22,7 @@ class AppContainer extends React.Component {
 
   checkSession() {
     const { session, id } = this.state;
-    if (session) {
+    if (!session) {
       return <MapYourRoute id={id} />;// dashboard
     }
     return <Login transferUserInfo={this.transferUserInfo} />;
