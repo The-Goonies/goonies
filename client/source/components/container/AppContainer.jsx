@@ -7,7 +7,6 @@ class AppContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showingMenu: true,
       session: '',
       id: 0,
     };
