@@ -5,12 +5,14 @@ language: node_js
 node_js:
   - "8"
   - "node"
+
 deploy:
   provider: heroku
   api_key:
-    secure: XuKgMWYkm+mySvwuLHtw+ElbuyeIBbnTVzuZzD9ohwyMYjsPrJMDP8wDY6Uqi40p3WfwTGarLZl3vU18BQ17v8jQdUaJ6Ciz5h0LSP5KId+2np8H1OMv5CK7sgG0wEZinbZ26ucFAJ2Xny/tmd5WJ0HZhE4RlOd2fk0Wb/Ii25dJ8bYxnTAbFWEyGgsGh1DVVfHLnmY+W4cJhKIFWUK85+615sDb2ebq3NAp6aVzgaJGFYf2uan/FFyTLNNOi3EsrENk7EDY31kFZJzJUs1yyTt5zc2FaeFrIhFv/2Eq7V6KtghGecCJI+uyduQNlo0nJNpm4B8HtYtgAr1ELRk9oW28dNK579yrs848ikCe3VgON3+BQ+OXJJKaVcwN5QFlM1LoJ5pIPq2UmoTda5mmB3V7BOMPqEmCbaPOWVMXZW00YXzsQFoeRlAYkTPfSqn8wq9ay4Qz2OrAlfiDSgiHDPy96dOAWcLZFUKSmQYS1yWXO5udMsecRCYaWc82Oz52AptdLycf6Rxw8ObI8pN9RXrQWRa48Q01OyR+hlZ1HlcqeCSJ+CipiiOBlgL8e0sU4+8NvIrIQKYXhBpOiTrk3ypEiIqQqeg50kBCSyd04Mn2jwRbbAoNXHYO1ogo8xjSYsPvpTRWwKood0SvIKo4BCIpvO7wgDRLDCVO2HIYzLs=
-  app: backpackergoonies
+    secure: process.env.HEROKU_AUTH
+  app: goonies
 
 cache:
-  directories:  
+  directories:
     - "node_modules"
+    

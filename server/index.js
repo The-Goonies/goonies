@@ -9,6 +9,7 @@ const weather = require('./weatherApiCall.js');
 // const path = require('path')
 
 const port = process.env.PORT || 5000;
+const key = process.env.REACT_APP_GOOGLE_MAPS_KEY;
 
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use(bodyparser.json());
@@ -46,6 +47,10 @@ app.get('/api/users/login', (req, res) => {
         console.log(err);
       }
     });
+});
+
+app.get('/api/key', (req, res) => {
+  res.send(key);
 });
 
 app.put('/api/users/password/:username/:newPassword', (req, res) => {
@@ -173,5 +178,6 @@ app.get('/api/park/info', (req, res) => {
 app.get('*', (req, res) => {
   res.redirect('/');
 });
+
 
 app.listen(port, () => console.log(`The Goonies are listening on ${port}`));

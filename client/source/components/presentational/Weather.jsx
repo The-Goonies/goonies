@@ -16,7 +16,6 @@ class Weather extends React.Component {
     };
   }
 
-  // testing travis-ci
   componentDidMount() {
     this.getCurrentWeatherData();
     this.getFiveDayForcast();
