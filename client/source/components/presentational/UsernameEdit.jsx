@@ -29,10 +29,10 @@ class UsernameEdit extends React.Component {
   }
 }
 
-UsernameEdit.propTypes = {
-  username: PropTypes.string.isRequired,
-  handleCancelChange: PropTypes.func.isRequired,
-  handleNewUsername: PropTypes.func.isRequired,
-};
+// UsernameEdit.propTypes = {
+//   username: PropTypes.string.isRequired,
+//   handleCancelChange: PropTypes.func.isRequired,
+//   handleNewUsername: PropTypes.func.isRequired,
+// };
 
 export default UsernameEdit;

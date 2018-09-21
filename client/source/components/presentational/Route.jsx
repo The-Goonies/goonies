@@ -44,15 +44,15 @@ const Route = ({ route, handleEdit }) => {
   );
 };
 
-Route.propTypes = {
-  route: PropTypes.shape({
-    routeName: PropTypes.string,
-    date: PropTypes.string,
-    distanceInMiles: PropTypes.number,
-    timeToCompleteInHours: PropTypes.number,
-    averageSpeedMPH: PropTypes.number,
-  }).isRequired,
-  handleEdit: PropTypes.func.isRequired,
-};
+// Route.propTypes = {
+//   route: PropTypes.shape({
+//     routeName: PropTypes.string,
+//     date: PropTypes.string,
+//     distanceInMiles: PropTypes.number,
+//     timeToCompleteInHours: PropTypes.number,
+//     averageSpeedMPH: PropTypes.number,
+//   }).isRequired,
+//   handleEdit: PropTypes.func.isRequired,
+// };
 
 export default Route;

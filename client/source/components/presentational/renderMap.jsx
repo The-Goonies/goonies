@@ -60,10 +60,10 @@ class GoogleMapsContainer extends React.Component {
   }
 }
 
-GoogleMapsContainer.propTypes = {
-  google: PropTypes.shape({
-    maps: PropTypes.object,
-  }).isRequired,
-};
+// GoogleMapsContainer.propTypes = {
+//   google: PropTypes.shape({
+//     maps: PropTypes.object,
+//   }).isRequired,
+// };
 
 export default GoogleApiWrapper({ apiKey })(GoogleMapsContainer);

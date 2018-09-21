@@ -162,8 +162,8 @@ class ForecastForm extends React.Component {
   }
 }
 
-ForecastForm.propTypes = {
-  fiveday: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+// ForecastForm.propTypes = {
+//   fiveday: PropTypes.arrayOf(PropTypes.object).isRequired,
+// };
 
 export default ForecastForm;

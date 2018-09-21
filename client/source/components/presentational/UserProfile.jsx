@@ -238,8 +238,8 @@ class UserProfile extends React.Component {
   }
 }
 
-UserProfile.propTypes = {
-  userInfo: PropTypes.objectOf(PropTypes.string).isRequired,
-};
+// UserProfile.propTypes = {
+//   userInfo: PropTypes.objectOf(PropTypes.string).isRequired,
+// };
 
 export default UserProfile;

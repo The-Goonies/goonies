@@ -100,17 +100,17 @@ class RouteForm extends React.Component {
   }
 }
 
-RouteForm.propTypes = {
-  route: PropTypes.shape({
-    routeName: PropTypes.string,
-    date: PropTypes.string,
-    distanceInMiles: PropTypes.number,
-    timeToCompleteInHours: PropTypes.number,
-    averageSpeedMPH: PropTypes.number,
-  }).isRequired,
-  handleEditSubmit: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
-  handleUpsert: PropTypes.func.isRequired,
-};
+// RouteForm.propTypes = {
+//   route: PropTypes.shape({
+//     routeName: PropTypes.string,
+//     date: PropTypes.string,
+//     distanceInMiles: PropTypes.number,
+//     timeToCompleteInHours: PropTypes.number,
+//     averageSpeedMPH: PropTypes.number,
+//   }).isRequired,
+//   handleEditSubmit: PropTypes.func.isRequired,
+//   handleDelete: PropTypes.func.isRequired,
+//   handleUpsert: PropTypes.func.isRequired,
+// };
 
 export default RouteForm;

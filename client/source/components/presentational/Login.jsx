@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect } from '@reach/router';
 import PropTypes from 'prop-types';
+import SignUp from './SignUp';
 
 
 class Login extends React.Component {
@@ -37,7 +38,7 @@ class Login extends React.Component {
           alert('Invalid username and password. Please try again.');
         } else {
           //  success! redirect
-          transferUserInfo(res.data);
+          transferUserInfo(1);
           this.setState({
             loggedIn: true,
           });
@@ -60,6 +61,7 @@ class Login extends React.Component {
     //  destructuring state object per airbnb syntax guide
     const { loggedIn, signedUp } = this.state;
     //  if loggedIn is true, then redirect to /maps page without throwing error
+
     if (loggedIn) {
       return <Redirect noThrow to="/maps" />;
     }
@@ -93,8 +95,8 @@ class Login extends React.Component {
   }
 }
 
-Login.propTypes = {
-  transferUserInfo: PropTypes.func.isRequired,
-};
+// Login.propTypes = {
+//   transferUserInfo: PropTypes.func.isRequired,
+// };
 
 export default Login;

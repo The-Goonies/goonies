@@ -33,9 +33,9 @@ class ExperienceEdit extends React.Component {
   }
 }
 
-ExperienceEdit.propTypes = {
-  handleCancelChange: PropTypes.func.isRequired,
-  handleNewExperience: PropTypes.func.isRequired,
-};
+// ExperienceEdit.propTypes = {
+//   handleCancelChange: PropTypes.func.isRequired,
+//   handleNewExperience: PropTypes.func.isRequired,
+// };
 
 export default ExperienceEdit;

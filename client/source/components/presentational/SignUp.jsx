@@ -81,9 +81,9 @@ class SignUp extends React.Component {
   }
 }
 
-SignUp.propTypes = {
-  transferUserInfo: PropTypes.func.isRequired,
-};
+// SignUp.propTypes = {
+//   transferUserInfo: PropTypes.func.isRequired,
+// };
 
 
 export default SignUp;
