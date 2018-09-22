@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect } from '@reach/router';
 import PropTypes from 'prop-types';
 
 class SignUp extends React.Component {
@@ -10,7 +9,6 @@ class SignUp extends React.Component {
       username: '',
       password: '',
       experience: 'Novice',
-      loggedIn: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,17 +23,14 @@ class SignUp extends React.Component {
   handleSubmit() {
     const { username, password, experience } = this.state;
     const userInfo = { username, password, experience };
-    const { transferUserInfo } = this.props;
+    const { newUserCreated } = this.props;
     axios.post('/api/users/create', userInfo)
       .then((res) => {
         if (res.data === 'Username Taken') {
           alert('That username is already taken. Please choose another username.');
         } else {
           //  success! redirect
-          transferUserInfo(JSON.parse(res.config.data));
-          this.setState({
-            loggedIn: true,
-          });
+          newUserCreated();
         }
       })
       .catch((error) => {
@@ -44,12 +39,8 @@ class SignUp extends React.Component {
   }
 
   render() {
-    //  destructuring state object per airbnb syntax guide
-    const { loggedIn, experience } = this.state;
-    //  if user successfully signs up, redirect to maps page
-    if (loggedIn) {
-      return <Redirect noThrow to="/maps" />;
-    }
+    const { experience } = this.state;
+
     return (
       <div className="login">
         <form>
@@ -82,7 +73,7 @@ class SignUp extends React.Component {
 }
 
 SignUp.propTypes = {
-  transferUserInfo: PropTypes.func.isRequired,
+  newUserCreated: PropTypes.func.isRequired,
 };
 
 

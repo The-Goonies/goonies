@@ -1,7 +1,7 @@
 {
   "name": "goonies",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Over-arching file structure ##",
   "main": "index.js",
   "scripts": {
     "jest-test": "jest",
@@ -13,7 +13,7 @@
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon --inspect server/index.js --watch",
     "start": "node server/index.js",
-    "test": "npm run lint"
+    "postinstall": "webpack -d"
   },
   "jest": {
     "verbose": true,
@@ -59,21 +59,29 @@
     "ts-jest": "^23.1.4"
   },
   "dependencies": {
-    "enzyme": "^3.6.0",
     "@reach/router": "^1.1.1",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "dotenv-webpack": "^1.5.7",
+    "enzyme": "^3.6.0",
     "express": "^4.16.3",
-    "google-maps-react": "^2.0.2",
     "identity-obj-proxy": "^3.0.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-google-maps": "^9.4.5",
     "sequelize": "^4.38.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanong12/goonies.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nathanong12/goonies/issues"
+  },
+  "homepage": "https://github.com/nathanong12/goonies#readme"
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import UsernameEdit from './UsernameEdit';
 import ExperienceEdit from './ExperienceEdit';
 
@@ -12,7 +12,7 @@ class UserProfile extends React.Component {
       username: '',
       experience: '',
       oldPassword: '',
-      newPassword: '',
+      newPassword: 'filler',
       confirmNewPassword: '',
       editUsername: false,
       editExperience: false,
@@ -25,14 +25,7 @@ class UserProfile extends React.Component {
     this.handleNewExperience = this.handleNewExperience.bind(this);
   }
 
-  componentDidMount() {
-    const { userInfo } = this.props;
-    const { username, experience } = userInfo;
-    this.setState({
-      username,
-      experience,
-    });
-  }
+
   //  ************** Password Change *************  //
 
   changePassword(e) {
@@ -41,7 +34,8 @@ class UserProfile extends React.Component {
     });
   }
 
-  resetPasswordFields() {
+  emptyPasswords() {
+    // console.log('empty password field')
     this.setState({
       oldPassword: '',
       newPassword: '',
@@ -56,14 +50,14 @@ class UserProfile extends React.Component {
         alert('Password is updated');
       })
       .then(() => {
-        this.resetPasswordFields();
+        this.emptyPasswords();
       })
       .catch((err) => {
         alert(err);
       });
   }
 
-  passwordMatch(userData) {
+  passwordMatch(userData) { // need to fix
     if (userData.data === 'Invalid Password') {
       if (alert('Your old password is incorrect. Please try again.')) {
         window.location.reload();
@@ -79,12 +73,13 @@ class UserProfile extends React.Component {
     const {
       username, oldPassword, newPassword, confirmNewPassword,
     } = this.state;
+
     if (newPassword !== confirmNewPassword) {
       alert('Your new password does not match your password confirmation. Please try again');
-      this.resetPasswordFields();
+      this.emptyPasswords();
     } else if (newPassword === oldPassword) {
       alert('Your new password should not match your old password. Please try again.');
-      this.resetPasswordFields();
+      console.log('trigger password change');
     } else {
       axios.get(`/api/users/login?username=${username}&password=${oldPassword}`)
         .then((res) => {
@@ -238,8 +233,8 @@ class UserProfile extends React.Component {
   }
 }
 
-UserProfile.propTypes = {
-  userInfo: PropTypes.objectOf(PropTypes.string).isRequired,
-};
+// UserProfile.propTypes = {
+//   userInfo: PropTypes.objectOf(PropTypes.string).isRequired,
+// };
 
 export default UserProfile;
