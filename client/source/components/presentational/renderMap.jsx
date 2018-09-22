@@ -5,7 +5,7 @@ import {
 
 import axios from 'axios';
 
-// import TrailList from './TrailList.jsx';
+import TrailList from './TrailList.jsx';
 
 class GoogleMapsContainer extends React.Component {
   constructor(props) {
@@ -112,7 +112,7 @@ class GoogleMapsContainer extends React.Component {
     )));
     return (
       <div>
-        {/* <TrailList hikingTrails={hikingTrails} /> */}
+        <TrailList hikingTrails={this.state.hikingTrails} />
         <YosemiteMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${this.state.apiKey}`}
           loadingElement={<div style={{ height: '100%' }} />}
