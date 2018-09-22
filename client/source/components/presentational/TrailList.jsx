@@ -5,7 +5,7 @@ const TrailList = (props) => {
     <div>
       <select>
         {props.hikingTrails.map(trail => (
-          <option value={trail.name}>{trail.name}</option>
+          <option onSelect={() => {console.log(trail.name)}}value={trail.name}>{trail.name}</option>
         ))}
       </select>
     </div>
