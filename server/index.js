@@ -6,6 +6,7 @@ const db = require('./../db/index.js');
 const app = express();
 require('dotenv').config();
 const weather = require('./weatherApiCall.js');
+const trails = require('./trailsApiCall.js');
 // const path = require('path')
 
 const port = process.env.PORT || 5000;
@@ -125,6 +126,17 @@ app.delete('/api/routes', (req, res) => {
       }
     })
     .catch(err => console.log(err));
+});
+
+// ///// TRAILS ///// //
+app.get('/api/trails', (req, res) => {
+  trails.getNearestTrails()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(err, 'Error getting weather data');
+    });
 });
 
 // ///// WEATHER ///// //
