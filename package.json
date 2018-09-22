@@ -13,7 +13,7 @@
     "react-dev": "webpack --mode development --watch",
     "server-dev": "nodemon --inspect server/index.js --watch",
     "start": "node server/index.js",
-    "test": "npm run lint"
+    "postinstall": "webpack -d"
   },
   "jest": {
     "verbose": true,
